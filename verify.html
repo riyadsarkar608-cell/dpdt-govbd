@@ -9,7 +9,9 @@
 content="width=device-width, initial-scale=1.0">
 
 <title>
+
 Bangladesh Trademark Verification
+
 </title>
 
 <style>
@@ -22,60 +24,39 @@ margin:0;
 
 font-family:Arial,sans-serif;
 
-background:
-linear-gradient(
-180deg,
-#f4f9f6,
-#e2efe8
-);
+background:white;
 
 }
 
-/* TOP BAR */
+/* HEADER */
 
-.topbar{
+.header{
 
 background:#006a4e;
 
 color:white;
 
-padding:12px;
-
-font-size:14px;
-
-font-weight:bold;
-
-letter-spacing:1px;
+padding:15px;
 
 text-align:center;
 
 }
 
-/* MAIN CONTAINER */
+/* MAIN BOX */
 
 .container{
 
-padding:30px;
+max-width:1000px;
 
-}
-
-/* MAIN BOX */
-
-.box{
+margin:30px auto;
 
 background:white;
 
-padding:30px;
+border:1px solid #ccc;
 
-border-radius:8px;
+padding:25px;
 
-max-width:1000px;
-
-margin:auto;
-
-border-top:6px solid #006a4e;
-
-box-shadow:0 2px 15px rgba(0,0,0,0.1);
+box-shadow:0 1px 5px rgba(0,0,0,0.1);
 
 }
 
@@ -83,77 +64,47 @@ box-shadow:0 2px 15px rgba(0,0,0,0.1);
 
 .logo{
 
-width:120px;
-
-margin-top:10px;
+width:90px;
 
 }
 
 /* TITLE */
 
-.gov{
+.title{
 
 color:#006a4e;
 
-font-size:30px;
-
 margin-top:10px;
 
-}
-
-/* VERIFY TEXT */
-
-.verify{
-
-color:#006a4e;
-
-font-weight:bold;
-
-font-size:18px;
-
-margin-top:10px;
+font-size:28px;
 
 }
 
-/* SEARCH AREA */
+/* SEARCH */
 
-.search-box{
+.search{
 
-display:flex;
-
-justify-content:center;
-
-gap:10px;
-
-flex-wrap:wrap;
-
-margin-top:20px;
+margin-top:25px;
 
 }
-
-/* INPUT */
 
 input{
 
-padding:14px;
+padding:12px;
 
-width:280px;
+width:260px;
 
 font-size:16px;
 
-border-radius:6px;
-
-border:1px solid #ccc;
+border:1px solid #999;
 
 outline:none;
 
 }
 
-/* BUTTON */
-
 button{
 
-padding:14px 25px;
+padding:12px 20px;
 
 background:#006a4e;
 
@@ -165,10 +116,6 @@ font-size:16px;
 
 cursor:pointer;
 
-border-radius:6px;
-
-transition:0.3s;
-
 }
 
 button:hover{
@@ -177,7 +124,29 @@ background:#004d39;
 
 }
 
-/* CERTIFICATE IMAGE */
+/* TABLE */
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+margin-top:20px;
+
+}
+
+table td{
+
+border:1px solid #ccc;
+
+padding:12px;
+
+text-align:left;
+
+}
+
+/* CERTIFICATE */
 
 .cert-img{
 
@@ -187,14 +156,7 @@ max-width:850px;
 
 margin-top:20px;
 
-border:10px solid white;
-
-box-shadow:
-0 0 20px rgba(0,0,0,0.2);
-
-border-radius:8px;
-
-animation:fade 0.5s ease;
+border:1px solid #ccc;
 
 }
 
@@ -204,87 +166,25 @@ iframe{
 
 width:100%;
 
-height:900px;
+height:850px;
 
-border:none;
+border:1px solid #ccc;
 
 margin-top:20px;
 
-border-radius:8px;
-
 }
 
-/* VERIFIED SEAL */
+/* VERIFIED */
 
-.seal{
+.verified{
 
-display:flex;
+margin-top:20px;
 
-align-items:center;
-
-justify-content:center;
-
-gap:15px;
+padding:12px;
 
 background:#f3fff7;
 
 border:1px solid #cceedd;
-
-padding:15px;
-
-border-radius:10px;
-
-margin-top:20px;
-
-}
-
-/* INVALID */
-
-.invalid{
-
-padding:20px;
-
-background:#ffecec;
-
-color:red;
-
-font-weight:bold;
-
-border:1px solid red;
-
-margin-top:20px;
-
-border-radius:10px;
-
-font-size:20px;
-
-}
-
-/* FOOTER */
-
-footer{
-
-background:#006a4e;
-
-color:white;
-
-padding:20px;
-
-margin-top:40px;
-
-text-align:center;
-
-line-height:30px;
-
-}
-
-/* LOADER */
-
-.loader{
-
-margin-top:20px;
-
-font-size:18px;
 
 color:#006a4e;
 
@@ -292,25 +192,39 @@ font-weight:bold;
 
 }
 
-/* ANIMATION */
+/* INVALID */
 
-@keyframes fade{
+.invalid{
 
-from{
+margin-top:20px;
 
-opacity:0;
+padding:15px;
 
-transform:translateY(20px);
+background:#ffecec;
 
-}
+border:1px solid red;
 
-to{
+color:red;
 
-opacity:1;
-
-transform:translateY(0);
+font-weight:bold;
 
 }
+
+/* FOOTER */
+
+.footer{
+
+background:#006a4e;
+
+color:white;
+
+padding:15px;
+
+text-align:center;
+
+margin-top:40px;
+
+font-size:14px;
 
 }
 
@@ -322,6 +236,8 @@ input{
 
 width:90%;
 
+margin-bottom:10px;
+
 }
 
 button{
@@ -330,15 +246,9 @@ width:95%;
 
 }
 
-.gov{
+.title{
 
 font-size:22px;
-
-}
-
-h1{
-
-font-size:26px;
 
 }
 
@@ -350,17 +260,17 @@ font-size:26px;
 
 <body>
 
-<!-- TOP BAR -->
+<!-- HEADER -->
 
-<div class="topbar">
+<div class="header">
 
-✔ GOVERNMENT VERIFIED DATABASE
+Government of the People's Republic of Bangladesh
 
 </div>
 
-<div class="container">
+<!-- MAIN -->
 
-<div class="box">
+<div class="container">
 
 <!-- LOGO -->
 
@@ -368,44 +278,23 @@ font-size:26px;
 
 <!-- TITLE -->
 
-<h2 class="gov">
+<h2 class="title">
 
-Government of the People's Republic of Bangladesh
+Department of Patents, Designs & Trademarks
 
 </h2>
 
 <p>
 
-Department of Patents, Designs & Trademarks
-
-</p>
-
-<p class="verify">
-
-✔ VERIFIED OFFICIAL DOCUMENT
+Trademark Verification Portal
 
 </p>
 
 <hr>
 
-<!-- MAIN TITLE -->
-
-<h1 style="color:#006a4e;">
-
-Bangladesh Trademark Verification Portal
-
-</h1>
-
-<p>
-
-Verify official trademark certificates issued
-by the Government of Bangladesh.
-
-</p>
-
 <!-- SEARCH -->
 
-<div class="search-box">
+<div class="search">
 
 <input type="text"
 
@@ -415,7 +304,7 @@ placeholder="Enter Trademark Number">
 
 <button onclick="searchTM()">
 
-Verify Document
+Verify
 
 </button>
 
@@ -427,33 +316,14 @@ Verify Document
 
 </div>
 
-</div>
-
 <!-- FOOTER -->
 
-<footer>
+<div class="footer">
 
-<div>
-
-Official Website of the Government
-of Bangladesh
+© 2024 Department of Patents,
+Designs & Trademarks, Bangladesh
 
 </div>
-
-<div>
-
-Department of Patents,
-Designs & Trademarks
-
-</div>
-
-<div>
-
-© 2024 All Rights Reserved
-
-</div>
-
-</footer>
 
 <script>
 
@@ -463,25 +333,11 @@ function searchTM(){
 
 let id=document.getElementById("tm").value;
 
-document.getElementById("result").innerHTML=`
-
-<div class="loader">
-
-🔄 Verifying Official Database...
-
-</div>
-
-`;
-
-setTimeout(()=>{
-
 window.location.href="?id="+id;
-
-},1000);
 
 }
 
-/* URL PARAM */
+/* GET ID */
 
 const params=new URLSearchParams(window.location.search);
 
@@ -495,32 +351,49 @@ document.getElementById("tm").value=id;
 
 document.getElementById("result").innerHTML=`
 
+<table>
+
+<tr>
+
+<td><b>Trademark Number</b></td>
+
+<td>${id}</td>
+
+</tr>
+
+<tr>
+
+<td><b>Status</b></td>
+
+<td style="color:green;">
+VERIFIED
+</td>
+
+</tr>
+
+<tr>
+
+<td><b>Authority</b></td>
+
+<td>
+Department of Patents,
+Designs & Trademarks
+</td>
+
+</tr>
+
+</table>
+
 <img class="cert-img"
 
 src="${id}.jpg"
 
 onerror="showPDF()">
 
-<div class="seal">
+<div class="verified">
 
-<img src="logo.jpeg" width="55">
-
-<div>
-
-<h3 style="color:#006a4e;">
-
-Official Government Verification
-
-</h3>
-
-<p>
-
-Verified by Department of Patents,
-Designs & Trademarks
-
-</p>
-
-</div>
+✔ This trademark certificate has been
+verified successfully.
 
 </div>
 
@@ -540,28 +413,45 @@ if(response.ok){
 
 document.getElementById("result").innerHTML=`
 
+<table>
+
+<tr>
+
+<td><b>Trademark Number</b></td>
+
+<td>${id}</td>
+
+</tr>
+
+<tr>
+
+<td><b>Status</b></td>
+
+<td style="color:green;">
+VERIFIED
+</td>
+
+</tr>
+
+<tr>
+
+<td><b>Authority</b></td>
+
+<td>
+Department of Patents,
+Designs & Trademarks
+</td>
+
+</tr>
+
+</table>
+
 <iframe src="${id}.pdf"></iframe>
 
-<div class="seal">
+<div class="verified">
 
-<img src="logo.jpeg" width="55">
-
-<div>
-
-<h3 style="color:#006a4e;">
-
-Official Government Verification
-
-</h3>
-
-<p>
-
-Verified by Department of Patents,
-Designs & Trademarks
-
-</p>
-
-</div>
+✔ This trademark certificate has been
+verified successfully.
 
 </div>
 

@@ -76,6 +76,16 @@ font-weight:bold;
 font-size:18px;
 }
 
+.invalid{
+padding:20px;
+background:#ffecec;
+color:red;
+font-weight:bold;
+border:1px solid red;
+margin-top:20px;
+border-radius:5px;
+}
+
 </style>
 
 </head>
@@ -156,9 +166,43 @@ onerror="showPDF()">
 
 function showPDF(){
 
+fetch(id + ".pdf")
+
+.then(response => {
+
+if(response.ok){
+
 document.getElementById("result").innerHTML=`
 
 <iframe src="${id}.pdf"></iframe>
+
+`;
+
+}else{
+
+showInvalid();
+
+}
+
+})
+
+.catch(() => {
+
+showInvalid();
+
+});
+
+}
+
+function showInvalid(){
+
+document.getElementById("result").innerHTML=`
+
+<div class="invalid">
+
+❌ Invalid Trademark Number
+
+</div>
 
 `;
 
@@ -167,4 +211,5 @@ document.getElementById("result").innerHTML=`
 </script>
 
 </body>
+
 </html>

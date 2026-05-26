@@ -14,21 +14,48 @@ Bangladesh Trademark Verification
 
 <style>
 
+/* BODY */
+
 body{
+
+margin:0;
 
 font-family:Arial,sans-serif;
 
-background:linear-gradient(
-135deg,
-#edf5ef,
-#d7efe2
+background:
+linear-gradient(
+180deg,
+#f4f9f6,
+#e2efe8
 );
 
-padding:20px;
+}
+
+/* TOP BAR */
+
+.topbar{
+
+background:#006a4e;
+
+color:white;
+
+padding:12px;
+
+font-size:14px;
+
+font-weight:bold;
+
+letter-spacing:1px;
 
 text-align:center;
 
-margin:0;
+}
+
+/* MAIN CONTAINER */
+
+.container{
+
+padding:30px;
 
 }
 
@@ -36,19 +63,19 @@ margin:0;
 
 .box{
 
-background:rgba(255,255,255,0.96);
+background:white;
 
-padding:25px;
+padding:30px;
 
-border-radius:20px;
+border-radius:8px;
 
 max-width:1000px;
 
 margin:auto;
 
-box-shadow:0 8px 25px rgba(0,0,0,0.15);
+border-top:6px solid #006a4e;
 
-backdrop-filter:blur(10px);
+box-shadow:0 2px 15px rgba(0,0,0,0.1);
 
 }
 
@@ -68,13 +95,13 @@ margin-top:10px;
 
 color:#006a4e;
 
-font-size:32px;
+font-size:30px;
 
 margin-top:10px;
 
 }
 
-/* VERIFIED */
+/* VERIFY TEXT */
 
 .verify{
 
@@ -88,7 +115,23 @@ margin-top:10px;
 
 }
 
-/* SEARCH */
+/* SEARCH AREA */
+
+.search-box{
+
+display:flex;
+
+justify-content:center;
+
+gap:10px;
+
+flex-wrap:wrap;
+
+margin-top:20px;
+
+}
+
+/* INPUT */
 
 input{
 
@@ -98,13 +141,15 @@ width:280px;
 
 font-size:16px;
 
-border-radius:10px;
+border-radius:6px;
 
 border:1px solid #ccc;
 
 outline:none;
 
 }
+
+/* BUTTON */
 
 button{
 
@@ -120,7 +165,7 @@ font-size:16px;
 
 cursor:pointer;
 
-border-radius:10px;
+border-radius:6px;
 
 transition:0.3s;
 
@@ -129,8 +174,6 @@ transition:0.3s;
 button:hover{
 
 background:#004d39;
-
-transform:scale(1.05);
 
 }
 
@@ -144,9 +187,12 @@ max-width:850px;
 
 margin-top:20px;
 
-border-radius:15px;
+border:10px solid white;
 
-box-shadow:0 5px 20px rgba(0,0,0,0.2);
+box-shadow:
+0 0 20px rgba(0,0,0,0.2);
+
+border-radius:8px;
 
 animation:fade 0.5s ease;
 
@@ -164,7 +210,31 @@ border:none;
 
 margin-top:20px;
 
-border-radius:15px;
+border-radius:8px;
+
+}
+
+/* VERIFIED SEAL */
+
+.seal{
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+gap:15px;
+
+background:#f3fff7;
+
+border:1px solid #cceedd;
+
+padding:15px;
+
+border-radius:10px;
+
+margin-top:20px;
 
 }
 
@@ -190,22 +260,6 @@ font-size:20px;
 
 }
 
-/* VERIFIED BOX */
-
-.verified-box{
-
-margin-top:20px;
-
-padding:15px;
-
-background:#f2fff7;
-
-border:1px solid #cceedd;
-
-border-radius:10px;
-
-}
-
 /* FOOTER */
 
 footer{
@@ -214,11 +268,27 @@ background:#006a4e;
 
 color:white;
 
-padding:18px;
+padding:20px;
 
-margin-top:30px;
+margin-top:40px;
 
-font-size:15px;
+text-align:center;
+
+line-height:30px;
+
+}
+
+/* LOADER */
+
+.loader{
+
+margin-top:20px;
+
+font-size:18px;
+
+color:#006a4e;
+
+font-weight:bold;
 
 }
 
@@ -252,8 +322,6 @@ input{
 
 width:90%;
 
-margin-bottom:10px;
-
 }
 
 button{
@@ -264,13 +332,13 @@ width:95%;
 
 .gov{
 
-font-size:24px;
+font-size:22px;
 
 }
 
 h1{
 
-font-size:28px;
+font-size:26px;
 
 }
 
@@ -282,13 +350,23 @@ font-size:28px;
 
 <body>
 
+<!-- TOP BAR -->
+
+<div class="topbar">
+
+✔ GOVERNMENT VERIFIED DATABASE
+
+</div>
+
+<div class="container">
+
 <div class="box">
 
 <!-- LOGO -->
 
 <img src="logo.jpeg" class="logo">
 
-<!-- GOVERNMENT TITLE -->
+<!-- TITLE -->
 
 <h2 class="gov">
 
@@ -314,11 +392,20 @@ Department of Patents, Designs & Trademarks
 
 <h1 style="color:#006a4e;">
 
-Bangladesh Trademark Verification
+Bangladesh Trademark Verification Portal
 
 </h1>
 
+<p>
+
+Verify official trademark certificates issued
+by the Government of Bangladesh.
+
+</p>
+
 <!-- SEARCH -->
+
+<div class="search-box">
 
 <input type="text"
 
@@ -328,11 +415,11 @@ placeholder="Enter Trademark Number">
 
 <button onclick="searchTM()">
 
-Verify
+Verify Document
 
 </button>
 
-<br><br>
+</div>
 
 <!-- RESULT -->
 
@@ -340,24 +427,57 @@ Verify
 
 </div>
 
+</div>
+
 <!-- FOOTER -->
 
 <footer>
 
-© 2024 Department of Patents,
-Designs & Trademarks, Bangladesh.
+<div>
+
+Official Website of the Government
+of Bangladesh
+
+</div>
+
+<div>
+
+Department of Patents,
+Designs & Trademarks
+
+</div>
+
+<div>
+
+© 2024 All Rights Reserved
+
+</div>
 
 </footer>
 
 <script>
 
-/* SEARCH FUNCTION */
+/* SEARCH */
 
 function searchTM(){
 
 let id=document.getElementById("tm").value;
 
+document.getElementById("result").innerHTML=`
+
+<div class="loader">
+
+🔄 Verifying Official Database...
+
+</div>
+
+`;
+
+setTimeout(()=>{
+
 window.location.href="?id="+id;
+
+},1000);
 
 }
 
@@ -381,21 +501,26 @@ src="${id}.jpg"
 
 onerror="showPDF()">
 
-<div class="verified-box">
+<div class="seal">
+
+<img src="logo.jpeg" width="55">
+
+<div>
 
 <h3 style="color:#006a4e;">
 
-✔ Officially Verified
+Official Government Verification
 
 </h3>
 
 <p>
 
-This trademark certificate has been
-verified by the Department of Patents,
-Designs & Trademarks.
+Verified by Department of Patents,
+Designs & Trademarks
 
 </p>
+
+</div>
 
 </div>
 
@@ -417,21 +542,26 @@ document.getElementById("result").innerHTML=`
 
 <iframe src="${id}.pdf"></iframe>
 
-<div class="verified-box">
+<div class="seal">
+
+<img src="logo.jpeg" width="55">
+
+<div>
 
 <h3 style="color:#006a4e;">
 
-✔ Officially Verified
+Official Government Verification
 
 </h3>
 
 <p>
 
-This trademark certificate has been
-verified by the Department of Patents,
-Designs & Trademarks.
+Verified by Department of Patents,
+Designs & Trademarks
 
 </p>
+
+</div>
 
 </div>
 

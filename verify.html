@@ -5,182 +5,204 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bangladesh Trademark Verification</title>
     <style>
-        /* BODY */
-        body{
-            margin:0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background:#f8f9fa;
+        /* GLOBAL STYLES */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f4f6f9;
             color: #333;
         }
-        /* HEADER WITH SEAL ALIGNMENT */
-        .header{
-            background:#006a4e;
-            color:white;
-            padding:12px 15px;
-            text-align:center;
+        
+        /* SHORKARI HEADER */
+        .header {
+            background: #006a4e;
+            color: white;
+            padding: 12px 15px;
+            text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
             font-weight: bold;
             font-size: 16px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         .header img {
-            width: 42px;
-            height: 42px;
+            width: 40px;
+            height: 40px;
             object-fit: contain;
         }
-        /* GOVT ORANGE STRIP */
+        
+        /* REGULAR ORANGE BAR */
         .gov-bar {
-            height: 4px;
+            height: 5px;
             background: #f47920;
             width: 100%;
         }
-        /* MAIN BOX */
-        .container{
-            max-width: 1000px;
-            margin: 40px auto;
+        
+        /* MAIN CONTAINER */
+        .container {
+            max-width: 950px;
+            margin: 35px auto;
             background: white;
-            border: 1px solid #e0e0e0;
-            padding: 30px;
-            border-radius: 4px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid #dee2e6;
+            padding: 35px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
-        /* LOGO */
-        .logo{
-            width: 85px;
+        
+        /* DPDT LOGO & TEXT */
+        .logo {
+            width: 80px;
             height: auto;
         }
-        /* TITLE */
-        .title{
+        .title {
             color: #006a4e;
-            margin-top: 12px;
+            margin-top: 15px;
             margin-bottom: 5px;
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 700;
+            letter-spacing: -0.3px;
         }
         .subtitle {
             margin: 0;
-            color: #666;
+            color: #555;
             font-size: 15px;
             font-weight: 500;
         }
-        /* SEARCH */
-        .search{
-            margin-top: 25px;
-            margin-bottom: 25px;
+        
+        /* SEARCH BOX DESIGN */
+        .search {
+            margin: 30px 0;
+            display: flex;
+            max-width: 450px;
         }
-        input{
-            padding: 12px;
-            width: 280px;
+        input {
+            flex: 1;
+            padding: 12px 15px;
             font-size: 15px;
-            border: 1px solid #ccc;
+            border: 1px solid #cccccc;
             border-radius: 4px 0 0 4px;
             outline: none;
-            transition: border 0.2s;
+            transition: border-color 0.2s;
         }
         input:focus {
             border-color: #006a4e;
         }
-        button{
+        button {
             padding: 12px 24px;
             background: #006a4e;
             color: white;
             border: 1px solid #006a4e;
             border-radius: 0 4px 4px 0;
             font-size: 15px;
-            font-weight: bold;
+            font-weight: 600;
             cursor: pointer;
-            margin-left: -5px;
+            transition: background 0.2s;
         }
-        button:hover{
-            background: #004d39;
+        button:hover {
+            background: #00523c;
         }
-        /* TABLE */
-        table{
+        
+        /* VERIFICATION DATA TABLE */
+        table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 25px;
-            background: #fff;
+            background: #ffffff;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid #dee2e6;
         }
-        table td{
-            border: 1px solid #e0e0e0;
-            padding: 14px 16px;
+        table td {
+            border: 1px solid #dee2e6;
+            padding: 14px 18px;
             text-align: left;
             font-size: 15px;
         }
         table tr td:first-child {
-            background: #fbfbfb;
-            color: #555;
-            width: 25%;
+            background: #f8f9fa;
+            color: #495057;
+            width: 28%;
             font-weight: 600;
         }
-        /* VERIFIED BADGE STYLE */
+        
+        /* OFFICIAL STATUS BADGE */
         .status-badge {
-            background: #e6f4ea;
-            color: #137333;
-            padding: 4px 12px;
+            background: #d1e7dd;
+            color: #0f5132;
+            padding: 5px 14px;
             border-radius: 4px;
-            font-weight: bold;
+            font-weight: 700;
             font-size: 13px;
             display: inline-block;
-            border: 1px solid #ceead6;
+            border: 1px solid #badbcc;
+            letter-spacing: 0.5px;
         }
-        /* CERTIFICATE */
-        .cert-img{
+        
+        /* CERTIFICATE DISPLAY */
+        .cert-img {
             width: 100%;
             max-width: 850px;
-            margin-top: 25px;
-            border: 1px solid #ddd;
+            margin-top: 30px;
+            border: 1px solid #dee2e6;
             border-radius: 4px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
         }
-        /* PDF */
-        iframe{
+        iframe {
             width: 100%;
             height: 850px;
-            border: 1px solid #ddd;
-            margin-top: 25px;
+            border: 1px solid #dee2e6;
+            margin-top: 30px;
             border-radius: 4px;
         }
-        /* VERIFIED LOWER BOX */
-        .verified{
-            margin-top: 25px;
-            padding: 14px;
-            background: #e6f4ea;
-            border: 1px solid #ceead6;
-            color: #137333;
-            font-weight: 600;
-            border-radius: 4px;
-            font-size: 15px;
-        }
-        /* INVALID */
-        .invalid{
+        
+        /* SUCCESS NOTICE BOX */
+        .verified {
             margin-top: 25px;
             padding: 15px;
-            background: #fce8e6;
-            border: 1px solid #fad2cf;
-            color: #c5221f;
-            font-weight: bold;
+            background: #d1e7dd;
+            border: 1px solid #badbcc;
+            color: #0f5132;
+            font-weight: 600;
             border-radius: 4px;
+            font-size: 14.5px;
         }
-        /* FOOTER */
-        .footer{
-            background: #202124;
-            color: #bcbcf2;
-            padding: 20px;
+        
+        /* ERROR NOTICE BOX */
+        .invalid {
+            margin-top: 25px;
+            padding: 15px;
+            background: #f8d7da;
+            border: 1px solid #f5c2c7;
+            color: #842029;
+            font-weight: 600;
+            border-radius: 4px;
+            font-size: 14.5px;
+        }
+        
+        /* OFFICIAL FOOTER */
+        .footer {
+            background: #212529;
+            color: #ced4da;
+            padding: 22px;
             text-align: center;
-            margin-top: 50px;
+            margin-top: 60px;
             font-size: 13px;
-            border-top: 3px solid #006a4e;
+            border-top: 4px solid #006a4e;
+            letter-spacing: 0.3px;
         }
-        /* MOBILE RESPONSIVE */
+        
+        /* MOBILE OPTIMIZATION */
         @media(max-width:768px){
-            .container { margin: 15px; padding: 15px; }
-            input{ width: 100%; border-radius: 4px; margin-bottom: 10px; box-sizing: border-box; }
-            button{ width: 100%; border-radius: 4px; margin-left: 0; }
-            .title{ font-size: 20px; }
-            table tr td:first-child { width: 35%; }
-            .header{ font-size: 13px; gap: 8px; padding: 10px; }
+            .container { margin: 15px; padding: 20px; }
+            .search { flex-direction: column; max-width: 100%; gap: 10px; }
+            input { border-radius: 4px; }
+            button { border-radius: 4px; }
+            .title { font-size: 19px; }
+            table tr td:first-child { width: 40%; padding: 12px; }
+            table td { padding: 12px; font-size: 14px; }
+            .header { font-size: 13px; gap: 8px; padding: 10px; }
             .header img { width: 32px; height: 32px; }
         }
     </style>
@@ -198,7 +220,7 @@
         
         <h2 class="title">Department of Patents, Designs & Trademarks</h2>
         <p class="subtitle">Trademark Verification Portal</p>
-        <hr style="border: 0; border-top: 1px solid #eee; margin-top: 15px;">
+        <hr style="border: 0; border-top: 1px solid #eee; margin-top: 20px; margin-bottom: 10px;">
 
         <div class="search">
             <input type="text" id="tm" placeholder="Enter Trademark Number">
@@ -209,7 +231,7 @@
     </div>
 
     <div class="footer">
-        © 2026 Department of Patents, Designs & Trademarks, Bangladesh | All Rights Reserved.
+        © 2026 Department of Patents, Designs & Trademarks, Bangladesh | Intellectual Property Registry Portal.
     </div>
 
 <script>
@@ -238,12 +260,8 @@
             .then(data => {
                 if (data[tmId]) {
                     let tmDetails = data[tmId];
-                    // Variable set default placeholder values if not provided in JSON
                     let appDate = tmDetails.application_date || "08/12/2015";
-                    let tmClass = tmDetails.class || "Class 41";
-                    let tmType = tmDetails.type || "Device / Logo";
-
-                    checkFilesAndShow(tmId, tmDetails.name, tmDetails.authority, appDate, tmClass, tmType);
+                    checkFilesAndShow(tmId, tmDetails.name, tmDetails.authority, appDate);
                 } else {
                     showInvalid();
                 }
@@ -254,12 +272,12 @@
     }
 
     /* DETECT IMAGE OR PDF AND RENDER */
-    function checkFilesAndShow(tmId, ownerName, authorityName, appDate, tmClass, tmType) {
+    function checkFilesAndShow(tmId, ownerName, authorityName, appDate) {
         let imgUrl = tmId + ".jpg";
         let img = new Image();
         
         img.onload = function() {
-            showVerifiedHTML(tmId, ownerName, authorityName, appDate, tmClass, tmType, `<img class="cert-img" src="${imgUrl}">`);
+            showVerifiedHTML(tmId, ownerName, authorityName, appDate, `<img class="cert-img" src="${imgUrl}">`);
         };
         
         img.onerror = function() {
@@ -267,40 +285,32 @@
             fetch(pdfUrl)
                 .then(response => {
                     if (response.ok) {
-                        showVerifiedHTML(tmId, ownerName, authorityName, appDate, tmClass, tmType, `<iframe src="${pdfUrl}"></iframe>`);
+                        showVerifiedHTML(tmId, ownerName, authorityName, appDate, `<iframe src="${pdfUrl}"></iframe>`);
                     } else {
-                        showVerifiedHTML(tmId, ownerName, authorityName, appDate, tmClass, tmType, '');
+                        showVerifiedHTML(tmId, ownerName, authorityName, appDate, '');
                     }
                 })
-                .catch(() => showVerifiedHTML(tmId, ownerName, authorityName, appDate, tmClass, tmType, ''));
+                .catch(() => showVerifiedHTML(tmId, ownerName, authorityName, appDate, ''));
         };
         
         img.src = imgUrl;
     }
 
     /* RENDER DYNAMIC VERIFIED INTERFACE */
-    function showVerifiedHTML(tmId, ownerName, authorityName, appDate, tmClass, tmType, displayContent) {
+    function showVerifiedHTML(tmId, ownerName, authorityName, appDate, displayContent) {
         document.getElementById("result").innerHTML = `
             <table>
                 <tr>
                     <td>Trademark Number</td>
-                    <td style="font-weight: 600;">${tmId}</td>
+                    <td style="font-weight: 600; color: #111;">${tmId}</td>
                 </tr>
                 <tr>
                     <td>Owner / Brand Name</td>
-                    <td style="font-weight: 700; color: #111;">${ownerName}</td>
-                </tr>
-                <tr>
-                    <td>Trademark Class</td>
-                    <td>${tmClass}</td>
-                </tr>
-                <tr>
-                    <td>Trademark Type</td>
-                    <td>${tmType}</td>
+                    <td style="font-weight: 700; color: #000; font-size: 15.5px;">${ownerName}</td>
                 </tr>
                 <tr>
                     <td>Filing/Application Date</td>
-                    <td>${appDate}</td>
+                    <td style="color: #444;">${appDate}</td>
                 </tr>
                 <tr>
                     <td>Status</td>
@@ -308,12 +318,12 @@
                 </tr>
                 <tr>
                     <td>Authority</td>
-                    <td>${authorityName}</td>
+                    <td style="color: #444;">${authorityName}</td>
                 </tr>
             </table>
             ${displayContent}
             <div class="verified">
-                ✔ This trademark certificate has been verified successfully against the dynamic national intellectual property index.
+                ✔ This trademark certificate has been verified successfully against the national intellectual property database index.
             </div>
         `;
     }
@@ -322,7 +332,7 @@
     function showInvalid() {
         document.getElementById("result").innerHTML = `
             <div class="invalid">
-                ❌ Invalid Trademark Number. No active records matching this identity were found in the server registry.
+                ❌ Invalid Trademark Number. No active records matching this identity were found in the national registry.
             </div>
         `;
     }

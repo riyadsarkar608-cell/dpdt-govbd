@@ -2,7 +2,7 @@
 
 function searchTM(){
 
-let id=document.getElementById("tm").value;
+let id=document.getElementById("tm").value.trim();
 
 window.location.href="?id="+id;
 
@@ -22,11 +22,15 @@ fetch("data.json")
 
 .then(data=>{
 
-let owner="Not Available";
+if(!data[id]){
 
-if(data[id]){
-owner=data[id].owner;
+showInvalid();
+
+return;
+
 }
+
+let owner=data[id].owner;
 
 document.getElementById("result").innerHTML=`
 
@@ -44,17 +48,12 @@ document.getElementById("result").innerHTML=`
 
 <tr>
 <td><b>Status</b></td>
-<td style="color:green;">
-VERIFIED
-</td>
+<td style="color:green;">VERIFIED ✅</td>
 </tr>
 
 <tr>
 <td><b>Authority</b></td>
-<td>
-Department of Patents,
-Designs & Trademarks
-</td>
+<td>Department of Patents, Designs & Trademarks</td>
 </tr>
 
 </table>
@@ -65,8 +64,7 @@ onerror="showPDF('${id}','${owner}')">
 
 <div class="verified">
 
-✔ This trademark certificate has been
-verified successfully.
+✔ This trademark certificate has been verified successfully.
 
 </div>
 
@@ -86,7 +84,7 @@ function showPDF(id,owner){
 
 fetch(id + ".pdf")
 
-.then(response => {
+.then(response=>{
 
 if(response.ok){
 
@@ -106,17 +104,12 @@ document.getElementById("result").innerHTML=`
 
 <tr>
 <td><b>Status</b></td>
-<td style="color:green;">
-VERIFIED
-</td>
+<td style="color:green;">VERIFIED ✅</td>
 </tr>
 
 <tr>
 <td><b>Authority</b></td>
-<td>
-Department of Patents,
-Designs & Trademarks
-</td>
+<td>Department of Patents, Designs & Trademarks</td>
 </tr>
 
 </table>
@@ -125,8 +118,7 @@ Designs & Trademarks
 
 <div class="verified">
 
-✔ This trademark certificate has been
-verified successfully.
+✔ This trademark certificate has been verified successfully.
 
 </div>
 
@@ -140,7 +132,7 @@ showInvalid();
 
 })
 
-.catch(() => {
+.catch(()=>{
 
 showInvalid();
 

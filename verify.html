@@ -238,7 +238,12 @@
             .then(data => {
                 if (data[tmId]) {
                     let tmDetails = data[tmId];
-                    checkFilesAndShow(tmId, tmDetails.name, tmDetails.authority);
+                    // Variable set default placeholder values if not provided in JSON
+                    let appDate = tmDetails.application_date || "08/12/2015";
+                    let tmClass = tmDetails.class || "Class 41";
+                    let tmType = tmDetails.type || "Device / Logo";
+
+                    checkFilesAndShow(tmId, tmDetails.name, tmDetails.authority, appDate, tmClass, tmType);
                 } else {
                     showInvalid();
                 }
@@ -249,12 +254,12 @@
     }
 
     /* DETECT IMAGE OR PDF AND RENDER */
-    function checkFilesAndShow(tmId, ownerName, authorityName) {
+    function checkFilesAndShow(tmId, ownerName, authorityName, appDate, tmClass, tmType) {
         let imgUrl = tmId + ".jpg";
         let img = new Image();
         
         img.onload = function() {
-            showVerifiedHTML(tmId, ownerName, authorityName, `<img class="cert-img" src="${imgUrl}">`);
+            showVerifiedHTML(tmId, ownerName, authorityName, appDate, tmClass, tmType, `<img class="cert-img" src="${imgUrl}">`);
         };
         
         img.onerror = function() {
@@ -262,23 +267,19 @@
             fetch(pdfUrl)
                 .then(response => {
                     if (response.ok) {
-                        showVerifiedHTML(tmId, ownerName, authorityName, `<iframe src="${pdfUrl}"></iframe>`);
+                        showVerifiedHTML(tmId, ownerName, authorityName, appDate, tmClass, tmType, `<iframe src="${pdfUrl}"></iframe>`);
                     } else {
-                        showVerifiedHTML(tmId, ownerName, authorityName, '');
+                        showVerifiedHTML(tmId, ownerName, authorityName, appDate, tmClass, tmType, '');
                     }
                 })
-                .catch(() => showVerifiedHTML(tmId, ownerName, authorityName, ''));
+                .catch(() => showVerifiedHTML(tmId, ownerName, authorityName, appDate, tmClass, tmType, ''));
         };
         
         img.src = imgUrl;
     }
 
     /* RENDER DYNAMIC VERIFIED INTERFACE */
-    function showVerifiedHTML(tmId, ownerName, authorityName, displayContent) {
-        // Dynamic Date Formatting
-        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-        const currentDateTime = new Date().toLocaleDateString('en-US', options);
-
+    function showVerifiedHTML(tmId, ownerName, authorityName, appDate, tmClass, tmType, displayContent) {
         document.getElementById("result").innerHTML = `
             <table>
                 <tr>
@@ -290,16 +291,24 @@
                     <td style="font-weight: 700; color: #111;">${ownerName}</td>
                 </tr>
                 <tr>
+                    <td>Trademark Class</td>
+                    <td>${tmClass}</td>
+                </tr>
+                <tr>
+                    <td>Trademark Type</td>
+                    <td>${tmType}</td>
+                </tr>
+                <tr>
+                    <td>Filing/Application Date</td>
+                    <td>${appDate}</td>
+                </tr>
+                <tr>
                     <td>Status</td>
                     <td><span class="status-badge">✔ VERIFIED</span></td>
                 </tr>
                 <tr>
                     <td>Authority</td>
                     <td>${authorityName}</td>
-                </tr>
-                <tr>
-                    <td>Verification Date</td>
-                    <td style="color: #666; font-size: 14px;">${currentDateTime} (Real-time Checked)</td>
                 </tr>
             </table>
             ${displayContent}

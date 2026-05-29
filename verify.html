@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bangladesh Trademark Verification</title>
+    <title>পেটেন্ট, শিল্প-নকশা ও ট্রেডমার্কস অধিদপ্তর</title>
     <style>
         /* GLOBAL STYLES */
         body {
@@ -13,31 +13,68 @@
             color: #333;
         }
         
-        /* SHORKARI HEADER */
-        .header {
-            background: #006a4e;
+        /* TOP GOVT LIGHT GREEN BAR */
+        .top-national-bar {
+            background: #198754;
+            color: #ffffff;
+            padding: 8px 40px;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+        }
+        .top-national-bar .left-txt {
+            font-family: Arial, sans-serif;
+        }
+        .top-national-bar .right-lang {
+            background: rgba(255,255,255,0.15);
+            padding: 2px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        /* ACTUAL GOVT BANNER */
+        .main-gov-banner {
+            background: linear-gradient(90deg, #005a36 0%, #006a4e 100%);
             color: white;
-            padding: 12px 15px;
-            text-align: center;
+            padding: 20px 40px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 12px;
-            font-weight: bold;
-            font-size: 16px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            justify-content: space-between;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
         }
-        .header img {
-            width: 40px;
-            height: 40px;
+        .banner-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .banner-left .gov-seal {
+            width: 65px;
+            height: 65px;
             object-fit: contain;
         }
-        
-        /* REGULAR ORANGE BAR */
-        .gov-bar {
-            height: 5px;
-            background: #f47920;
-            width: 100%;
+        .banner-text-block {
+            display: flex;
+            flex-direction: column;
+        }
+        .banner-title-bn {
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 0.3px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            margin-bottom: 2px;
+        }
+        .banner-sub-bn {
+            font-size: 14px;
+            color: #e0e0e0;
+            font-weight: 500;
+        }
+        .banner-right-logo {
+            width: 85px;
+            height: 85px;
+            object-fit: contain;
         }
         
         /* MAIN CONTAINER */
@@ -51,29 +88,18 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
         
-        /* DPDT LOGO & TEXT */
-        .logo {
-            width: 80px;
-            height: auto;
-        }
-        .title {
+        .portal-subheading {
+            margin: 0 0 15px 0;
             color: #006a4e;
-            margin-top: 15px;
-            margin-bottom: 5px;
-            font-size: 24px;
-            font-weight: 700;
-            letter-spacing: -0.3px;
-        }
-        .subtitle {
-            margin: 0;
-            color: #555;
-            font-size: 15px;
-            font-weight: 500;
+            font-size: 18px;
+            font-weight: 600;
+            border-left: 4px solid #f47920;
+            padding-left: 10px;
         }
         
         /* SEARCH BOX DESIGN */
         .search {
-            margin: 30px 0;
+            margin: 25px 0;
             display: flex;
             max-width: 450px;
         }
@@ -195,32 +221,42 @@
         
         /* MOBILE OPTIMIZATION */
         @media(max-width:768px){
+            .top-national-bar { padding: 8px 15px; }
+            .main-gov-banner { padding: 15px; flex-direction: column; text-align: center; gap: 15px; }
+            .banner-left { flex-direction: column; gap: 10px; }
+            .banner-title-bn { font-size: 20px; }
+            .banner-right-logo { width: 70px; height: 70px; }
             .container { margin: 15px; padding: 20px; }
             .search { flex-direction: column; max-width: 100%; gap: 10px; }
             input { border-radius: 4px; }
             button { border-radius: 4px; }
-            .title { font-size: 19px; }
             table tr td:first-child { width: 40%; padding: 12px; }
             table td { padding: 12px; font-size: 14px; }
-            .header { font-size: 13px; gap: 8px; padding: 10px; }
-            .header img { width: 32px; height: 32px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <img src="seal.png" alt="BD Government Seal">
-        <span>Government of the People's Republic of Bangladesh</span>
+    <div class="top-national-bar">
+        <span class="left-txt">বাংলাদেশ জাতীয় তথ্য বাতায়ন</span>
+        <span class="right-lang">English</span>
     </div>
-    <div class="gov-bar"></div>
+
+    <div class="main-gov-banner">
+        <div class="banner-left">
+            <img src="seal.png" alt="BD Government Seal" class="gov-seal">
+            <div class="banner-text-block">
+                <span class="banner-title-bn">পেটেন্ট, শিল্প-নকশা ও ট্রেডমার্কস অধিদপ্তর</span>
+                <span class="banner-sub-bn">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</span>
+            </div>
+        </div>
+        <img src="logo.jpeg" alt="DPDT Logo" class="banner-right-logo" onerror="this.style.display='none'">
+    </div>
 
     <div class="container">
-        <img src="logo.jpeg" class="logo" alt="Logo">
         
-        <h2 class="title">Department of Patents, Designs & Trademarks</h2>
-        <p class="subtitle">Trademark Verification Portal</p>
-        <hr style="border: 0; border-top: 1px solid #eee; margin-top: 20px; margin-bottom: 10px;">
+        <h3 class="portal-subheading">Trademark Verification Portal</h3>
+        <hr style="border: 0; border-top: 1px solid #eee; margin-bottom: 20px;">
 
         <div class="search">
             <input type="text" id="tm" placeholder="Enter Trademark Number">

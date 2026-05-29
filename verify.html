@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Department of Patents, Designs & Trademarks</title>
     <style>
-        /* GLOBAL STYLES WITH NATIONAL BACKDROP PATTERN */
+        /* GLOBAL STYLES WITH GENUINE GOVT SIDE ARTWORK LINES */
         body {
             margin: 0;
             font-family: 'Segoe UI', Arial, sans-serif;
             background-color: #f4f6f9;
-            /* Real govt side artwork wrapper (SVG simulation via light line graphics) */
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><g stroke="%23e4e7eb" stroke-width="0.5" fill="none" stroke-dasharray="2,2"><path d="M0,20 Q30,10 60,30 T100,20 M0,50 Q40,70 70,40 T100,60"/></g></svg>');
+            background-image: 
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="800" viewBox="0 0 150 800"><path d="M-20,0 Q60,150 -10,300 T80,550 T-20,800" fill="none" stroke="%23e1e6eb" stroke-width="2"/><path d="M-40,0 Q90,200 10,400 T110,650 T-40,800" fill="none" stroke="%23e9edf2" stroke-width="1.5"/></svg>'),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><g stroke="%23eceff3" stroke-width="0.5" fill="none"><circle cx="100" cy="0" r="80"/><circle cx="100" cy="0" r="60"/></g></svg>');
+            background-position: left top, right top;
+            background-repeat: repeat-y, no-repeat;
             background-attachment: fixed;
             color: #333;
         }
@@ -76,24 +79,36 @@
             font-weight: 500;
             letter-spacing: 0.5px;
         }
+        
+        /* RIGHT SIDE BANNER COMPONENT FRAME */
+        .banner-right-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
         .banner-right-logo {
-            width: 85px;
-            height: 85px;
+            width: 80px;
+            height: 80px;
             object-fit: contain;
         }
+        .national-corner-art {
+            width: 75px;
+            height: 80px;
+            border-radius: 4px;
+            object-fit: cover;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.08);
+        }
         
-        /* MAIN CONTAINER WRAPPER */
+        /* CENTRAL DYNAMIC CONTENT AREA */
         .page-wrapper {
-            max-width: 1200px;
+            max-width: 1050px;
             margin: 0 auto;
-            display: flex;
-            gap: 25px;
             padding: 35px 20px;
         }
 
-        /* MAIN LEFT CONTAINER */
+        /* MAIN PORTAL ROW CONTAINER */
         .container {
-            flex: 3;
             background: white;
             border: 1px solid #dee2e6;
             padding: 35px;
@@ -102,58 +117,18 @@
             position: relative;
         }
         
-        /* BOTTOM SILHOUETTE LANDSCAPE GRAPHIC (Image_c731cc reference) */
+        /* BOTTOM LANDSCAPE VECTOR SILHOUETTE */
         .container::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            height: 45px;
-            opacity: 0.07;
+            height: 40px;
+            opacity: 0.05;
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"><path d="M0,100 L0,80 Q50,60 100,80 T200,70 T300,90 T400,60 T500,80 T600,70 T700,85 T800,65 T900,80 T1000,70 L1000,100 Z" fill="%23000"/></svg>');
             background-size: 100% 100%;
             pointer-events: none;
-        }
-
-        /* RIGHT SIDEBAR PANEL */
-        .sidebar {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .widget {
-            background: white;
-            border: 1px solid #dee2e6;
-            border-radius: 4px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-        }
-        .widget-title {
-            background: #006a4e;
-            color: white;
-            padding: 12px 15px;
-            font-size: 14px;
-            font-weight: 600;
-            margin: 0;
-        }
-        .widget-body {
-            padding: 5px 0;
-        }
-        .hotline-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 15px;
-            border-bottom: 1px solid #f1f3f5;
-            font-size: 14px;
-        }
-        .hotline-item:last-child { border: none; }
-        .hotline-num {
-            color: #d63031;
-            font-weight: 700;
-            font-size: 15px;
         }
         
         .portal-subheading {
@@ -165,7 +140,7 @@
             padding-left: 10px;
         }
         
-        /* SEARCH BOX DESIGN */
+        /* SEARCH DESIGN */
         .search {
             margin: 25px 0;
             display: flex;
@@ -230,17 +205,18 @@
         /* NOTICES */
         .verified { margin-top: 25px; padding: 15px; background: #d1e7dd; border: 1px solid #badbcc; color: #0f5132; font-weight: 600; border-radius: 4px; }
         .invalid { margin-top: 25px; padding: 15px; background: #f8d7da; border: 1px solid #f5c2c7; color: #842029; font-weight: 600; border-radius: 4px; }
-        
-        /* REAL NATIONAL FOOTER STRUCTURE IN ENGLISH (Image_c731cc baseline) */
+
+        /* REAL NATIONAL FOOTER STRUCTURE IN ENGLISH */
         .national-footer {
             background: #e8ecef;
             border-top: 1px solid #d6dbdf;
             padding: 30px 40px;
             color: #444;
             font-size: 13.5px;
+            margin-top: 40px;
         }
         .footer-content-inner {
-            max-width: 1200px;
+            max-width: 1050px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -255,8 +231,6 @@
         .sitemap-link {
             color: #555;
             text-decoration: none;
-            border-right: 1px solid #ccc;
-            padding-right: 12px;
             font-weight: 500;
         }
         .last-update-text {
@@ -267,7 +241,7 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            gap: 10px;
+            gap: 12px;
             text-align: right;
         }
         .partner-heading-txt {
@@ -280,20 +254,24 @@
             align-items: center;
             gap: 15px;
         }
-        /* Dynamic scalable vector rendering placeholder icons mimicking real agency layout */
+        .partner-logos-flex span {
+            font-size: 12.5px;
+            color: #666;
+        }
         .agency-icon-mock {
-            height: 38px;
+            height: 35px;
             width: auto;
-            filter: grayscale(10%) contrast(110%);
+            object-fit: contain;
         }
         
         /* MOBILE OPTIMIZATION */
         @media(max-width:768px){
             .top-national-bar { padding: 8px 15px; }
-            .main-gov-banner { padding: 15px; flex-direction: column; gap: 15px; }
-            .page-wrapper { flex-direction: column; padding: 15px; }
-            .sidebar { order: 2; }
-            .container { padding: 20px; order: 1; }
+            .main-gov-banner { padding: 15px; flex-direction: column; gap: 15px; text-align: center; }
+            .banner-left { flex-direction: column; gap: 10px; }
+            .banner-right-box { justify-content: center; width: 100%; }
+            .page-wrapper { padding: 15px; }
+            .container { padding: 20px; }
             .search { flex-direction: column; max-width: 100%; gap: 10px; }
             table tr td:first-child { width: 40%; }
             .footer-content-inner { flex-direction: column; gap: 25px; }
@@ -309,7 +287,7 @@
         <span class="right-lang">বাংলা</span>
     </div>
 
-    <!-- MAIN DPDT BANNER -->
+    <!-- MAIN DPDT BANNER WITH DUAL CORNER ART CORES -->
     <div class="main-gov-banner">
         <div class="banner-left">
             <img src="seal.png" alt="BD Government Seal" class="gov-seal">
@@ -318,13 +296,16 @@
                 <span class="banner-sub-en">Government of the People's Republic of Bangladesh</span>
             </div>
         </div>
-        <img src="logo.jpeg" alt="DPDT Logo" class="banner-right-logo" onerror="this.style.display='none'">
+        
+        <div class="banner-right-box">
+            <img src="logo.jpeg" alt="DPDT Logo" class="banner-right-logo" onerror="this.style.display='none'">
+            <img src="mujib_corner.png" alt="" class="national-corner-art" onerror="this.style.display='none'">
+        </div>
     </div>
 
-    <!-- RESPONSIVE TWO-COLUMN SYSTEM GRID (Image_c731cc interface look) -->
+    <!-- CENTRAL LAYOUT WRAPPER GRID -->
     <div class="page-wrapper">
-        
-        <!-- MAIN CONTENT LAYER -->
+        <!-- MAIN CORE CONTAINER -->
         <div class="container">
             <h3 class="portal-subheading">Trademark Verification Portal</h3>
             <hr style="border: 0; border-top: 1px solid #eee; margin-bottom: 20px;">
@@ -336,31 +317,9 @@
 
             <div id="result"></div>
         </div>
-
-        <!-- RIGHT SIDEBAR PANEL -->
-        <div class="sidebar">
-            <div class="widget">
-                <h4 class="widget-title">Emergency Contact</h4>
-                <div class="widget-body">
-                    <div class="hotline-item">
-                        <span>National Helpline</span>
-                        <span class="hotline-num">333</span>
-                    </div>
-                    <div class="hotline-item">
-                        <span>Emergency Services</span>
-                        <span class="hotline-num">999</span>
-                    </div>
-                    <div class="hotline-item">
-                        <span>Fire Service Hotline</span>
-                        <span class="hotline-num">102</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
 
-    <!-- INTELLECTUAL MULTI-AGENCY NATIONAL FOOTER (Image_c731cc layout match) -->
+    <!-- INTELLECTUAL MULTI-AGENCY NATIONAL FOOTER (EXACT IMAGE ORDER MATCH) -->
     <div class="national-footer">
         <div class="footer-content-inner">
             
@@ -379,10 +338,11 @@
             <div class="footer-right-partners">
                 <div class="partner-heading-txt">Planning and Implementation: Cabinet Division, a2i, BCC, DoICT & BASIS.</div>
                 <div class="partner-logos-flex">
-                    <span style="font-size:12.5px; color:#666; margin-right:5px;">Technical Support:</span>
-                    <!-- Using premium public live vector resources matching the exact screenshot sequence -->
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Government_Seal_of_Bangladesh.svg" class="agency-icon-mock" alt="Gov">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/A2i_logo.svg" class="agency-icon-mock" alt="a2i" onerror="this.style.opacity=0.5">
+                    <span>Technical Support:</span>
+                    <!-- Exact matching sequence from image_1.png using high-quality official vectors -->
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/A2i_logo.svg" class="agency-icon-mock" alt="a2i">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Government_Seal_of_Bangladesh.svg" class="agency-icon-mock" alt="Cabinet Division">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/ICT_Division_Bangladesh_Logo.svg" class="agency-icon-mock" alt="ICT Division" onerror="this.style.display='none'">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/UNDP_logo.svg" class="agency-icon-mock" alt="UNDP">
                 </div>
             </div>
@@ -391,9 +351,8 @@
     </div>
 
 <script>
-    /* DYNAMIC GENERATION OF REPLICATED HISTORICAL UPDATE DATE */
+    /* TIMESTAMP GENERATION LOGIC */
     const updateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    // Hardcoded to match standard portal logging sync logic structure seamlessly
     document.getElementById("last-update-placeholder").innerText = new Date("May 24, 2026 09:38:06").toLocaleDateString('en-US', updateOptions) + " 09:38:06";
 
     /* SEARCH FUNCTION */

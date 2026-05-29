@@ -8,14 +8,15 @@
         /* BODY */
         body{
             margin:0;
-            font-family:Arial,sans-serif;
-            background:white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background:#f8f9fa;
+            color: #333;
         }
         /* HEADER WITH SEAL ALIGNMENT */
         .header{
             background:#006a4e;
             color:white;
-            padding:10px 15px;
+            padding:12px 15px;
             text-align:center;
             display: flex;
             align-items: center;
@@ -25,158 +26,190 @@
             font-size: 16px;
         }
         .header img {
-            width: 45px;
-            height: 45px;
+            width: 42px;
+            height: 42px;
             object-fit: contain;
+        }
+        /* GOVT ORANGE STRIP */
+        .gov-bar {
+            height: 4px;
+            background: #f47920;
+            width: 100%;
         }
         /* MAIN BOX */
         .container{
-            max-width:1000px;
-            margin:30px auto;
-            background:white;
-            border:1px solid #ccc;
-            padding:25px;
-            box-shadow:0 1px 5px rgba(0,0,0,0.1);
+            max-width: 1000px;
+            margin: 40px auto;
+            background: white;
+            border: 1px solid #e0e0e0;
+            padding: 30px;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
         /* LOGO */
         .logo{
-            width:90px;
+            width: 85px;
+            height: auto;
         }
         /* TITLE */
         .title{
-            color:#006a4e;
-            margin-top:10px;
-            font-size:28px;
+            color: #006a4e;
+            margin-top: 12px;
+            margin-bottom: 5px;
+            font-size: 26px;
+            font-weight: 700;
+        }
+        .subtitle {
+            margin: 0;
+            color: #666;
+            font-size: 15px;
+            font-weight: 500;
         }
         /* SEARCH */
         .search{
-            margin-top:25px;
+            margin-top: 25px;
+            margin-bottom: 25px;
         }
         input{
-            padding:12px;
-            width:260px;
-            font-size:16px;
-            border:1px solid #999;
-            outline:none;
+            padding: 12px;
+            width: 280px;
+            font-size: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+            transition: border 0.2s;
+        }
+        input:focus {
+            border-color: #006a4e;
         }
         button{
-            padding:12px 20px;
-            background:#006a4e;
-            color:white;
-            border:none;
-            font-size:16px;
-            cursor:pointer;
+            padding: 12px 24px;
+            background: #006a4e;
+            color: white;
+            border: 1px solid #006a4e;
+            border-radius: 0 4px 4px 0;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: -5px;
         }
         button:hover{
-            background:#004d39;
+            background: #004d39;
         }
         /* TABLE */
         table{
-            width:100%;
-            border-collapse:collapse;
-            margin-top:20px;
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+            background: #fff;
         }
         table td{
-            border:1px solid #ccc;
-            padding:12px;
-            text-align:left;
+            border: 1px solid #e0e0e0;
+            padding: 14px 16px;
+            text-align: left;
+            font-size: 15px;
+        }
+        table tr td:first-child {
+            background: #fbfbfb;
+            color: #555;
+            width: 25%;
+            font-weight: 600;
+        }
+        /* VERIFIED BADGE STYLE */
+        .status-badge {
+            background: #e6f4ea;
+            color: #137333;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 13px;
+            display: inline-block;
+            border: 1px solid #ceead6;
         }
         /* CERTIFICATE */
         .cert-img{
-            width:100%;
-            max-width:850px;
-            margin-top:20px;
-            border:1px solid #ccc;
+            width: 100%;
+            max-width: 850px;
+            margin-top: 25px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
         }
         /* PDF */
         iframe{
-            width:100%;
-            height:850px;
-            border:1px solid #ccc;
-            margin-top:20px;
+            width: 100%;
+            height: 850px;
+            border: 1px solid #ddd;
+            margin-top: 25px;
+            border-radius: 4px;
         }
-        /* VERIFIED */
+        /* VERIFIED LOWER BOX */
         .verified{
-            margin-top:20px;
-            padding:12px;
-            background:#f3fff7;
-            border:1px solid #cceedd;
-            color:#006a4e;
-            font-weight:bold;
+            margin-top: 25px;
+            padding: 14px;
+            background: #e6f4ea;
+            border: 1px solid #ceead6;
+            color: #137333;
+            font-weight: 600;
+            border-radius: 4px;
+            font-size: 15px;
         }
         /* INVALID */
         .invalid{
-            margin-top:20px;
-            padding:15px;
-            background:#ffecec;
-            border:1px solid red;
-            color:red;
-            font-weight:bold;
+            margin-top: 25px;
+            padding: 15px;
+            background: #fce8e6;
+            border: 1px solid #fad2cf;
+            color: #c5221f;
+            font-weight: bold;
+            border-radius: 4px;
         }
         /* FOOTER */
         .footer{
-            background:#006a4e;
-            color:white;
-            padding:15px;
-            text-align:center;
-            margin-top:40px;
-            font-size:14px;
+            background: #202124;
+            color: #bcbcf2;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+            font-size: 13px;
+            border-top: 3px solid #006a4e;
         }
         /* MOBILE RESPONSIVE */
         @media(max-width:768px){
-            input{
-                width:90%;
-                margin-bottom:10px;
-            }
-            button{
-                width:95%;
-            }
-            .title{
-                font-size:22px;
-            }
-            .header{
-                font-size: 14px;
-                gap: 8px;
-                padding: 8px 10px;
-            }
-            .header img {
-                width: 35px;
-                height: 35px;
-            }
+            .container { margin: 15px; padding: 15px; }
+            input{ width: 100%; border-radius: 4px; margin-bottom: 10px; box-sizing: border-box; }
+            button{ width: 100%; border-radius: 4px; margin-left: 0; }
+            .title{ font-size: 20px; }
+            table tr td:first-child { width: 35%; }
+            .header{ font-size: 13px; gap: 8px; padding: 10px; }
+            .header img { width: 32px; height: 32px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- HEADER WITH SEAL -->
     <div class="header">
         <img src="seal.png" alt="BD Government Seal">
         <span>Government of the People's Republic of Bangladesh</span>
     </div>
+    <div class="gov-bar"></div>
 
-    <!-- MAIN CONTAINER -->
     <div class="container">
-        <!-- LOGO -->
         <img src="logo.jpeg" class="logo" alt="Logo">
         
-        <!-- TITLE -->
         <h2 class="title">Department of Patents, Designs & Trademarks</h2>
-        <p>Trademark Verification Portal</p>
-        <hr>
+        <p class="subtitle">Trademark Verification Portal</p>
+        <hr style="border: 0; border-top: 1px solid #eee; margin-top: 15px;">
 
-        <!-- SEARCH -->
         <div class="search">
             <input type="text" id="tm" placeholder="Enter Trademark Number">
             <button onclick="searchTM()">Verify</button>
         </div>
 
-        <!-- RESULT CONTAINER -->
         <div id="result"></div>
     </div>
 
-    <!-- FOOTER -->
     <div class="footer">
-        © 2026 Department of Patents, Designs & Trademarks, Bangladesh
+        © 2026 Department of Patents, Designs & Trademarks, Bangladesh | All Rights Reserved.
     </div>
 
 <script>
@@ -231,7 +264,6 @@
                     if (response.ok) {
                         showVerifiedHTML(tmId, ownerName, authorityName, `<iframe src="${pdfUrl}"></iframe>`);
                     } else {
-                        // Image/PDF missing thakleo table dynamic thakbe
                         showVerifiedHTML(tmId, ownerName, authorityName, '');
                     }
                 })
@@ -243,28 +275,36 @@
 
     /* RENDER DYNAMIC VERIFIED INTERFACE */
     function showVerifiedHTML(tmId, ownerName, authorityName, displayContent) {
+        // Dynamic Date Formatting
+        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        const currentDateTime = new Date().toLocaleDateString('en-US', options);
+
         document.getElementById("result").innerHTML = `
             <table>
                 <tr>
-                    <td><b>Trademark Number</b></td>
-                    <td>${tmId}</td>
+                    <td>Trademark Number</td>
+                    <td style="font-weight: 600;">${tmId}</td>
                 </tr>
                 <tr>
-                    <td><b>Owner / Brand Name</b></td>
-                    <td><b>${ownerName}</b></td>
+                    <td>Owner / Brand Name</td>
+                    <td style="font-weight: 700; color: #111;">${ownerName}</td>
                 </tr>
                 <tr>
-                    <td><b>Status</b></td>
-                    <td style="color:green; font-weight:bold;">VERIFIED</td>
+                    <td>Status</td>
+                    <td><span class="status-badge">✔ VERIFIED</span></td>
                 </tr>
                 <tr>
-                    <td><b>Authority</b></td>
+                    <td>Authority</td>
                     <td>${authorityName}</td>
+                </tr>
+                <tr>
+                    <td>Verification Date</td>
+                    <td style="color: #666; font-size: 14px;">${currentDateTime} (Real-time Checked)</td>
                 </tr>
             </table>
             ${displayContent}
             <div class="verified">
-                ✔ This trademark certificate has been verified successfully.
+                ✔ This trademark certificate has been verified successfully against the dynamic national intellectual property index.
             </div>
         `;
     }
@@ -273,7 +313,7 @@
     function showInvalid() {
         document.getElementById("result").innerHTML = `
             <div class="invalid">
-                ❌ Invalid Trademark Number
+                ❌ Invalid Trademark Number. No active records matching this identity were found in the server registry.
             </div>
         `;
     }

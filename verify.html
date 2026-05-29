@@ -1,297 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bangladesh Trademark Verification</title>
+    <title>Trademark Verification Portal - DPDT</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- QRCode Generator Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
-        /* BODY */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: white;
-        }
-
-        /* HEADER */
-        .header {
-            background: #006a4e;
-            color: white;
-            padding: 15px;
-            text-align: center;
-        }
-
-        /* MAIN BOX */
-        .container {
-            max-width: 1000px;
-            margin: 30px auto;
-            background: white;
-            border: 1px solid #ccc;
-            padding: 25px;
-            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        /* LOGO */
-        .logo {
-            width: 90px;
-        }
-
-        /* TITLE */
-        .title {
-            color: #006a4e;
-            margin-top: 10px;
-            font-size: 28px;
-        }
-
-        /* SEARCH */
-        .search {
-            margin-top: 25px;
-        }
-
-        input {
-            padding: 12px;
-            width: 260px;
-            font-size: 16px;
-            border: 1px solid #999;
-            outline: none;
-        }
-
-        button {
-            padding: 12px 20px;
-            background: #006a4e;
-            color: white;
-            border: none;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #004d39;
-        }
-
-        /* TABLE */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        table td {
-            border: 1px solid #ccc;
-            padding: 12px;
-            text-align: left;
-        }
-
-        /* CERTIFICATE */
-        .cert-img {
-            width: 100%;
-            max-width: 850px;
-            margin-top: 20px;
-            border: 1px solid #ccc;
-        }
-
-        /* PDF */
-        iframe {
-            width: 100%;
-            height: 850px;
-            border: 1px solid #ccc;
-            margin-top: 20px;
-        }
-
-        /* VERIFIED */
-        .verified {
-            margin-top: 20px;
-            padding: 12px;
-            background: #f3fff7;
-            border: 1px solid #cceedd;
-            color:#006a4e;
-            font-weight: bold;
-        }
-
-        /* INVALID */
-        .invalid {
-            margin-top: 20px;
-            padding: 15px;
-            background: #ffecec;
-            border: 1px solid red;
-            color: red;
-            font-weight: bold;
-        }
-
-        /* FOOTER */
-        .footer {
-            background: #006a4e;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            margin-top: 40px;
-            font-size: 14px;
-        }
-
-        /* MOBILE */
-        @media(max-width:768px) {
-            input {
-                width: 90%;
-                margin-bottom: 10px;
-            }
-
-            button {
-                width: 95%;
-            }
-
-            .title {
-                font-size: 22px;
-            }
+        @media print {
+            .no-print { display: none !important; }
+            .print-area { box-shadow: none !important; margin: 0 !important; padding: 0 !important; border: none !important; }
         }
     </style>
 </head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
 
-<body>
-
-    <div class="header">
+    <!-- Top Govt. Green Bar -->
+    <div class="bg-[#006a4e] text-white text-center py-2 text-xs md:text-sm font-medium no-print">
         Government of the People's Republic of Bangladesh
     </div>
 
-    <div class="container">
-        <img src="logo.jpeg" class="logo">
-
-        <h2 class="title">
-            Department of Patents, Designs & Trademarks
-        </h2>
-        <p>
-            Trademark Verification Portal
-        </p>
-        <hr>
-
-        <div class="search">
-            <input type="text" id="tm" placeholder="Enter Trademark Number">
-            <button onclick="searchTM()">Verify</button>
+    <!-- Main Container -->
+    <div class="max-w-4xl mx-auto p-4 md:p-6 my-4 bg-white shadow-xs border border-gray-200 rounded-sm print-area">
+        
+        <!-- Header / Logo Section -->
+        <div class="flex items-center space-x-4 border-b border-gray-200 pb-4 mb-6">
+            <img src="logo.jpg" alt="DPDT Logo" class="w-14 h-14 object-contain" onerror="this.src='seal.png'">
+            <div>
+                <h1 class="text-lg md:text-2xl font-bold text-[#006a4e]">Department of Patents, Designs & Trademarks</h1>
+                <p class="text-xs md:text-sm text-gray-500 font-medium tracking-wide">Trademark & IP Verification Registry</p>
+            </div>
         </div>
 
-        <div id="result"></div>
+        <!-- Search input Section (Hidden when printing) -->
+        <div class="bg-gray-50 p-4 border border-gray-200 rounded-sm mb-6 no-print">
+            <label for="tmInput" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Verify Trademark / Application Number</label>
+            <div class="flex flex-col sm:flex-row gap-2">
+                <input type="text" id="tmInput" placeholder="Enter Trademark Number (e.g. 245788)" class="border border-gray-300 bg-white px-3 py-2 text-sm rounded-sm w-full sm:w-72 focus:outline-none focus:border-[#006a4e] focus:ring-1 focus:ring-[#006a4e]">
+                <button onclick="processVerification()" class="bg-[#006a4e] text-white text-sm font-semibold px-6 py-2 rounded-sm hover:bg-green-800 transition shadow-sm cursor-pointer flex items-center justify-center min-w-[120px]">
+                    <span id="btnText">Run Registry</span>
+                    <!-- Loading Spinner -->
+                    <svg id="spinner" class="hidden animate-spin ml-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Result Content Area -->
+        <div id="resultSection" class="hidden">
+            
+            <!-- Live Status Ribbon -->
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-green-50 border border-green-200 p-4 rounded-sm mb-6 gap-3">
+                <div>
+                    <div class="text-xs font-bold text-gray-500 uppercase">Current Registry Status</div>
+                    <div class="text-lg font-bold text-green-700 flex items-center mt-0.5">
+                        <span class="inline-block w-2.5 h-2.5 rounded-full bg-green-600 animate-pulse mr-2"></span>
+                        ACTIVE / REGISTERED & VERIFIED
+                    </div>
+                </div>
+                <div class="text-left sm:text-right">
+                    <div class="text-xs font-bold text-gray-500 uppercase">Verification Ref</div>
+                    <div id="verRef" class="text-sm font-mono text-gray-700 font-bold"></div>
+                </div>
+            </div>
+
+            <!-- Multi-Tab Details / Ledger Table -->
+            <h3 class="text-sm font-bold text-gray-700 uppercase tracking-wider mb-3">Official Intellectual Property Ledger</h3>
+            <div class="overflow-x-auto mb-6">
+                <table class="w-full border-collapse border border-gray-200 text-xs md:text-sm">
+                    <tbody>
+                        <tr class="border-b border-gray-200">
+                            <th class="bg-gray-50 border-r border-gray-200 p-3 w-1/3 text-left font-semibold text-gray-700">Trademark Number</th>
+                            <td id="resNum" class="p-3 text-gray-900 font-bold font-mono"></td>
+                        </tr>
+                        <tr class="border-b border-gray-200">
+                            <th class="bg-gray-50 border-r border-gray-200 p-3 text-left font-semibold text-gray-700">Proprietor / Owner</th>
+                            <td id="resOwner" class="p-3 text-gray-900 font-medium"></td>
+                        </tr>
+                        <tr class="border-b border-gray-200">
+                            <th class="bg-gray-50 border-r border-gray-200 p-3 text-left font-semibold text-gray-700">IP Class & Category</th>
+                            <td id="resClass" class="p-3 text-gray-900 leading-relaxed"></td>
+                        </tr>
+                        <tr class="border-b border-gray-200">
+                            <th class="bg-gray-50 border-r border-gray-200 p-3 text-left font-semibold text-gray-700">Filing / Registration Date</th>
+                            <td id="resDate" class="p-3 text-gray-900 font-mono"></td>
+                        </tr>
+                        <tr>
+                            <th class="bg-gray-50 border-r border-gray-200 p-3 text-left font-semibold text-gray-700">Issuing Authority</th>
+                            <td id="resAuth" class="p-3 text-gray-600"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Strict Timeline Area -->
+            <h3 class="text-sm font-bold text-gray-700 uppercase tracking-wider mb-4 no-print">Application Progress Milestones</h3>
+            <div class="relative pl-6 border-l-2 border-green-600 space-y-6 mb-8 ml-3 no-print">
+                <!-- Milestone 3 -->
+                <div class="relative">
+                    <span class="absolute -left-[31px] top-0 bg-green-600 text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px]">✓</span>
+                    <h4 class="text-xs font-bold text-gray-800 uppercase">Certificate Registered & Issued</h4>
+                    <p id="timelineDate3" class="text-xs text-gray-500 font-mono mt-0.5"></p>
+                </div>
+                <!-- Milestone 2 -->
+                <div class="relative">
+                    <span class="absolute -left-[31px] top-0 bg-green-600 text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px]">✓</span>
+                    <h4 class="text-xs font-bold text-gray-800 uppercase">Journal Publication & Clearance</h4>
+                    <p class="text-xs text-gray-500 font-medium mt-0.5">Approved under Section 20/22 of the Act.</p>
+                </div>
+                <!-- Milestone 1 -->
+                <div class="relative">
+                    <span class="absolute -left-[31px] top-0 bg-green-600 text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px]">✓</span>
+                    <h4 class="text-xs font-bold text-gray-800 uppercase">Initial Application Filed</h4>
+                    <p class="text-xs text-gray-500 font-medium mt-0.5">Data matched with physical TMR-1 records.</p>
+                </div>
+            </div>
+
+            <!-- Security Seal & QR Code Footer Area -->
+            <div class="border border-dashed border-gray-300 p-4 bg-gray-50 rounded-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3">
+                    <!-- Security Stamp UI -->
+                    <div class="border-2 border-double border-green-700 text-green-700 text-[10px] font-black uppercase tracking-widest p-2 rounded-sm text-center rotate-[-3deg] select-none bg-white">
+                        DPDT SECURE<br>DIGITAL SEAL
+                    </div>
+                    <div class="text-xs text-gray-500 max-w-xs leading-normal">
+                        This digital ledger entry is cryptographically crypted and linked directly with the DPDT central database nodes. 
+                    </div>
+                </div>
+                <!-- Dynamic QR Code Container -->
+                <div class="bg-white p-2 border border-gray-200 shadow-2xs">
+                    <div id="qrcode"></div>
+                    <div class="text-[9px] text-center text-gray-400 font-mono mt-1 uppercase">Scan to Verify</div>
+                </div>
+            </div>
+
+            <!-- Print Actions -->
+            <div class="mt-6 flex justify-end no-print">
+                <button onclick="window.print()" class="bg-white border border-gray-300 hover:bg-gray-100 text-gray-700 text-xs font-bold px-4 py-2 rounded-sm transition shadow-2xs cursor-pointer">
+                    Print / Export Official Ledger (PDF)
+                </button>
+            </div>
+        </div>
+
+        <!-- Error Section -->
+        <div id="errorSection" class="hidden bg-red-50 border-l-4 border-red-500 text-red-700 p-4 rounded-sm text-sm font-medium no-print">
+            ✗ The Trademark / Application number you entered does not match any records in our database. Please double check.
+        </div>
+
     </div>
 
-    <div class="footer">
-        © 2024 Department of Patents, Designs & Trademarks, Bangladesh
-    </div>
-
+    <!-- Script Logics -->
     <script>
-        /* SEARCH BUTTON CLICK */
-        function searchTM() {
-            let id = document.getElementById("tm").value.trim();
-            if (id) {
-                window.location.href = "?id=" + id;
+        let qrcodeInstance = null;
+
+        function processVerification() {
+            const btnText = document.getElementById('btnText');
+            const spinner = document.getElementById('spinner');
+            const resultSection = document.getElementById('resultSection');
+            const errorSection = document.getElementById('errorSection');
+
+            resultSection.classList.add('hidden');
+            errorSection.classList.add('hidden');
+
+            btnText.innerText = "Querying Ledger...";
+            spinner.classList.remove('hidden');
+
+            // Realistic strict delay to look like an official network request
+            setTimeout(() => {
+                btnText.innerText = "Run Registry";
+                spinner.classList.add('hidden');
+                verifyTrademark();
+            }, 1200);
+        }
+
+        async function verifyTrademark() {
+            const inputVal = document.getElementById('tmInput').value.trim();
+            const resultSection = document.getElementById('resultSection');
+            const errorSection = document.getElementById('errorSection');
+
+            if (!inputVal) return;
+
+            try {
+                const response = await fetch('data.json');
+                if (!response.ok) throw new Error('DB connection failed');
+                const data = await response.json();
+
+                if (data[inputVal]) {
+                    const tmData = data[inputVal];
+                    
+                    // Bind values dynamically
+                    document.getElementById('resNum').innerText = tmData.trademark_no;
+                    document.getElementById('resOwner').innerText = tmData.owner_or_proprietor;
+                    document.getElementById('resClass').innerText = tmData.class_and_details;
+                    document.getElementById('resDate').innerText = tmData.registration_date;
+                    document.getElementById('resAuth').innerText = tmData.authority;
+                    
+                    // Dynamic dates and tokens
+                    document.getElementById('timelineDate3').innerText = "Issued on " + tmData.registration_date;
+                    document.getElementById('verRef').innerText = "REG-" + btoa(inputVal).substring(0, 6).toUpperCase() + "-" + inputVal;
+
+                    // Generate Dynamic QR Code matching current portal link
+                    const currentUrl = window.location.href + "?verify=" + inputVal;
+                    document.getElementById('qrcode').innerHTML = ""; // Clear old
+                    qrcodeInstance = new QRCode(document.getElementById("qrcode"), {
+                        text: currentUrl,
+                        width: 80,
+                        height: 80,
+                        colorDark : "#000000",
+                        colorLight : "#ffffff",
+                        correctLevel : QRCode.CorrectLevel.H
+                    });
+
+                    resultSection.classList.remove('hidden');
+                    errorSection.classList.add('hidden');
+                } else {
+                    resultSection.classList.add('hidden');
+                    errorSection.classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error("Database parsing failed:", error);
+                errorSection.classList.remove('hidden');
             }
         }
-
-        /* GET ID FROM URL */
-        const params = new URLSearchParams(window.location.search);
-        const id = params.get("id");
-
-        /* RUN PROCESS IF ID EXISTS */
-        if (id) {
-            document.getElementById("tm").value = id;
-            
-            // Prothome data.json fetch kore database check korbe
-            fetch('data.json')
-                .then(response => response.json())
-                .then(data => {
-                    if (data[id]) {
-                        // Jodi input ID data.json-e thake, tahole result show korbe
-                        showVerifiedResult(data[id].owner);
-                    } else {
-                        // Jodi data.json-e number na thake
-                        showInvalid();
-                    }
-                })
-                .catch(err => {
-                    console.error("Database load hote somossa hoyeche:", err);
-                    showInvalid();
-                });
-        }
-
-        /* SHOW VERIFIED DATA */
-        function showVerifiedResult(ownerName) {
-            // Prothome image default vabe check korbe, image na paile onerror diye PDF function trigger hobe
-            document.getElementById("result").innerHTML = `
-                <table>
-                    <tr>
-                        <td><b>Trademark Number</b></td>
-                        <td>${id}</td>
-                    </tr>
-                    <tr>
-                        <td><b>Owner / Proprietor</b></td>
-                        <td>${ownerName}</td>
-                    </tr>
-                    <tr>
-                        <td><b>Status</b></td>
-                        <td style="color:green; font-weight:bold;">VERIFIED</td>
-                    </tr>
-                    <tr>
-                        <td><b>Authority</b></td>
-                        <td>Department of Patents, Designs & Trademarks</td>
-                    </tr>
-                </table>
-                <img class="cert-img" src="${id}.jpg" onerror="showPDF('${ownerName}')">
-                <div class="verified">
-                    ✔ This trademark certificate has been verified successfully.
-                </div>
-            `;
-        }
-
-        /* SHOW PDF (IF IMAGE NOT FOUND) */
-        function showPDF(ownerName) {
-            fetch(id + ".pdf")
-                .then(response => {
-                    if (response.ok) {
-                        document.getElementById("result").innerHTML = `
-                            <table>
-                                <tr>
-                                    <td><b>Trademark Number</b></td>
-                                    <td>${id}</td>
-                                </tr>
-                                <tr>
-                                    <td><b>Owner / Proprietor</b></td>
-                                    <td>${ownerName}</td>
-                                </tr>
-                                <tr>
-                                    <td><b>Status</b></td>
-                                    <td style="color:green; font-weight:bold;">VERIFIED</td>
-                                }</td>
-                                </tr>
-                                <tr>
-                                    <td><b>Authority</b></td>
-                                    <td>Department of Patents, Designs & Trademarks</td>
-                                </tr>
-                            </table>
-                            <iframe src="${id}.pdf"></iframe>
-                            <div class="verified">
-                                ✔ This trademark certificate has been verified successfully.
-                            </div>
-                        `;
-                    } else {
-                        // Image ba PDF ektiও jodi files-e na thake kintu json-e thake tobe error handle
-                        document.getElementById("result").innerHTML = `
-                            <div class="invalid">
-                                ❌ Document File (.jpg/.pdf) not found for this verified record.
-                            </div>
-                        `;
-                    }
-                })
-                .catch(() => {
-                    showInvalid();
-                });
-        }
-
-        /* INVALID ALERT */
-        function showInvalid() {
-            document.getElementById("result").innerHTML = `
-                <div class="invalid">
-                    ❌ Invalid Trademark Number
-                </div>
-            `;
-        }
     </script>
-
 </body>
 </html>

@@ -197,8 +197,8 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data[id]) {
-                        // Jodi input ID data.json-e thake, tahole result show korbe
-                        showVerifiedResult(data[id].owner);
+                        // Dynamic key string matching thik kora holo (.owner_or_proprietor)
+                        showVerifiedResult(data[id].owner_or_proprietor);
                     } else {
                         // Jodi data.json-e number na thake
                         showInvalid();
@@ -212,7 +212,7 @@
 
         /* SHOW VERIFIED DATA */
         function showVerifiedResult(ownerName) {
-            // Prothome image default vabe check korbe, image na paile onerror diye PDF function trigger hobe
+            // Broken logic syntax/typo thik kora hoyeche ekhane
             document.getElementById("result").innerHTML = `
                 <table>
                     <tr>
@@ -257,7 +257,6 @@
                                 <tr>
                                     <td><b>Status</b></td>
                                     <td style="color:green; font-weight:bold;">VERIFIED</td>
-                                }</td>
                                 </tr>
                                 <tr>
                                     <td><b>Authority</b></td>

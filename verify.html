@@ -1,296 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bangladesh Trademark Verification</title>
-    <style>
-        /* BODY */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: white;
-        }
-
-        /* HEADER */
-        .header {
-            background: #006a4e;
-            color: white;
-            padding: 15px;
-            text-align: center;
-        }
-
-        /* MAIN BOX */
-        .container {
-            max-width: 1000px;
-            margin: 30px auto;
-            background: white;
-            border: 1px solid #ccc;
-            padding: 25px;
-            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        /* LOGO */
-        .logo {
-            width: 90px;
-        }
-
-        /* TITLE */
-        .title {
-            color: #006a4e;
-            margin-top: 10px;
-            font-size: 28px;
-        }
-
-        /* SEARCH */
-        .search {
-            margin-top: 25px;
-        }
-
-        input {
-            padding: 12px;
-            width: 260px;
-            font-size: 16px;
-            border: 1px solid #999;
-            outline: none;
-        }
-
-        button {
-            padding: 12px 20px;
-            background: #006a4e;
-            color: white;
-            border: none;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #004d39;
-        }
-
-        /* TABLE */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        table td {
-            border: 1px solid #ccc;
-            padding: 12px;
-            text-align: left;
-        }
-
-        /* CERTIFICATE */
-        .cert-img {
-            width: 100%;
-            max-width: 850px;
-            margin-top: 20px;
-            border: 1px solid #ccc;
-        }
-
-        /* PDF */
-        iframe {
-            width: 100%;
-            height: 850px;
-            border: 1px solid #ccc;
-            margin-top: 20px;
-        }
-
-        /* VERIFIED */
-        .verified {
-            margin-top: 20px;
-            padding: 12px;
-            background: #f3fff7;
-            border: 1px solid #cceedd;
-            color:#006a4e;
-            font-weight: bold;
-        }
-
-        /* INVALID */
-        .invalid {
-            margin-top: 20px;
-            padding: 15px;
-            background: #ffecec;
-            border: 1px solid red;
-            color: red;
-            font-weight: bold;
-        }
-
-        /* FOOTER */
-        .footer {
-            background: #006a4e;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            margin-top: 40px;
-            font-size: 14px;
-        }
-
-        /* MOBILE */
-        @media(max-width:768px) {
-            input {
-                width: 90%;
-                margin-bottom: 10px;
-            }
-
-            button {
-                width: 95%;
-            }
-
-            .title {
-                font-size: 22px;
-            }
-        }
-    </style>
+    <title>Trademark Verification Portal</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
+<body class="bg-gray-100 font-sans">
 
-<body>
-
-    <div class="header">
+    <!-- Top Banner -->
+    <div class="bg-green-800 text-white text-center py-2 text-sm font-semibold">
         Government of the People's Republic of Bangladesh
     </div>
 
-    <div class="container">
-        <img src="logo.jpeg" class="logo">
+    <div class="max-w-4xl mx-auto p-6 bg-white mt-6 shadow-md rounded-lg">
+        <h2 class="text-xl font-bold text-green-700 mb-4">Department of Patents, Designs & Trademarks</h2>
+        <p class="text-sm text-gray-600 mb-6">Trademark Verification Portal</p>
 
-        <h2 class="title">
-            Department of Patents, Designs & Trademarks
-        </h2>
-        <p>
-            Trademark Verification Portal
-        </p>
-        <hr>
-
-        <div class="search">
-            <input type="text" id="tm" placeholder="Enter Trademark Number">
-            <button onclick="searchTM()">Verify</button>
+        <!-- Search Box -->
+        <div class="flex gap-2 mb-6">
+            <input type="text" id="tmInput" placeholder="Enter Trademark Number" class="border p-2 rounded w-64 focus:outline-none focus:ring-2 focus:ring-green-600">
+            <button onclick="verifyTrademark()" class="bg-green-700 text-white px-6 py-2 rounded hover:bg-green-800 font-semibold">Verify</button>
         </div>
 
-        <div id="result"></div>
+        <!-- Result Section -->
+        <div id="resultSection" class="hidden">
+            <table class="w-full border-collapse border border-gray-300 text-left mb-6">
+                <tr class="bg-gray-50">
+                    <th class="border p-2 w-1/3">Trademark Number</th>
+                    <td id="resNum" class="border p-2 font-semibold"></td>
+                </tr>
+                <tr>
+                    <th class="border p-2">Status</th>
+                    <td id="resStatus" class="border p-2 text-green-600 font-bold"></td>
+                </tr>
+                <tr class="bg-gray-50">
+                    <th class="border p-2">Authority</th>
+                    <td id="resAuth" class="border p-2"></td>
+                </tr>
+            </table>
+
+            <!-- Success Alert -->
+            <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-3 rounded text-sm font-medium">
+                ✓ This trademark certificate has been verified successfully.
+            </div>
+        </div>
+
+        <!-- Error Alert -->
+        <div id="errorSection" class="hidden bg-red-100 border-l-4 border-red-500 text-red-700 p-3 rounded text-sm font-medium mt-4">
+            ✗ Trademark number not found or unverified.
+        </div>
     </div>
 
-    <div class="footer">
-        © 2024 Department of Patents, Designs & Trademarks, Bangladesh
-    </div>
-
+    <!-- JavaScript Logic to Fetch and Verify -->
     <script>
-        /* SEARCH BUTTON CLICK */
-        function searchTM() {
-            let id = document.getElementById("tm").value.trim();
-            if (id) {
-                window.location.href = "?id=" + id;
+        async function verifyTrademark() {
+            const inputVal = document.getElementById('tmInput').value.trim();
+            const resultSection = document.getElementById('resultSection');
+            const errorSection = document.getElementById('errorSection');
+
+            if(!inputVal) return;
+
+            try {
+                // data.json file theke dynamic vabe data fetch hobe
+                const response = await fetch('data.json');
+                const data = await response.json();
+
+                if (data[inputVal]) {
+                    const tmData = data[inputVal];
+                    
+                    // UI table-a data entry
+                    document.getElementById('resNum').innerText = tmData.trademark_no;
+                    document.getElementById('resStatus').innerText = tmData.status;
+                    document.getElementById('resAuth').innerText = tmData.authority;
+
+                    // Result show kora
+                    resultSection.classList.remove('hidden');
+                    errorSection.classList.add('hidden');
+                } else {
+                    resultSection.classList.add('hidden');
+                    errorSection.classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error("Data load korte somossa hoyeche:", error);
             }
         }
-
-        /* GET ID FROM URL */
-        const params = new URLSearchParams(window.location.search);
-        const id = params.get("id");
-
-        /* RUN PROCESS IF ID EXISTS */
-        if (id) {
-            document.getElementById("tm").value = id;
-            
-            // Prothome data.json fetch kore database check korbe
-            fetch('data.json')
-                .then(response => response.json())
-                .then(data => {
-                    if (data[id]) {
-                        // Dynamic key string matching thik kora holo (.owner_or_proprietor)
-                        showVerifiedResult(data[id].owner_or_proprietor);
-                    } else {
-                        // Jodi data.json-e number na thake
-                        showInvalid();
-                    }
-                })
-                .catch(err => {
-                    console.error("Database load hote somossa hoyeche:", err);
-                    showInvalid();
-                });
-        }
-
-        /* SHOW VERIFIED DATA */
-        function showVerifiedResult(ownerName) {
-            // Broken logic syntax/typo thik kora hoyeche ekhane
-            document.getElementById("result").innerHTML = `
-                <table>
-                    <tr>
-                        <td><b>Trademark Number</b></td>
-                        <td>${id}</td>
-                    </tr>
-                    <tr>
-                        <td><b>Owner / Proprietor</b></td>
-                        <td>${ownerName}</td>
-                    </tr>
-                    <tr>
-                        <td><b>Status</b></td>
-                        <td style="color:green; font-weight:bold;">VERIFIED</td>
-                    </tr>
-                    <tr>
-                        <td><b>Authority</b></td>
-                        <td>Department of Patents, Designs & Trademarks</td>
-                    </tr>
-                </table>
-                <img class="cert-img" src="${id}.jpg" onerror="showPDF('${ownerName}')">
-                <div class="verified">
-                    ✔ This trademark certificate has been verified successfully.
-                </div>
-            `;
-        }
-
-        /* SHOW PDF (IF IMAGE NOT FOUND) */
-        function showPDF(ownerName) {
-            fetch(id + ".pdf")
-                .then(response => {
-                    if (response.ok) {
-                        document.getElementById("result").innerHTML = `
-                            <table>
-                                <tr>
-                                    <td><b>Trademark Number</b></td>
-                                    <td>${id}</td>
-                                </tr>
-                                <tr>
-                                    <td><b>Owner / Proprietor</b></td>
-                                    <td>${ownerName}</td>
-                                </tr>
-                                <tr>
-                                    <td><b>Status</b></td>
-                                    <td style="color:green; font-weight:bold;">VERIFIED</td>
-                                </tr>
-                                <tr>
-                                    <td><b>Authority</b></td>
-                                    <td>Department of Patents, Designs & Trademarks</td>
-                                </tr>
-                            </table>
-                            <iframe src="${id}.pdf"></iframe>
-                            <div class="verified">
-                                ✔ This trademark certificate has been verified successfully.
-                            </div>
-                        `;
-                    } else {
-                        // Image ba PDF ektiও jodi files-e na thake kintu json-e thake tobe error handle
-                        document.getElementById("result").innerHTML = `
-                            <div class="invalid">
-                                ❌ Document File (.jpg/.pdf) not found for this verified record.
-                            </div>
-                        `;
-                    }
-                })
-                .catch(() => {
-                    showInvalid();
-                });
-        }
-
-        /* INVALID ALERT */
-        function showInvalid() {
-            document.getElementById("result").innerHTML = `
-                <div class="invalid">
-                    ❌ Invalid Trademark Number
-                </div>
-            `;
-        }
     </script>
-
 </body>
 </html>

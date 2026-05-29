@@ -281,13 +281,11 @@
 </head>
 <body>
 
-    <!-- TOP NATIONAL ANNOUNCEMENT BAR -->
     <div class="top-national-bar">
         <span class="left-txt">National Web Portal</span>
         <span class="right-lang">বাংলা</span>
     </div>
 
-    <!-- MAIN DPDT BANNER WITH DUAL CORNER ART CORES -->
     <div class="main-gov-banner">
         <div class="banner-left">
             <img src="seal.png" alt="BD Government Seal" class="gov-seal">
@@ -303,9 +301,7 @@
         </div>
     </div>
 
-    <!-- CENTRAL LAYOUT WRAPPER GRID -->
     <div class="page-wrapper">
-        <!-- MAIN CORE CONTAINER -->
         <div class="container">
             <h3 class="portal-subheading">Trademark Verification Portal</h3>
             <hr style="border: 0; border-top: 1px solid #eee; margin-bottom: 20px;">
@@ -319,7 +315,6 @@
         </div>
     </div>
 
-    <!-- INTELLECTUAL MULTI-AGENCY NATIONAL FOOTER -->
     <div class="national-footer">
         <div class="footer-content-inner">
             
@@ -350,9 +345,25 @@
     </div>
 
 <script>
-    /* TIMESTAMP GENERATION LOGIC */
-    const updateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    document.getElementById("last-update-placeholder").innerText = new Date("May 24, 2026 09:38:06").toLocaleDateString('en-US', updateOptions) + " 09:38:06";
+    /* REALTIME DYNAMIC CLOCK LOGIC INTEGRATION */
+    function updateSiteTimestamp() {
+        const currentDateTime = new Date();
+        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        
+        const hours = String(currentDateTime.getHours()).padStart(2, '0');
+        const minutes = String(currentDateTime.getMinutes()).padStart(2, '0');
+        const seconds = String(currentDateTime.getSeconds()).padStart(2, '0');
+        
+        const formattedDate = currentDateTime.toLocaleDateString('en-US', dateOptions);
+        const formattedTime = `${hours}:${minutes}:${seconds}`;
+        
+        document.getElementById("last-update-placeholder").innerText = `${formattedDate} ${formattedTime}`;
+    }
+
+    // Initialize immediate execution
+    updateSiteTimestamp();
+    // Maintain rolling ticker interval sequence
+    setInterval(updateSiteTimestamp, 1000);
 
     /* SEARCH FUNCTION - MODIFIED TO REG_NO */
     function searchTM(){

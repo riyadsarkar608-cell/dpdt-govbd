@@ -6,157 +6,76 @@
     <title>Trademark Verification Portal - DPDT</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- QRCode Generator Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <style>
-        @media print {
-            .no-print { display: none !important; }
-            .print-area { box-shadow: none !important; margin: 0 !important; padding: 0 !important; border: none !important; }
-        }
-    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+<body class="bg-gray-100 font-sans antialiased text-gray-800">
 
     <!-- Top Govt. Green Bar -->
-    <div class="bg-[#006a4e] text-white text-center py-2 text-xs md:text-sm font-medium no-print">
+    <div class="bg-[#006a4e] text-white text-center py-2 text-xs md:text-sm font-semibold">
         Government of the People's Republic of Bangladesh
     </div>
 
     <!-- Main Container -->
-    <div class="max-w-4xl mx-auto p-4 md:p-6 my-4 bg-white shadow-xs border border-gray-200 rounded-sm print-area">
+    <div class="max-w-4xl mx-auto p-4 md:p-6 bg-white mt-6 shadow-sm border border-gray-200">
         
-        <!-- Header / Logo Section -->
-        <div class="flex items-center space-x-4 border-b border-gray-200 pb-4 mb-6">
-            <img src="logo.jpg" alt="DPDT Logo" class="w-14 h-14 object-contain" onerror="this.src='seal.png'">
-            <div>
-                <h1 class="text-lg md:text-2xl font-bold text-[#006a4e]">Department of Patents, Designs & Trademarks</h1>
-                <p class="text-xs md:text-sm text-gray-500 font-medium tracking-wide">Trademark & IP Verification Registry</p>
-            </div>
+        <!-- Header Title -->
+        <h2 class="text-xl md:text-2xl font-bold text-[#006a4e] mb-1">Department of Patents, Designs & Trademarks</h2>
+        <p class="text-xs md:text-sm text-gray-500 mb-6 font-medium">Trademark Verification Portal</p>
+
+        <!-- Search Form Box -->
+        <div class="flex gap-2 mb-6">
+            <input type="text" id="tmInput" placeholder="e.g. 245788" class="border border-gray-300 px-3 py-1.5 text-sm rounded-xs w-64 focus:outline-none focus:border-[#006a4e]">
+            <button onclick="processVerification()" class="bg-[#006a4e] text-white text-sm font-semibold px-5 py-1.5 rounded-xs hover:bg-green-800 transition flex items-center justify-center min-w-[90px] cursor-pointer">
+                <span id="btnText">Verify</span>
+                <!-- Loading Spinner -->
+                <svg id="spinner" class="hidden animate-spin ml-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+            </button>
         </div>
 
-        <!-- Search input Section (Hidden when printing) -->
-        <div class="bg-gray-50 p-4 border border-gray-200 rounded-sm mb-6 no-print">
-            <label for="tmInput" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Verify Trademark / Application Number</label>
-            <div class="flex flex-col sm:flex-row gap-2">
-                <input type="text" id="tmInput" placeholder="Enter Trademark Number (e.g. 245788)" class="border border-gray-300 bg-white px-3 py-2 text-sm rounded-sm w-full sm:w-72 focus:outline-none focus:border-[#006a4e] focus:ring-1 focus:ring-[#006a4e]">
-                <button onclick="processVerification()" class="bg-[#006a4e] text-white text-sm font-semibold px-6 py-2 rounded-sm hover:bg-green-800 transition shadow-sm cursor-pointer flex items-center justify-center min-w-[120px]">
-                    <span id="btnText">Run Registry</span>
-                    <!-- Loading Spinner -->
-                    <svg id="spinner" class="hidden animate-spin ml-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-
-        <!-- Result Content Area -->
+        <!-- Result Section (Initially Hidden) -->
         <div id="resultSection" class="hidden">
-            
-            <!-- Live Status Ribbon -->
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-green-50 border border-green-200 p-4 rounded-sm mb-6 gap-3">
-                <div>
-                    <div class="text-xs font-bold text-gray-500 uppercase">Current Registry Status</div>
-                    <div class="text-lg font-bold text-green-700 flex items-center mt-0.5">
-                        <span class="inline-block w-2.5 h-2.5 rounded-full bg-green-600 animate-pulse mr-2"></span>
-                        ACTIVE / REGISTERED & VERIFIED
-                    </div>
-                </div>
-                <div class="text-left sm:text-right">
-                    <div class="text-xs font-bold text-gray-500 uppercase">Verification Ref</div>
-                    <div id="verRef" class="text-sm font-mono text-gray-700 font-bold"></div>
-                </div>
+            <table class="w-full border-collapse border border-gray-200 text-sm text-left mb-6">
+                <tbody>
+                    <tr class="border-b border-gray-200">
+                        <th class="bg-gray-50 border-r border-gray-200 p-2.5 w-1/3 font-semibold text-gray-700">Trademark Number</th>
+                        <td id="resNum" class="p-2.5 font-medium text-gray-900"></td>
+                    </tr>
+                    <tr class="border-b border-gray-200">
+                        <th class="bg-gray-50 border-r border-gray-200 p-2.5 font-semibold text-gray-700">Owner / Proprietor</th>
+                        <td id="resOwner" class="p-2.5 text-gray-900"></td>
+                    </tr>
+                    <tr class="border-b border-gray-200">
+                        <th class="bg-gray-50 border-r border-gray-200 p-2.5 font-semibold text-gray-700">Status</th>
+                        <td id="resStatus" class="p-2.5 text-green-600 font-bold tracking-wide uppercase text-xs"></td>
+                    </tr>
+                    <tr>
+                        <th class="bg-gray-50 border-r border-gray-200 p-2.5 font-semibold text-gray-700">Authority</th>
+                        <td id="resAuth" class="p-2.5 text-gray-600"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Main Certificate JPG/PNG Frame -->
+            <div class="border border-gray-200 p-1 bg-white mb-6 flex justify-center">
+                <img id="certificateImg" src="" alt="Trademark Certificate" class="max-w-full h-auto">
             </div>
 
-            <!-- Multi-Tab Details / Ledger Table -->
-            <h3 class="text-sm font-bold text-gray-700 uppercase tracking-wider mb-3">Official Intellectual Property Ledger</h3>
-            <div class="overflow-x-auto mb-6">
-                <table class="w-full border-collapse border border-gray-200 text-xs md:text-sm">
-                    <tbody>
-                        <tr class="border-b border-gray-200">
-                            <th class="bg-gray-50 border-r border-gray-200 p-3 w-1/3 text-left font-semibold text-gray-700">Trademark Number</th>
-                            <td id="resNum" class="p-3 text-gray-900 font-bold font-mono"></td>
-                        </tr>
-                        <tr class="border-b border-gray-200">
-                            <th class="bg-gray-50 border-r border-gray-200 p-3 text-left font-semibold text-gray-700">Proprietor / Owner</th>
-                            <td id="resOwner" class="p-3 text-gray-900 font-medium"></td>
-                        </tr>
-                        <tr class="border-b border-gray-200">
-                            <th class="bg-gray-50 border-r border-gray-200 p-3 text-left font-semibold text-gray-700">IP Class & Category</th>
-                            <td id="resClass" class="p-3 text-gray-900 leading-relaxed"></td>
-                        </tr>
-                        <tr class="border-b border-gray-200">
-                            <th class="bg-gray-50 border-r border-gray-200 p-3 text-left font-semibold text-gray-700">Filing / Registration Date</th>
-                            <td id="resDate" class="p-3 text-gray-900 font-mono"></td>
-                        </tr>
-                        <tr>
-                            <th class="bg-gray-50 border-r border-gray-200 p-3 text-left font-semibold text-gray-700">Issuing Authority</th>
-                            <td id="resAuth" class="p-3 text-gray-600"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Strict Timeline Area -->
-            <h3 class="text-sm font-bold text-gray-700 uppercase tracking-wider mb-4 no-print">Application Progress Milestones</h3>
-            <div class="relative pl-6 border-l-2 border-green-600 space-y-6 mb-8 ml-3 no-print">
-                <!-- Milestone 3 -->
-                <div class="relative">
-                    <span class="absolute -left-[31px] top-0 bg-green-600 text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px]">✓</span>
-                    <h4 class="text-xs font-bold text-gray-800 uppercase">Certificate Registered & Issued</h4>
-                    <p id="timelineDate3" class="text-xs text-gray-500 font-mono mt-0.5"></p>
-                </div>
-                <!-- Milestone 2 -->
-                <div class="relative">
-                    <span class="absolute -left-[31px] top-0 bg-green-600 text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px]">✓</span>
-                    <h4 class="text-xs font-bold text-gray-800 uppercase">Journal Publication & Clearance</h4>
-                    <p class="text-xs text-gray-500 font-medium mt-0.5">Approved under Section 20/22 of the Act.</p>
-                </div>
-                <!-- Milestone 1 -->
-                <div class="relative">
-                    <span class="absolute -left-[31px] top-0 bg-green-600 text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px]">✓</span>
-                    <h4 class="text-xs font-bold text-gray-800 uppercase">Initial Application Filed</h4>
-                    <p class="text-xs text-gray-500 font-medium mt-0.5">Data matched with physical TMR-1 records.</p>
-                </div>
-            </div>
-
-            <!-- Security Seal & QR Code Footer Area -->
-            <div class="border border-dashed border-gray-300 p-4 bg-gray-50 rounded-sm flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div class="flex items-center space-x-3">
-                    <!-- Security Stamp UI -->
-                    <div class="border-2 border-double border-green-700 text-green-700 text-[10px] font-black uppercase tracking-widest p-2 rounded-sm text-center rotate-[-3deg] select-none bg-white">
-                        DPDT SECURE<br>DIGITAL SEAL
-                    </div>
-                    <div class="text-xs text-gray-500 max-w-xs leading-normal">
-                        This digital ledger entry is cryptographically crypted and linked directly with the DPDT central database nodes. 
-                    </div>
-                </div>
-                <!-- Dynamic QR Code Container -->
-                <div class="bg-white p-2 border border-gray-200 shadow-2xs">
-                    <div id="qrcode"></div>
-                    <div class="text-[9px] text-center text-gray-400 font-mono mt-1 uppercase">Scan to Verify</div>
-                </div>
-            </div>
-
-            <!-- Print Actions -->
-            <div class="mt-6 flex justify-end no-print">
-                <button onclick="window.print()" class="bg-white border border-gray-300 hover:bg-gray-100 text-gray-700 text-xs font-bold px-4 py-2 rounded-sm transition shadow-2xs cursor-pointer">
-                    Print / Export Official Ledger (PDF)
-                </button>
+            <!-- Bottom Success Alert Bar -->
+            <div class="bg-green-50 border-l-4 border-green-600 text-green-800 p-3 text-xs md:text-sm font-medium">
+                ✓ This trademark certificate has been verified successfully.
             </div>
         </div>
 
-        <!-- Error Section -->
-        <div id="errorSection" class="hidden bg-red-50 border-l-4 border-red-500 text-red-700 p-4 rounded-sm text-sm font-medium no-print">
-            ✗ The Trademark / Application number you entered does not match any records in our database. Please double check.
+        <!-- Error Alert -->
+        <div id="errorSection" class="hidden bg-red-50 border-l-4 border-red-500 text-red-700 p-3 text-xs md:text-sm font-medium">
+            ✗ Trademark number not found or unverified.
         </div>
-
     </div>
 
     <!-- Script Logics -->
     <script>
-        let qrcodeInstance = null;
-
         function processVerification() {
             const btnText = document.getElementById('btnText');
             const spinner = document.getElementById('spinner');
@@ -166,12 +85,13 @@
             resultSection.classList.add('hidden');
             errorSection.classList.add('hidden');
 
-            btnText.innerText = "Querying Ledger...";
+            // Show checking status animation
+            btnText.innerText = "Checking...";
             spinner.classList.remove('hidden');
 
-            // Realistic strict delay to look like an official network request
+            // 1.2 Second artificial delay to make it look official
             setTimeout(() => {
-                btnText.innerText = "Run Registry";
+                btnText.innerText = "Verify";
                 spinner.classList.add('hidden');
                 verifyTrademark();
             }, 1200);
@@ -186,34 +106,19 @@
 
             try {
                 const response = await fetch('data.json');
-                if (!response.ok) throw new Error('DB connection failed');
                 const data = await response.json();
 
                 if (data[inputVal]) {
                     const tmData = data[inputVal];
                     
-                    // Bind values dynamically
+                    // Bind data inside the UI table fields
                     document.getElementById('resNum').innerText = tmData.trademark_no;
                     document.getElementById('resOwner').innerText = tmData.owner_or_proprietor;
-                    document.getElementById('resClass').innerText = tmData.class_and_details;
-                    document.getElementById('resDate').innerText = tmData.registration_date;
+                    document.getElementById('resStatus').innerText = tmData.status;
                     document.getElementById('resAuth').innerText = tmData.authority;
                     
-                    // Dynamic dates and tokens
-                    document.getElementById('timelineDate3').innerText = "Issued on " + tmData.registration_date;
-                    document.getElementById('verRef').innerText = "REG-" + btoa(inputVal).substring(0, 6).toUpperCase() + "-" + inputVal;
-
-                    // Generate Dynamic QR Code matching current portal link
-                    const currentUrl = window.location.href + "?verify=" + inputVal;
-                    document.getElementById('qrcode').innerHTML = ""; // Clear old
-                    qrcodeInstance = new QRCode(document.getElementById("qrcode"), {
-                        text: currentUrl,
-                        width: 80,
-                        height: 80,
-                        colorDark : "#000000",
-                        colorLight : "#ffffff",
-                        correctLevel : QRCode.CorrectLevel.H
-                    });
+                    // Dynamic Image bind frame
+                    document.getElementById('certificateImg').src = tmData.certificate_image;
 
                     resultSection.classList.remove('hidden');
                     errorSection.classList.add('hidden');
@@ -222,7 +127,7 @@
                     errorSection.classList.remove('hidden');
                 }
             } catch (error) {
-                console.error("Database parsing failed:", error);
+                console.error("Database connection issue:", error);
                 errorSection.classList.remove('hidden');
             }
         }

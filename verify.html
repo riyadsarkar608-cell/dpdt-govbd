@@ -2,495 +2,296 @@
 <html lang="en">
 
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>
-
-Bangladesh Trademark Verification
-
-</title>
-
-<style>
-
-/* BODY */
-
-body{
-
-margin:0;
-
-font-family:Arial,sans-serif;
-
-background:white;
-
-}
-
-/* HEADER */
-
-.header{
-
-background:#006a4e;
-
-color:white;
-
-padding:15px;
-
-text-align:center;
-
-}
-
-/* MAIN BOX */
-
-.container{
-
-max-width:1000px;
-
-margin:30px auto;
-
-background:white;
-
-border:1px solid #ccc;
-
-padding:25px;
-
-box-shadow:0 1px 5px rgba(0,0,0,0.1);
-
-}
-
-/* LOGO */
-
-.logo{
-
-width:90px;
-
-}
-
-/* TITLE */
-
-.title{
-
-color:#006a4e;
-
-margin-top:10px;
-
-font-size:28px;
-
-}
-
-/* SEARCH */
-
-.search{
-
-margin-top:25px;
-
-}
-
-input{
-
-padding:12px;
-
-width:260px;
-
-font-size:16px;
-
-border:1px solid #999;
-
-outline:none;
-
-}
-
-button{
-
-padding:12px 20px;
-
-background:#006a4e;
-
-color:white;
-
-border:none;
-
-font-size:16px;
-
-cursor:pointer;
-
-}
-
-button:hover{
-
-background:#004d39;
-
-}
-
-/* TABLE */
-
-table{
-
-width:100%;
-
-border-collapse:collapse;
-
-margin-top:20px;
-
-}
-
-table td{
-
-border:1px solid #ccc;
-
-padding:12px;
-
-text-align:left;
-
-}
-
-/* CERTIFICATE */
-
-.cert-img{
-
-width:100%;
-
-max-width:850px;
-
-margin-top:20px;
-
-border:1px solid #ccc;
-
-}
-
-/* PDF */
-
-iframe{
-
-width:100%;
-
-height:850px;
-
-border:1px solid #ccc;
-
-margin-top:20px;
-
-}
-
-/* VERIFIED */
-
-.verified{
-
-margin-top:20px;
-
-padding:12px;
-
-background:#f3fff7;
-
-border:1px solid #cceedd;
-
-color:#006a4e;
-
-font-weight:bold;
-
-}
-
-/* INVALID */
-
-.invalid{
-
-margin-top:20px;
-
-padding:15px;
-
-background:#ffecec;
-
-border:1px solid red;
-
-color:red;
-
-font-weight:bold;
-
-}
-
-/* FOOTER */
-
-.footer{
-
-background:#006a4e;
-
-color:white;
-
-padding:15px;
-
-text-align:center;
-
-margin-top:40px;
-
-font-size:14px;
-
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-input{
-
-width:90%;
-
-margin-bottom:10px;
-
-}
-
-button{
-
-width:95%;
-
-}
-
-.title{
-
-font-size:22px;
-
-}
-
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bangladesh Trademark Verification</title>
+    <style>
+        /* BODY */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: white;
+        }
+
+        /* HEADER */
+        .header {
+            background: #006a4e;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        /* MAIN BOX */
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            background: white;
+            border: 1px solid #ccc;
+            padding: 25px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* LOGO */
+        .logo {
+            width: 90px;
+        }
+
+        /* TITLE */
+        .title {
+            color: #006a4e;
+            margin-top: 10px;
+            font-size: 28px;
+        }
+
+        /* SEARCH */
+        .search {
+            margin-top: 25px;
+        }
+
+        input {
+            padding: 12px;
+            width: 260px;
+            font-size: 16px;
+            border: 1px solid #999;
+            outline: none;
+        }
+
+        button {
+            padding: 12px 20px;
+            background: #006a4e;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #004d39;
+        }
+
+        /* TABLE */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: left;
+        }
+
+        /* CERTIFICATE */
+        .cert-img {
+            width: 100%;
+            max-width: 850px;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+        }
+
+        /* PDF */
+        iframe {
+            width: 100%;
+            height: 850px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+        }
+
+        /* VERIFIED */
+        .verified {
+            margin-top: 20px;
+            padding: 12px;
+            background: #f3fff7;
+            border: 1px solid #cceedd;
+            color:#006a4e;
+            font-weight: bold;
+        }
+
+        /* INVALID */
+        .invalid {
+            margin-top: 20px;
+            padding: 15px;
+            background: #ffecec;
+            border: 1px solid red;
+            color: red;
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #006a4e;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+
+        /* MOBILE */
+        @media(max-width:768px) {
+            input {
+                width: 90%;
+                margin-bottom: 10px;
+            }
+
+            button {
+                width: 95%;
+            }
+
+            .title {
+                font-size: 22px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-
-<div class="header">
-
-Government of the People's Republic of Bangladesh
-
-</div>
-
-<!-- MAIN -->
-
-<div class="container">
-
-<!-- LOGO -->
-
-<img src="logo.jpeg" class="logo">
-
-<!-- TITLE -->
-
-<h2 class="title">
-
-Department of Patents, Designs & Trademarks
-
-</h2>
-
-<p>
-
-Trademark Verification Portal
-
-</p>
-
-<hr>
-
-<!-- SEARCH -->
-
-<div class="search">
-
-<input type="text"
-
-id="tm"
-
-placeholder="Enter Trademark Number">
-
-<button onclick="searchTM()">
-
-Verify
-
-</button>
-
-</div>
-
-<!-- RESULT -->
-
-<div id="result"></div>
-
-</div>
-
-<!-- FOOTER -->
-
-<div class="footer">
-
-© 2024 Department of Patents,
-Designs & Trademarks, Bangladesh
-
-</div>
-
-<script>
-
-/* SEARCH */
-
-function searchTM(){
-
-let id=document.getElementById("tm").value;
-
-window.location.href="?id="+id;
-
-}
-
-/* GET ID */
-
-const params=new URLSearchParams(window.location.search);
-
-const id=params.get("id");
-
-/* SHOW RESULT */
-
-if(id){
-
-document.getElementById("tm").value=id;
-
-document.getElementById("result").innerHTML=`
-
-<table>
-
-<tr>
-
-<td><b>Trademark Number</b></td>
-
-<td>${id}</td>
-
-</tr>
-
-<tr>
-
-<td><b>Status</b></td>
-
-<td style="color:green;">
-VERIFIED
-</td>
-
-</tr>
-
-<tr>
-
-<td><b>Authority</b></td>
-
-<td>
-Department of Patents,
-Designs & Trademarks
-</td>
-
-</tr>
-
-</table>
-
-<img class="cert-img"
-
-src="${id}.jpg"
-
-onerror="showPDF()">
-
-<div class="verified">
-
-✔ This trademark certificate has been
-verified successfully.
-
-</div>
-
-`;
-
-}
-
-/* SHOW PDF */
-
-function showPDF(){
-
-fetch(id + ".pdf")
-
-.then(response => {
-
-if(response.ok){
-
-document.getElementById("result").innerHTML=`
-
-<table>
-
-<tr>
-
-<td><b>Trademark Number</b></td>
-
-<td>${id}</td>
-
-</tr>
-
-<tr>
-
-<td><b>Status</b></td>
-
-<td style="color:green;">
-VERIFIED
-</td>
-
-</tr>
-
-<tr>
-
-<td><b>Authority</b></td>
-
-<td>
-Department of Patents,
-Designs & Trademarks
-</td>
-
-</tr>
-
-</table>
-
-<iframe src="${id}.pdf"></iframe>
-
-<div class="verified">
-
-✔ This trademark certificate has been
-verified successfully.
-
-</div>
-
-`;
-
-}else{
-
-showInvalid();
-
-}
-
-})
-
-.catch(() => {
-
-showInvalid();
-
-});
-
-}
-
-/* INVALID */
-
-function showInvalid(){
-
-document.getElementById("result").innerHTML=`
-
-<div class="invalid">
-
-❌ Invalid Trademark Number
-
-</div>
-
-`;
-
-}
-
-</script>
+    <div class="header">
+        Government of the People's Republic of Bangladesh
+    </div>
+
+    <div class="container">
+        <img src="logo.jpeg" class="logo">
+
+        <h2 class="title">
+            Department of Patents, Designs & Trademarks
+        </h2>
+        <p>
+            Trademark Verification Portal
+        </p>
+        <hr>
+
+        <div class="search">
+            <input type="text" id="tm" placeholder="Enter Trademark Number">
+            <button onclick="searchTM()">Verify</button>
+        </div>
+
+        <div id="result"></div>
+    </div>
+
+    <div class="footer">
+        © 2024 Department of Patents, Designs & Trademarks, Bangladesh
+    </div>
+
+    <script>
+        /* SEARCH BUTTON CLICK */
+        function searchTM() {
+            let id = document.getElementById("tm").value.trim();
+            if (id) {
+                window.location.href = "?id=" + id;
+            }
+        }
+
+        /* GET ID FROM URL */
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get("id");
+
+        /* RUN PROCESS IF ID EXISTS */
+        if (id) {
+            document.getElementById("tm").value = id;
+            
+            // Prothome data.json fetch kore database check korbe
+            fetch('data.json')
+                .then(response => response.json())
+                .then(data => {
+                    if (data[id]) {
+                        // Jodi input ID data.json-e thake, tahole result show korbe
+                        showVerifiedResult(data[id].owner);
+                    } else {
+                        // Jodi data.json-e number na thake
+                        showInvalid();
+                    }
+                })
+                .catch(err => {
+                    console.error("Database load hote somossa hoyeche:", err);
+                    showInvalid();
+                });
+        }
+
+        /* SHOW VERIFIED DATA */
+        function showVerifiedResult(ownerName) {
+            // Prothome image default vabe check korbe, image na paile onerror diye PDF function trigger hobe
+            document.getElementById("result").innerHTML = `
+                <table>
+                    <tr>
+                        <td><b>Trademark Number</b></td>
+                        <td>${id}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Owner / Proprietor</b></td>
+                        <td>${ownerName}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Status</b></td>
+                        <td style="color:green; font-weight:bold;">VERIFIED</td>
+                    </tr>
+                    <tr>
+                        <td><b>Authority</b></td>
+                        <td>Department of Patents, Designs & Trademarks</td>
+                    </tr>
+                </table>
+                <img class="cert-img" src="${id}.jpg" onerror="showPDF('${ownerName}')">
+                <div class="verified">
+                    ✔ This trademark certificate has been verified successfully.
+                </div>
+            `;
+        }
+
+        /* SHOW PDF (IF IMAGE NOT FOUND) */
+        function showPDF(ownerName) {
+            fetch(id + ".pdf")
+                .then(response => {
+                    if (response.ok) {
+                        document.getElementById("result").innerHTML = `
+                            <table>
+                                <tr>
+                                    <td><b>Trademark Number</b></td>
+                                    <td>${id}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Owner / Proprietor</b></td>
+                                    <td>${ownerName}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Status</b></td>
+                                    <td style="color:green; font-weight:bold;">VERIFIED</td>
+                                }</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Authority</b></td>
+                                    <td>Department of Patents, Designs & Trademarks</td>
+                                </tr>
+                            </table>
+                            <iframe src="${id}.pdf"></iframe>
+                            <div class="verified">
+                                ✔ This trademark certificate has been verified successfully.
+                            </div>
+                        `;
+                    } else {
+                        // Image ba PDF ektiও jodi files-e na thake kintu json-e thake tobe error handle
+                        document.getElementById("result").innerHTML = `
+                            <div class="invalid">
+                                ❌ Document File (.jpg/.pdf) not found for this verified record.
+                            </div>
+                        `;
+                    }
+                })
+                .catch(() => {
+                    showInvalid();
+                });
+        }
+
+        /* INVALID ALERT */
+        function showInvalid() {
+            document.getElementById("result").innerHTML = `
+                <div class="invalid">
+                    ❌ Invalid Trademark Number
+                </div>
+            `;
+        }
+    </script>
 
 </body>
-
 </html>

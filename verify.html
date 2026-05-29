@@ -366,11 +366,47 @@ showInvalid();
 
 /* SHOW RESULT */
 
-if(id){
+function showResult(){
 
 document.getElementById("tm").value=id;
 
 document.getElementById("result").innerHTML=`
+
+<table>
+
+<tr>
+<td><b>Trademark Number</b></td>
+<td>${id}</td>
+</tr>
+
+<tr>
+<td><b>Owner Name</b></td>
+<td>${ownerName}</td>
+</tr>
+
+<tr>
+<td><b>Status</b></td>
+<td style="color:green;">VERIFIED</td>
+</tr>
+
+<tr>
+<td><b>Authority</b></td>
+<td>Department of Patents, Designs & Trademarks</td>
+</tr>
+
+</table>
+
+<img class="cert-img"
+src="${id}.jpg"
+onerror="showPDF()">
+
+<div class="verified">
+✔ This trademark certificate has been verified successfully.
+</div>
+
+`;
+
+}
 
 <table>
 

@@ -5,63 +5,201 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bangladesh Trademark Verification</title>
     <style>
-        body { margin: 0; font-family: Arial, sans-serif; background: white; }
-        .header { background: #006a4e; color: white; padding: 15px; text-align: center; font-weight: bold; }
-        .container { max-width: 1000px; margin: 30px auto; background: white; border: 1px solid #ccc; padding: 25px; box-shadow: 0 1px 5px rgba(0,0,0,0.1); }
-        .logo { width: 90px; }
-        .title { color: #006a4e; margin-top: 10px; font-size: 28px; }
-        .search { margin-top: 25px; }
-        input { padding: 12px; width: 260px; font-size: 16px; border: 1px solid #999; outline: none; }
-        button { padding: 12px 20px; background: #006a4e; color: white; border: none; font-size: 16px; cursor: pointer; }
-        button:hover { background: #004d39; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        table td { border: 1px solid #ccc; padding: 12px; text-align: left; }
-        .cert-img { width: 100%; max-width: 850px; margin-top: 20px; border: 1px solid #ccc; }
-        iframe { width: 100%; height: 850px; border: 1px solid #ccc; margin-top: 20px; }
-        .verified { margin-top: 20px; padding: 12px; background: #f3fff7; border: 1px solid #cceedd; color: #006a4e; font-weight: bold; }
-        .invalid { margin-top: 20px; padding: 15px; background: #ffecec; border: 1px solid red; color: red; font-weight: bold; }
-        .footer { background: #006a4e; color: white; padding: 15px; text-align: center; margin-top: 40px; font-size: 14px; }
-        @media(max-width:768px){ input { width: 90%; margin-bottom: 10px; } button { width: 95%; } .title { font-size: 22px; } }
+        /* BODY */
+        body{
+            margin:0;
+            font-family:Arial,sans-serif;
+            background:white;
+        }
+        /* HEADER WITH SEAL ALIGNMENT */
+        .header{
+            background:#006a4e;
+            color:white;
+            padding:10px 15px;
+            text-align:center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .header img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+        }
+        /* MAIN BOX */
+        .container{
+            max-width:1000px;
+            margin:30px auto;
+            background:white;
+            border:1px solid #ccc;
+            padding:25px;
+            box-shadow:0 1px 5px rgba(0,0,0,0.1);
+        }
+        /* LOGO */
+        .logo{
+            width:90px;
+        }
+        /* TITLE */
+        .title{
+            color:#006a4e;
+            margin-top:10px;
+            font-size:28px;
+        }
+        /* SEARCH */
+        .search{
+            margin-top:25px;
+        }
+        input{
+            padding:12px;
+            width:260px;
+            font-size:16px;
+            border:1px solid #999;
+            outline:none;
+        }
+        button{
+            padding:12px 20px;
+            background:#006a4e;
+            color:white;
+            border:none;
+            font-size:16px;
+            cursor:pointer;
+        }
+        button:hover{
+            background:#004d39;
+        }
+        /* TABLE */
+        table{
+            width:100%;
+            border-collapse:collapse;
+            margin-top:20px;
+        }
+        table td{
+            border:1px solid #ccc;
+            padding:12px;
+            text-align:left;
+        }
+        /* CERTIFICATE */
+        .cert-img{
+            width:100%;
+            max-width:850px;
+            margin-top:20px;
+            border:1px solid #ccc;
+        }
+        /* PDF */
+        iframe{
+            width:100%;
+            height:850px;
+            border:1px solid #ccc;
+            margin-top:20px;
+        }
+        /* VERIFIED */
+        .verified{
+            margin-top:20px;
+            padding:12px;
+            background:#f3fff7;
+            border:1px solid #cceedd;
+            color:#006a4e;
+            font-weight:bold;
+        }
+        /* INVALID */
+        .invalid{
+            margin-top:20px;
+            padding:15px;
+            background:#ffecec;
+            border:1px solid red;
+            color:red;
+            font-weight:bold;
+        }
+        /* FOOTER */
+        .footer{
+            background:#006a4e;
+            color:white;
+            padding:15px;
+            text-align:center;
+            margin-top:40px;
+            font-size:14px;
+        }
+        /* MOBILE RESPONSIVE */
+        @media(max-width:768px){
+            input{
+                width:90%;
+                margin-bottom:10px;
+            }
+            button{
+                width:95%;
+            }
+            .title{
+                font-size:22px;
+            }
+            .header{
+                font-size: 14px;
+                gap: 8px;
+                padding: 8px 10px;
+            }
+            .header img {
+                width: 35px;
+                height: 35px;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <div class="header">Government of the People's Republic of Bangladesh</div>
+    <!-- HEADER WITH SEAL -->
+    <div class="header">
+        <img src="seal.png" alt="BD Government Seal">
+        <span>Government of the People's Republic of Bangladesh</span>
+    </div>
 
+    <!-- MAIN CONTAINER -->
     <div class="container">
+        <!-- LOGO -->
         <img src="logo.jpeg" class="logo" alt="Logo">
+        
+        <!-- TITLE -->
         <h2 class="title">Department of Patents, Designs & Trademarks</h2>
         <p>Trademark Verification Portal</p>
         <hr>
 
+        <!-- SEARCH -->
         <div class="search">
             <input type="text" id="tm" placeholder="Enter Trademark Number">
             <button onclick="searchTM()">Verify</button>
         </div>
 
+        <!-- RESULT CONTAINER -->
         <div id="result"></div>
     </div>
 
-    <div class="footer">© 2026 Department of Patents, Designs & Trademarks, Bangladesh</div>
+    <!-- FOOTER -->
+    <div class="footer">
+        © 2026 Department of Patents, Designs & Trademarks, Bangladesh
+    </div>
 
 <script>
-    function searchTM() {
+    /* SEARCH FUNCTION */
+    function searchTM(){
         let id = document.getElementById("tm").value.trim();
-        if(id) {
+        if(id){
             window.location.href = "?id=" + id;
         }
     }
 
+    /* GET QUERY PARAMETER FROM URL */
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
 
-    if (id) {
+    /* IF ID EXISTS, LOAD DATA */
+    if(id){
         document.getElementById("tm").value = id;
         loadTrademarkData(id);
     }
 
+    /* FETCH DATA FROM DATA.JSON */
     function loadTrademarkData(tmId) {
-        // data.json theke data fetch korbe
         fetch('data.json')
             .then(response => response.json())
             .then(data => {
@@ -77,6 +215,7 @@
             });
     }
 
+    /* DETECT IMAGE OR PDF AND RENDER */
     function checkFilesAndShow(tmId, ownerName, authorityName) {
         let imgUrl = tmId + ".jpg";
         let img = new Image();
@@ -92,7 +231,7 @@
                     if (response.ok) {
                         showVerifiedHTML(tmId, ownerName, authorityName, `<iframe src="${pdfUrl}"></iframe>`);
                     } else {
-                        // Image ba PDF na thakleo shudhu table ta dekhabe
+                        // Image/PDF missing thakleo table dynamic thakbe
                         showVerifiedHTML(tmId, ownerName, authorityName, '');
                     }
                 })
@@ -102,6 +241,7 @@
         img.src = imgUrl;
     }
 
+    /* RENDER DYNAMIC VERIFIED INTERFACE */
     function showVerifiedHTML(tmId, ownerName, authorityName, displayContent) {
         document.getElementById("result").innerHTML = `
             <table>
@@ -129,6 +269,7 @@
         `;
     }
 
+    /* DISPLAY INVALID IF NOT FOUND */
     function showInvalid() {
         document.getElementById("result").innerHTML = `
             <div class="invalid">

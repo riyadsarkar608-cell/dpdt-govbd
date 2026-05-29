@@ -342,6 +342,27 @@ window.location.href="?id="+id;
 const params=new URLSearchParams(window.location.search);
 
 const id=params.get("id");
+  let ownerName = "";
+
+if(id){
+
+fetch("data.json")
+.then(res => res.json())
+.then(data => {
+
+if(data[id]){
+ownerName = data[id].owner;
+showResult();
+}else{
+showInvalid();
+}
+
+})
+.catch(() => {
+showInvalid();
+});
+
+}
 
 /* SHOW RESULT */
 

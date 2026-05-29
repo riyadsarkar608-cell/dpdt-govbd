@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>পেটেন্ট, শিল্প-নকশা ও ট্রেডমার্কস অধিদপ্তর</title>
+    <title>Department of Patents, Designs & Trademarks</title>
     <style>
         /* GLOBAL STYLES */
         body {
@@ -26,6 +26,7 @@
         }
         .top-national-bar .left-txt {
             font-family: Arial, sans-serif;
+            letter-spacing: 0.3px;
         }
         .top-national-bar .right-lang {
             background: rgba(255,255,255,0.15);
@@ -35,7 +36,7 @@
             font-size: 12px;
         }
 
-        /* ACTUAL GOVT BANNER */
+        /* ACTUAL GOVT BANNER IN ENGLISH */
         .main-gov-banner {
             background: linear-gradient(90deg, #005a36 0%, #006a4e 100%);
             color: white;
@@ -59,17 +60,18 @@
             display: flex;
             flex-direction: column;
         }
-        .banner-title-bn {
-            font-size: 26px;
+        .banner-title-en {
+            font-size: 24px;
             font-weight: bold;
-            letter-spacing: 0.3px;
+            letter-spacing: -0.2px;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
             margin-bottom: 2px;
         }
-        .banner-sub-bn {
-            font-size: 14px;
+        .banner-sub-en {
+            font-size: 13.5px;
             color: #e0e0e0;
             font-weight: 500;
+            letter-spacing: 0.5px;
         }
         .banner-right-logo {
             width: 85px;
@@ -224,7 +226,7 @@
             .top-national-bar { padding: 8px 15px; }
             .main-gov-banner { padding: 15px; flex-direction: column; text-align: center; gap: 15px; }
             .banner-left { flex-direction: column; gap: 10px; }
-            .banner-title-bn { font-size: 20px; }
+            .banner-title-en { font-size: 18px; }
             .banner-right-logo { width: 70px; height: 70px; }
             .container { margin: 15px; padding: 20px; }
             .search { flex-direction: column; max-width: 100%; gap: 10px; }
@@ -237,35 +239,42 @@
 </head>
 <body>
 
+    <!-- TOP NATIONAL ANNOUNCEMENT BAR (ENGLISH VERSION) -->
     <div class="top-national-bar">
-        <span class="left-txt">বাংলাদেশ জাতীয় তথ্য বাতায়ন</span>
-        <span class="right-lang">English</span>
+        <span class="left-txt">National Web Portal</span>
+        <span class="right-lang">বাংলা</span>
     </div>
 
+    <!-- MAIN DPDT LIVE MATCH BANNER (ENGLISH VERSION) -->
     <div class="main-gov-banner">
         <div class="banner-left">
             <img src="seal.png" alt="BD Government Seal" class="gov-seal">
             <div class="banner-text-block">
-                <span class="banner-title-bn">পেটেন্ট, শিল্প-নকশা ও ট্রেডমার্কস অধিদপ্তর</span>
-                <span class="banner-sub-bn">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</span>
+                <span class="banner-title-en">Department of Patents, Designs & Trademarks</span>
+                <span class="banner-sub-en">Government of the People's Republic of Bangladesh</span>
             </div>
         </div>
+        <!-- Right side logo placeholder -->
         <img src="logo.jpeg" alt="DPDT Logo" class="banner-right-logo" onerror="this.style.display='none'">
     </div>
 
+    <!-- MAIN CONTAINER -->
     <div class="container">
         
         <h3 class="portal-subheading">Trademark Verification Portal</h3>
         <hr style="border: 0; border-top: 1px solid #eee; margin-bottom: 20px;">
 
+        <!-- SEARCH -->
         <div class="search">
             <input type="text" id="tm" placeholder="Enter Trademark Number">
             <button onclick="searchTM()">Verify</button>
         </div>
 
+        <!-- RESULT CONTAINER -->
         <div id="result"></div>
     </div>
 
+    <!-- FOOTER -->
     <div class="footer">
         © 2026 Department of Patents, Designs & Trademarks, Bangladesh | Intellectual Property Registry Portal.
     </div>

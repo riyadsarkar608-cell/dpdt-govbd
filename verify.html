@@ -1,90 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+
+Bangladesh Trademark Verification
+
+</title>
+
+<style>
+
+/* BODY */
+
+body{
+
+margin:0;
+
+font-family:Arial,sans-serif;
+
+background:white;
+
+}
+
+/* HEADER */
+
+.header{
+
+background:#006a4e;
+
+color:white;
+
+padding:15px;
+
+text-align:center;
+
+}
+
+/* MAIN BOX */
+
+.container{
+
+max-width:1000px;
+
+margin:30px auto;
+
+background:white;
+
+border:1px solid #ccc;
+
+padding:25px;
+
+box-shadow:0 1px 5px rgba(0,0,0,0.1);
+
+}
+
+/* LOGO */
+
+.logo{
+
+width:90px;
+
+}
+
+/* TITLE */
+
+.title{
+
+color:#006a4e;
+
+margin-top:10px;
+
+font-size:28px;
+
+}
+
+/* SEARCH */
+
+.search{
+
+margin-top:25px;
+
+}
+
+input{
+
+padding:12px;
+
+width:260px;
+
+font-size:16px;
+
+border:1px solid #999;
+
+outline:none;
+
+}
+
+button{
+
+padding:12px 20px;
+
+background:#006a4e;
+
+color:white;
+
+border:none;
+
+font-size:16px;
+
+cursor:pointer;
+
+}
+
+button:hover{
+
+background:#004d39;
+
+}
+
+/* TABLE */
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+margin-top:20px;
+
+}
+
+table td{
+
+border:1px solid #ccc;
+
+padding:12px;
+
+text-align:left;
+
+}
+
+/* CERTIFICATE */
+
+.cert-img{
+
+width:100%;
+
+max-width:850px;
+
+margin-top:20px;
+
+border:1px solid #ccc;
+
+}
+
+/* PDF */
+
+iframe{
+
+width:100%;
+
+height:850px;
+
+border:1px solid #ccc;
+
+margin-top:20px;
+
+}
+
+/* VERIFIED */
+
+.verified{
+
+margin-top:20px;
+
+padding:12px;
+
+background:#f3fff7;
+
+border:1px solid #cceedd;
+
+color:#006a4e;
+
+font-weight:bold;
+
+}
+
+/* INVALID */
+
+.invalid{
+
+margin-top:20px;
+
+padding:15px;
+
+background:#ffecec;
+
+border:1px solid red;
+
+color:red;
+
+font-weight:bold;
+
+}
+
+/* FOOTER */
+
+.footer{
+
+background:#006a4e;
+
+color:white;
+
+padding:15px;
+
+text-align:center;
+
+margin-top:40px;
+
+font-size:14px;
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+input{
+
+width:90%;
+
+margin-bottom:10px;
+
+}
+
+button{
+
+width:95%;
+
+}
+
+.title{
+
+font-size:22px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<div class="header">
+
+Government of the People's Republic of Bangladesh
+
+</div>
+
+<!-- MAIN -->
+
+<div class="container">
+
+<!-- LOGO -->
+
+<img src="logo.jpeg" class="logo">
+
+<!-- TITLE -->
+
+<h2 class="title">
+
+Department of Patents, Designs & Trademarks
+
+</h2>
+
+<p>
+
+Trademark Verification Portal
+
+</p>
+
+<hr>
+
+<!-- SEARCH -->
+
+<div class="search">
+
+<input type="text"
+
+id="tm"
+
+placeholder="Enter Trademark Number">
+
+<button onclick="searchTM()">
+
+Verify
+
+</button>
+
+</div>
+
+<!-- RESULT -->
+
+<div id="result"></div>
+
+</div>
+
+<!-- FOOTER -->
+
+<div class="footer">
+
+© 2024 Department of Patents,
+Designs & Trademarks, Bangladesh
+
+</div>
+
 <script>
+
+/* SEARCH */
 
 function searchTM(){
 
-let id=document.getElementById("tm").value.trim();
+let id=document.getElementById("tm").value;
 
 window.location.href="?id="+id;
 
 }
 
+/* GET ID */
+
 const params=new URLSearchParams(window.location.search);
 
 const id=params.get("id");
 
+/* SHOW RESULT */
+
 if(id){
 
 document.getElementById("tm").value=id;
-
-fetch("data.json")
-
-.then(res=>res.json())
-
-.then(data=>{
-
-if(!data[id]){
-
-showInvalid();
-
-return;
-
-}
-
-let owner=data[id].owner;
 
 document.getElementById("result").innerHTML=`
 
 <table>
 
 <tr>
+
 <td><b>Trademark Number</b></td>
+
 <td>${id}</td>
+
 </tr>
 
 <tr>
-<td><b>Owner Name</b></td>
-<td>${owner}</td>
-</tr>
 
-<tr>
 <td><b>Status</b></td>
-<td style="color:green;">VERIFIED ✅</td>
+
+<td style="color:green;">
+VERIFIED
+</td>
+
 </tr>
 
 <tr>
+
 <td><b>Authority</b></td>
-<td>Department of Patents, Designs & Trademarks</td>
+
+<td>
+Department of Patents,
+Designs & Trademarks
+</td>
+
 </tr>
 
 </table>
 
 <img class="cert-img"
+
 src="${id}.jpg"
-onerror="showPDF('${id}','${owner}')">
+
+onerror="showPDF()">
 
 <div class="verified">
 
-✔ This trademark certificate has been verified successfully.
+✔ This trademark certificate has been
+verified successfully.
 
 </div>
 
 `;
 
-})
-
-.catch(()=>{
-
-showInvalid();
-
-});
-
 }
 
-function showPDF(id,owner){
+/* SHOW PDF */
+
+function showPDF(){
 
 fetch(id + ".pdf")
 
-.then(response=>{
+.then(response => {
 
 if(response.ok){
 
@@ -93,23 +416,32 @@ document.getElementById("result").innerHTML=`
 <table>
 
 <tr>
+
 <td><b>Trademark Number</b></td>
+
 <td>${id}</td>
+
 </tr>
 
 <tr>
-<td><b>Owner Name</b></td>
-<td>${owner}</td>
-</tr>
 
-<tr>
 <td><b>Status</b></td>
-<td style="color:green;">VERIFIED ✅</td>
+
+<td style="color:green;">
+VERIFIED
+</td>
+
 </tr>
 
 <tr>
+
 <td><b>Authority</b></td>
-<td>Department of Patents, Designs & Trademarks</td>
+
+<td>
+Department of Patents,
+Designs & Trademarks
+</td>
+
 </tr>
 
 </table>
@@ -118,7 +450,8 @@ document.getElementById("result").innerHTML=`
 
 <div class="verified">
 
-✔ This trademark certificate has been verified successfully.
+✔ This trademark certificate has been
+verified successfully.
 
 </div>
 
@@ -132,13 +465,15 @@ showInvalid();
 
 })
 
-.catch(()=>{
+.catch(() => {
 
 showInvalid();
 
 });
 
 }
+
+/* INVALID */
 
 function showInvalid(){
 
@@ -155,3 +490,7 @@ document.getElementById("result").innerHTML=`
 }
 
 </script>
+
+</body>
+
+</html>

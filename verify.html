@@ -319,7 +319,7 @@
         </div>
     </div>
 
-    <!-- INTELLECTUAL MULTI-AGENCY NATIONAL FOOTER (EXACT IMAGE ORDER MATCH) -->
+    <!-- INTELLECTUAL MULTI-AGENCY NATIONAL FOOTER -->
     <div class="national-footer">
         <div class="footer-content-inner">
             
@@ -339,7 +339,6 @@
                 <div class="partner-heading-txt">Planning and Implementation: Cabinet Division, a2i, BCC, DoICT & BASIS.</div>
                 <div class="partner-logos-flex">
                     <span>Technical Support:</span>
-                    <!-- Exact matching sequence from image_1.png using high-quality official vectors -->
                     <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/A2i_logo.svg" class="agency-icon-mock" alt="a2i">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Government_Seal_of_Bangladesh.svg" class="agency-icon-mock" alt="Cabinet Division">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/ICT_Division_Bangladesh_Logo.svg" class="agency-icon-mock" alt="ICT Division" onerror="this.style.display='none'">
@@ -355,16 +354,17 @@
     const updateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     document.getElementById("last-update-placeholder").innerText = new Date("May 24, 2026 09:38:06").toLocaleDateString('en-US', updateOptions) + " 09:38:06";
 
-    /* SEARCH FUNCTION */
+    /* SEARCH FUNCTION - MODIFIED TO REG_NO */
     function searchTM(){
         let id = document.getElementById("tm").value.trim();
         if(id){
-            window.location.href = "?id=" + id;
+            window.location.href = "?reg_no=" + id;
         }
     }
 
+    /* CAPTURE REG_NO PROPERTY INSTEAD OF ID */
     const params = new URLSearchParams(window.location.search);
-    const id = params.get("id");
+    const id = params.get("reg_no");
 
     if(id){
         document.getElementById("tm").value = id;

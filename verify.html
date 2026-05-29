@@ -57,36 +57,52 @@
 
     if (id) {
         document.getElementById("tm").value = id;
-        checkAndShowData(id);
+        loadTrademarkData(id);
     }
 
-    function checkAndShowData(tmId) {
-        // Prothome check korbe .jpg file ache kina
+    function loadTrademarkData(tmId) {
+        // data.json theke data fetch korbe
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                if (data[tmId]) {
+                    let tmDetails = data[tmId];
+                    checkFilesAndShow(tmId, tmDetails.name, tmDetails.authority);
+                } else {
+                    showInvalid();
+                }
+            })
+            .catch(() => {
+                showInvalid();
+            });
+    }
+
+    function checkFilesAndShow(tmId, ownerName, authorityName) {
         let imgUrl = tmId + ".jpg";
         let img = new Image();
         
         img.onload = function() {
-            showVerifiedHTML(tmId, `<img class="cert-img" src="${imgUrl}">`);
+            showVerifiedHTML(tmId, ownerName, authorityName, `<img class="cert-img" src="${imgUrl}">`);
         };
         
         img.onerror = function() {
-            // .jpg na thakle .pdf check korbe
             let pdfUrl = tmId + ".pdf";
             fetch(pdfUrl)
                 .then(response => {
                     if (response.ok) {
-                        showVerifiedHTML(tmId, `<iframe src="${pdfUrl}"></iframe>`);
+                        showVerifiedHTML(tmId, ownerName, authorityName, `<iframe src="${pdfUrl}"></iframe>`);
                     } else {
-                        showInvalid();
+                        // Image ba PDF na thakleo shudhu table ta dekhabe
+                        showVerifiedHTML(tmId, ownerName, authorityName, '');
                     }
                 })
-                .catch(() => showInvalid());
+                .catch(() => showVerifiedHTML(tmId, ownerName, authorityName, ''));
         };
         
         img.src = imgUrl;
     }
 
-    function showVerifiedHTML(tmId, displayContent) {
+    function showVerifiedHTML(tmId, ownerName, authorityName, displayContent) {
         document.getElementById("result").innerHTML = `
             <table>
                 <tr>
@@ -94,12 +110,16 @@
                     <td>${tmId}</td>
                 </tr>
                 <tr>
+                    <td><b>Owner / Brand Name</b></td>
+                    <td><b>${ownerName}</b></td>
+                </tr>
+                <tr>
                     <td><b>Status</b></td>
                     <td style="color:green; font-weight:bold;">VERIFIED</td>
                 </tr>
                 <tr>
                     <td><b>Authority</b></td>
-                    <td>Department of Patents, Designs & Trademarks</td>
+                    <td>${authorityName}</td>
                 </tr>
             </table>
             ${displayContent}

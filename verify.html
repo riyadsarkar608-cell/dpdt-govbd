@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Department of Patents, Designs & Trademarks</title>
+    <title>Trademark Verification Portal</title>
     <style>
         /* GLOBAL STRUCTURE WITH ORIGINAL GOVT SIDE ARTWORK LINES */
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #fcfcfc;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f4f6f9;
             background-image: 
                 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="800" viewBox="0 0 150 800"><path d="M-20,0 Q60,150 -10,300 T80,550 T-20,800" fill="none" stroke="%23e1e6eb" stroke-width="2"/><path d="M-40,0 Q90,200 10,400 T110,650 T-40,800" fill="none" stroke="%23e9edf2" stroke-width="1.5"/></svg>'),
                 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><g stroke="%23eceff3" stroke-width="0.5" fill="none"><circle cx="100" cy="0" r="80"/><circle cx="100" cy="0" r="60"/></g></svg>');
@@ -24,88 +24,103 @@
 
         /* TOP NATIONAL WEB PORTAL GREEN BAR */
         .top-national-bar {
-            background-color: #007a3d;
+            background-color: #198754;
             color: white;
-            font-size: 11px;
-            padding: 6px 16px;
+            font-size: 12px;
+            padding: 8px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-weight: 500;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         .top-national-bar .left-txt {
             letter-spacing: 0.3px;
         }
         .top-national-bar .right-lang {
             cursor: pointer;
+            background: rgba(255,255,255,0.15);
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 11px;
         }
 
-        /* HEADER SECTION WITH LOGO AND DEPARTMENT NAME */
+        /* HIGH-FIDELITY GENUINE GOVT BANNER STRUCTURING */
         .main-gov-banner {
-            background-color: #055c2f;
+            background: linear-gradient(90deg, #055c2f 0%, #006a4e 100%);
             color: white;
-            padding: 16px;
+            padding: 18px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            border-bottom: 3px solid #f47920; /* Authentic micro orange separator line */
         }
         .banner-left {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 18px;
         }
-        /* Fixed Logo dimension ratio aspect without squeezing */
+        /* Fixed aspect ratio boundary mapping to mimic official sites */
         .banner-left .gov-logo {
-            height: 52px;
-            width: auto;
+            height: 56px;
+            width: 56px;
             object-fit: contain;
+            background-color: #ffffff;
+            border-radius: 50%;
+            padding: 2px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
         }
         .banner-text-block {
             display: flex;
             flex-direction: column;
+            justify-content: center;
         }
         .banner-title-en {
-            font-size: 16px;
-            font-weight: bold;
-            line-height: 1.25;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
             margin: 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
         }
         .banner-sub-en {
-            font-size: 11px;
-            color: #e5e7eb;
+            font-size: 13px;
+            color: #f1f3f5;
             margin: 0;
-            margin-top: 2px;
+            margin-top: 4px;
+            font-weight: 500;
+            letter-spacing: 0.2px;
         }
         .banner-right .gov-seal {
-            height: 48px;
-            width: 48px;
+            height: 56px;
+            width: 56px;
             object-fit: contain;
-            border-radius: 9999px;
+            border-radius: 50%;
             background-color: white;
             padding: 2px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
         }
 
         /* MAIN DYNAMIC CONTENT CONTAINER */
         .page-wrapper {
             flex-grow: 1;
-            max-width: 56rem;
+            max-width: 60rem;
             width: 100%;
             margin-left: auto;
             margin-right: auto;
-            padding: 24px 16px;
+            padding: 35px 20px;
             box-sizing: border-box;
         }
         
         .portal-heading-box {
-            border-left: 4px solid #f97316;
-            padding-left: 8px;
+            border-left: 4px solid #f47920;
+            padding-left: 12px;
             margin-bottom: 24px;
         }
         .portal-subheading {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: bold;
-            color: #374151;
+            color: #006a4e;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             margin: 0;
@@ -117,27 +132,28 @@
             gap: 8px;
             max-width: 28rem;
             width: 100%;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
         }
         .search-container input {
             flex-grow: 1;
-            padding: 6px 12px;
-            border: 1px solid #d1d5db;
+            padding: 10px 14px;
+            border: 1px solid #cccccc;
             border-radius: 4px;
-            font-size: 14px;
+            font-size: 14.5px;
             font-weight: 500;
-            color: #374151;
+            color: #333333;
             outline: none;
+            transition: border-color 0.2s;
         }
         .search-container input:focus {
-            border-color: #007a3d;
+            border-color: #006a4e;
         }
         .search-container button {
-            background-color: #007a3d;
+            background-color: #006a4e;
             color: white;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 600;
-            padding: 8px 20px;
+            padding: 10px 24px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
@@ -145,7 +161,7 @@
             transition: background-color 0.2s;
         }
         .search-container button:hover {
-            background-color: #166534;
+            background-color: #055c2f;
         }
 
         /* DYNAMIC OUTPUT VIEWS */
@@ -159,50 +175,51 @@
         /* RESULT DATA TABLE */
         .table-responsive {
             overflow-x: auto;
-            border: 1px solid #e5e7eb;
+            border: 1px solid #dee2e6;
             border-radius: 4px;
             background: white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
         }
         table {
             width: 100%;
             border-collapse: collapse;
             text-align: left;
-            font-size: 12px;
+            font-size: 14px;
         }
         table tr {
-            border-bottom: 1px solid #e5e7eb;
+            border-bottom: 1px solid #dee2e6;
         }
         table tr:last-child {
             border-bottom: none;
         }
         table td {
-            padding: 12px 16px;
+            padding: 14px 18px;
         }
         table td.label-cell {
-            background-color: #f9fafb;
+            background-color: #f8f9fa;
             font-weight: 600;
-            color: #4b5563;
-            width: 33.3333%;
-            border-right: 1px solid #e5e7eb;
+            color: #495057;
+            width: 30%;
+            border-right: 1px solid #dee2e6;
         }
         table td.value-cell {
             font-weight: 500;
-            color: #1f2937;
+            color: #212529;
         }
         table td.bold-value {
             font-weight: bold;
-            color: #1f2937;
+            color: #000000;
         }
 
         /* VERIFIED BADGE */
         .status-badge {
             background-color: #d1e7dd;
             color: #0f5132;
-            font-size: 10px;
-            font-weight: bold;
+            font-size: 11px;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            padding: 2px 8px;
+            padding: 4px 12px;
             border-radius: 4px;
             border: 1px solid #badbcc;
             display: inline-block;
@@ -212,50 +229,51 @@
         .cert-card {
             display: flex;
             justify-content: center;
-            border: 1px solid #f3f4f6;
+            border: 1px solid #dee2e6;
             border-radius: 4px;
             padding: 16px;
             background-color: white;
-            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
         }
         .cert-card img {
             max-width: 100%;
             height: auto;
             object-fit: contain;
+            border: 1px solid #f1f3f5;
         }
         .cert-card iframe {
             width: 100%;
-            height: 750px;
-            border: 1px solid #e5e7eb;
+            height: 800px;
+            border: 1px solid #dee2e6;
         }
 
         /* FEEDBACK MESSAGES */
         .error-box {
             padding: 16px;
-            background-color: #fef2f2;
-            border: 1px solid #fca5a5;
-            color: #991b1b;
-            font-size: 14px;
+            background-color: #f8d7da;
+            border: 1px solid #f5c2c7;
+            color: #842029;
+            font-size: 14.5px;
             border-radius: 4px;
             text-align: center;
-            font-weight: 500;
+            font-weight: 600;
         }
         .success-notice {
             padding: 16px;
-            background-color: #f0fdf4;
-            border: 1px solid #bbf7d0;
-            color: #166534;
-            font-size: 13px;
+            background-color: #d1e7dd;
+            border: 1px solid #badbcc;
+            color: #0f5132;
+            font-size: 14.5px;
             border-radius: 4px;
-            font-weight: 500;
+            font-weight: 600;
             margin-top: 15px;
         }
 
         /* ORIGINAL LAYOUT FOOTER WITH CUSTOM VALID BANNER */
         footer {
             background-color: #E9ECED;
-            padding: 20px;
-            border-top: 1px solid #dcdcdc;
+            padding: 24px;
+            border-top: 1px solid #d6dbdf;
             width: 100%;
             box-sizing: border-box;
             margin-top: auto;
@@ -280,35 +298,36 @@
             width: 50%;
         }
         .footer-title {
-            margin: 0 0 5px 0;
+            margin: 0 0 6px 0;
             font-weight: bold;
-            color: #555;
-            font-size: 13px;
+            color: #495057;
+            font-size: 14px;
         }
         .footer-update-txt {
-            margin: 0 0 5px 0;
-            color: #666;
-            font-size: 12px;
+            margin: 0 0 6px 0;
+            color: #6c757d;
+            font-size: 12.5px;
         }
         .footer-copyright {
             margin: 0;
-            color: #777;
-            font-size: 11px;
+            color: #6c757d;
+            font-size: 12px;
         }
         .footer-partner-txt {
-            margin: 0 0 8px 0;
-            color: #444;
-            font-size: 12px;
+            margin: 0 0 10px 0;
+            color: #333333;
+            font-size: 13px;
             font-weight: 500;
+            line-height: 1.4;
         }
         .support-wrapper {
             display: inline-block;
             text-align: right;
         }
         .support-title {
-            margin: 0 5px 3px 0;
-            color: #666;
-            font-size: 10px;
+            margin: 0 5px 4px 0;
+            color: #6c757d;
+            font-size: 11px;
             font-weight: bold;
             text-transform: uppercase;
         }
@@ -325,9 +344,14 @@
                 flex-direction: column;
                 gap: 16px;
                 text-align: center;
+                padding: 20px 15px;
             }
             .banner-left {
                 flex-direction: column;
+                gap: 10px;
+            }
+            .banner-title-en {
+                font-size: 18px;
             }
             table td.label-cell {
                 width: 40%;
@@ -338,7 +362,7 @@
                 text-align: center !important;
             }
             .footer-right {
-                margin-top: 20px;
+                margin-top: 24px;
             }
             .support-wrapper {
                 text-align: center;
@@ -348,13 +372,11 @@
 </head>
 <body>
 
-    <!-- Top National Web Portal Green Bar -->
     <div class="top-national-bar">
         <div class="left-txt">National Web Portal</div>
         <div class="right-lang">বাংলা</div>
     </div>
 
-    <!-- Header Section with Logo and Department Name -->
     <div class="main-gov-banner">
         <div class="banner-left">
             <img src="logo.jpeg" alt="Gov Logo" class="gov-logo">
@@ -368,23 +390,19 @@
         </div>
     </div>
 
-    <!-- Main Dynamic Content Container -->
     <div class="page-wrapper">
         
         <div class="portal-heading-box">
             <h2 class="portal-subheading">Trademark Verification Portal</h2>
         </div>
 
-        <!-- Verification Search Bar -->
         <div class="search-container">
             <input type="text" id="tm" placeholder="Enter Trademark Number">
             <button onclick="searchTM()">Verify</button>
         </div>
 
-        <!-- Dynamic Output Container (Table + Asset Render) -->
         <div id="verificationResult" class="hidden space-y-6">
             
-            <!-- Result Table Info -->
             <div class="table-responsive">
                 <table>
                     <tbody>
@@ -394,7 +412,7 @@
                         </tr>
                         <tr>
                             <td class="label-cell">Owner / Brand Name</td>
-                            <td id="resName" class="bold-value" style="font-size: 14px;"></td>
+                            <td id="resName" class="bold-value" style="font-size: 15px;"></td>
                         </tr>
                         <tr>
                             <td class="label-cell">Filing/Application Date</td>
@@ -414,35 +432,29 @@
                 </table>
             </div>
 
-            <!-- Dynamic Registered Certificate/PDF Render Frame -->
             <div id="assetContainer" class="cert-card"></div>
 
-            <!-- Success Feed Text -->
             <div class="success-notice">
                 ✔ This trademark certificate has been verified successfully against the national intellectual property database index.
             </div>
 
         </div>
 
-        <!-- Error Message View -->
         <div id="errorResult" class="hidden error-box">
             ✗ This Trademark / Application number is not registered in our system.
         </div>
 
     </div>
 
-    <!-- Original Layout Footer with Custom Valid Banner -->
     <footer>
         <table class="footer-table">
             <tr>
-                <!-- Left Footers -->
                 <td class="footer-left">
                     <p class="footer-title">Sitemap</p>
                     <p class="footer-update-txt">Site last updated: <span id="last-update-placeholder"></span></p>
                     <p class="footer-copyright">&copy; 2026 Department of Patents, Designs & Trademarks | All Rights Reserved.</p>
                 </td>
                 
-                <!-- Right Footers -->
                 <td class="footer-right">
                     <p class="footer-partner-txt">
                         Planning and Implementation: Cabinet Division, a2i, BCC, DoICT & BASIS.
@@ -456,7 +468,6 @@
         </table>
     </footer>
 
-    <!-- JavaScript logic matching data.json to render matching UI elements -->
     <script>
         /* REALTIME DYNAMIC CLOCK REFRESH IN FOOTER */
         function updateSiteTimestamp() {
@@ -476,7 +487,6 @@
             }
         }
 
-        // Initialize immediate execution and register step ticks
         updateSiteTimestamp();
         setInterval(updateSiteTimestamp, 1000);
 
@@ -518,13 +528,11 @@
                     errorResult.classList.add('hidden');
                     tableResult.classList.remove('hidden');
                     
-                    // Inject live text records into table data cells
                     document.getElementById('resNum').innerText = regNo;
                     document.getElementById('resName').innerText = info.name;
                     document.getElementById('resDate').innerText = info.application_date || "08/12/2015";
                     document.getElementById('resAuth').innerText = info.authority;
                     
-                    // Route and resolve verification assets (Checks JPG first, falls back to PDF)
                     resolveCertificateAsset(regNo, assetContainer);
                 } else {
                     tableResult.classList.add('hidden');
@@ -541,12 +549,10 @@
             const imgUrl = regNo + ".jpg";
             const imgChecker = new Image();
             
-            // If image variant is matching inside directory
             imgChecker.onload = function() {
                 container.innerHTML = `<img src="${imgUrl}" alt="Trademark Certificate">`;
             };
             
-            // Error fallback: check for matching PDF document availability
             imgChecker.onerror = function() {
                 const pdfUrl = regNo + ".pdf";
                 fetch(pdfUrl)

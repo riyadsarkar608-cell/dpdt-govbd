@@ -3,462 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Department of Patents, Designs & Trademarks</title>
-    <style>
-        /* GLOBAL STYLES WITH GENUINE GOVT SIDE ARTWORK LINES */
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #f4f6f9;
-            background-image: 
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="800" viewBox="0 0 150 800"><path d="M-20,0 Q60,150 -10,300 T80,550 T-20,800" fill="none" stroke="%23e1e6eb" stroke-width="2"/><path d="M-40,0 Q90,200 10,400 T110,650 T-40,800" fill="none" stroke="%23e9edf2" stroke-width="1.5"/></svg>'),
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><g stroke="%23eceff3" stroke-width="0.5" fill="none"><circle cx="100" cy="0" r="80"/><circle cx="100" cy="0" r="60"/></g></svg>');
-            background-position: left top, right top;
-            background-repeat: repeat-y, no-repeat;
-            background-attachment: fixed;
-            color: #333;
-        }
-        
-        /* TOP GOVT LIGHT GREEN BAR */
-        .top-national-bar {
-            background: #198754;
-            color: #ffffff;
-            padding: 8px 40px;
-            font-size: 13px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 500;
-        }
-        .top-national-bar .left-txt {
-            font-family: Arial, sans-serif;
-            letter-spacing: 0.3px;
-        }
-        .top-national-bar .right-lang {
-            background: rgba(255,255,255,0.15);
-            padding: 2px 8px;
-            border-radius: 3px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-
-        /* ACTUAL GOVT BANNER IN ENGLISH */
-        .main-gov-banner {
-            background: linear-gradient(90deg, #005a36 0%, #006a4e 100%);
-            color: white;
-            padding: 20px 40px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-        }
-        .banner-left {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        .banner-left .gov-seal {
-            width: 65px;
-            height: 65px;
-            object-fit: contain;
-        }
-        .banner-text-block {
-            display: flex;
-            flex-direction: column;
-        }
-        .banner-title-en {
-            font-size: 24px;
-            font-weight: bold;
-            letter-spacing: -0.2px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-            margin-bottom: 2px;
-        }
-        .banner-sub-en {
-            font-size: 13.5px;
-            color: #e0e0e0;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
-        
-        /* RIGHT SIDE BANNER COMPONENT FRAME */
-        .banner-right-box {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        .banner-right-logo {
-            width: 80px;
-            height: 80px;
-            object-fit: contain;
-        }
-        .national-corner-art {
-            width: 75px;
-            height: 80px;
-            border-radius: 4px;
-            object-fit: cover;
-            border: 1px solid rgba(255,255,255,0.2);
-            background: rgba(255,255,255,0.08);
-        }
-        
-        /* CENTRAL DYNAMIC CONTENT AREA */
-        .page-wrapper {
-            max-width: 1050px;
-            margin: 0 auto;
-            padding: 35px 20px;
-        }
-
-        /* MAIN PORTAL ROW CONTAINER */
-        .container {
-            background: white;
-            border: 1px solid #dee2e6;
-            padding: 35px;
-            border-radius: 4px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-            position: relative;
-        }
-        
-        /* BOTTOM LANDSCAPE VECTOR SILHOUETTE */
-        .container::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 40px;
-            opacity: 0.05;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"><path d="M0,100 L0,80 Q50,60 100,80 T200,70 T300,90 T400,60 T500,80 T600,70 T700,85 T800,65 T900,80 T1000,70 L1000,100 Z" fill="%23000"/></svg>');
-            background-size: 100% 100%;
-            pointer-events: none;
-        }
-        
-        .portal-subheading {
-            margin: 0 0 15px 0;
-            color: #006a4e;
-            font-size: 18px;
-            font-weight: 600;
-            border-left: 4px solid #f47920;
-            padding-left: 10px;
-        }
-        
-        /* SEARCH DESIGN */
-        .search {
-            margin: 25px 0;
-            display: flex;
-            max-width: 450px;
-        }
-        input {
-            flex: 1;
-            padding: 12px 15px;
-            font-size: 15px;
-            border: 1px solid #cccccc;
-            border-radius: 4px 0 0 4px;
-            outline: none;
-        }
-        input:focus { border-color: #006a4e; }
-        button {
-            padding: 12px 24px;
-            background: #006a4e;
-            color: white;
-            border: 1px solid #006a4e;
-            border-radius: 0 4px 4px 0;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-        
-        /* VERIFICATION DATA TABLE */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 25px;
-            background: #ffffff;
-            border: 1px solid #dee2e6;
-        }
-        table td {
-            border: 1px solid #dee2e6;
-            padding: 14px 18px;
-            font-size: 15px;
-        }
-        table tr td:first-child {
-            background: #f8f9fa;
-            color: #495057;
-            width: 30%;
-            font-weight: 600;
-        }
-        
-        /* OFFICIAL STATUS BADGE */
-        .status-badge {
-            background: #d1e7dd;
-            color: #0f5132;
-            padding: 5px 14px;
-            border-radius: 4px;
-            font-weight: 700;
-            font-size: 13px;
-            display: inline-block;
-            border: 1px solid #badbcc;
-        }
-        
-        /* CERTIFICATE DISPLAY */
-        .cert-img { width: 100%; max-width: 850px; margin-top: 30px; border: 1px solid #dee2e6; }
-        iframe { width: 100%; height: 850px; border: 1px solid #dee2e6; margin-top: 30px; }
-        
-        /* NOTICES */
-        .verified { margin-top: 25px; padding: 15px; background: #d1e7dd; border: 1px solid #badbcc; color: #0f5132; font-weight: 600; border-radius: 4px; }
-        .invalid { margin-top: 25px; padding: 15px; background: #f8d7da; border: 1px solid #f5c2c7; color: #842029; font-weight: 600; border-radius: 4px; }
-
-        /* REAL NATIONAL FOOTER STRUCTURE IN ENGLISH */
-        .national-footer {
-            background: #e8ecef;
-            border-top: 1px solid #d6dbdf;
-            padding: 30px 40px;
-            color: #444;
-            font-size: 13.5px;
-            margin-top: 40px;
-        }
-        .footer-content-inner {
-            max-width: 1050px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 40px;
-        }
-        .footer-left-meta {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .sitemap-link {
-            color: #555;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .last-update-text {
-            color: #666;
-            margin-top: 5px;
-        }
-        .footer-right-partners {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 12px;
-            text-align: right;
-        }
-        .partner-heading-txt {
-            font-size: 12.5px;
-            color: #555;
-            font-weight: 500;
-        }
-        .partner-logos-flex {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        .partner-logos-flex span {
-            font-size: 12.5px;
-            color: #666;
-        }
-        .agency-icon-mock {
-            height: 35px;
-            width: auto;
-            object-fit: contain;
-        }
-        
-        /* MOBILE OPTIMIZATION */
-        @media(max-width:768px){
-            .top-national-bar { padding: 8px 15px; }
-            .main-gov-banner { padding: 15px; flex-direction: column; gap: 15px; text-align: center; }
-            .banner-left { flex-direction: column; gap: 10px; }
-            .banner-right-box { justify-content: center; width: 100%; }
-            .page-wrapper { padding: 15px; }
-            .container { padding: 20px; }
-            .search { flex-direction: column; max-width: 100%; gap: 10px; }
-            table tr td:first-child { width: 40%; }
-            .footer-content-inner { flex-direction: column; gap: 25px; }
-            .footer-right-partners { align-items: flex-start; text-align: left; }
-        }
-    </style>
+    <title>Trademark Verification System</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-50 flex flex-col min-h-screen font-sans">
 
-    <div class="top-national-bar">
-        <span class="left-txt">National Web Portal</span>
-        <span class="right-lang">বাংলা</span>
-    </div>
-
-    <div class="main-gov-banner">
-        <div class="banner-left">
-            <img src="seal.png" alt="BD Government Seal" class="gov-seal">
-            <div class="banner-text-block">
-                <span class="banner-title-en">Department of Patents, Designs & Trademarks</span>
-                <span class="banner-sub-en">Government of the People's Republic of Bangladesh</span>
-            </div>
-        </div>
-        
-        <div class="banner-right-box">
-            <img src="logo.jpeg" alt="DPDT Logo" class="banner-right-logo" onerror="this.style.display='none'">
-            <img src="mujib_corner.png" alt="" class="national-corner-art" onerror="this.style.display='none'">
-        </div>
-    </div>
-
-    <div class="page-wrapper">
-        <div class="container">
-            <h3 class="portal-subheading">Trademark Verification Portal</h3>
-            <hr style="border: 0; border-top: 1px solid #eee; margin-bottom: 20px;">
-
-            <div class="search">
-                <input type="text" id="tm" placeholder="Enter Trademark Number">
-                <button onclick="searchTM()">Verify</button>
-            </div>
-
-            <div id="result"></div>
-        </div>
-    </div>
-
-    <div class="national-footer">
-        <div class="footer-content-inner">
+    <!-- Main Content Container -->
+    <div class="flex-grow flex flex-col items-center justify-center px-4 py-12">
+        <div class="max-w-md w-full bg-white rounded-xl shadow-lg p-8 border border-gray-100 text-center">
             
-            <div class="footer-left-meta">
-                <div>
-                    <a href="#" class="sitemap-link">Sitemap</a>
-                </div>
-                <div class="last-update-text">
-                    Site last updated: <span style="font-weight: 500;" id="last-update-placeholder"></span>
-                </div>
-                <div style="font-size:12px; color:#777; margin-top:5px;">
-                    © 2026 Department of Patents, Designs & Trademarks | All Rights Reserved.
-                </div>
+            <!-- Logo Section -->
+            <div class="mb-6 flex justify-center">
+                <img src="logo.jpeg" alt="Logo" class="h-20 w-20 object-contain rounded-full border border-gray-200 shadow-sm">
             </div>
-            
-            <div class="footer-right-partners">
-                <div class="partner-heading-txt">Planning and Implementation: Cabinet Division, a2i, BCC, DoICT & BASIS.</div>
-                <div class="partner-logos-flex">
-                    <span>Technical Support:</span>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/A2i_logo.svg" class="agency-icon-mock" alt="a2i">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Government_Seal_of_Bangladesh.svg" class="agency-icon-mock" alt="Cabinet Division">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/ICT_Division_Bangladesh_Logo.svg" class="agency-icon-mock" alt="ICT Division" onerror="this.style.display='none'">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/UNDP_logo.svg" class="agency-icon-mock" alt="UNDP">
-                </div>
+
+            <h1 class="text-xl font-bold text-gray-800 mb-2">Government of the People's Republic of Bangladesh</h1>
+            <p class="text-sm text-gray-500 mb-6">Department of Patents, Designs & Trademarks</p>
+
+            <!-- Verification Input Form -->
+            <div class="space-y-4">
+                <input type="text" id="regNumber" placeholder="Enter Trademark / Application No." 
+                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition text-center font-semibold">
+                
+                <button onclick="verifyTrademark()" 
+                        class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 rounded-lg transition shadow-md">
+                    Verify Status
+                </button>
             </div>
+
+            <!-- Result Display Area -->
+            <div id="result" class="mt-6 hidden p-4 rounded-lg text-left border"></div>
 
         </div>
     </div>
 
-<script>
-    /* REALTIME DYNAMIC CLOCK LOGIC INTEGRATION */
-    function updateSiteTimestamp() {
-        const currentDateTime = new Date();
-        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        
-        const hours = String(currentDateTime.getHours()).padStart(2, '0');
-        const minutes = String(currentDateTime.getMinutes()).padStart(2, '0');
-        const seconds = String(currentDateTime.getSeconds()).padStart(2, '0');
-        
-        const formattedDate = currentDateTime.toLocaleDateString('en-US', dateOptions);
-        const formattedTime = `${hours}:${minutes}:${seconds}`;
-        
-        document.getElementById("last-update-placeholder").innerText = `${formattedDate} ${formattedTime}`;
-    }
+    <!-- Full Footer Section Start -->
+    <div class="w-full bg-[#E9ECED] text-center py-6 border-t border-gray-300 mt-auto">
+      
+      <!-- Planning and Implementation Group -->
+      <div class="mb-4">
+        <p class="text-gray-700 text-sm font-medium tracking-wide px-4">
+          Planning and Implementation: Cabinet Division, a2i, BCC, DoICT & BASIS.
+        </p>
+      </div>
 
-    // Initialize immediate execution
-    updateSiteTimestamp();
-    // Maintain rolling ticker interval sequence
-    setInterval(updateSiteTimestamp, 1000);
+      <!-- Technical Support Group with Image -->
+      <div class="flex flex-col items-center justify-center">
+        <p class="text-gray-600 text-xs font-semibold mb-3 tracking-wider uppercase">
+          Technical Support:
+        </p>
+        <img src="footer-banner.png" alt="Technical Support Partners" class="h-10 md:h-12 object-contain mix-blend-multiply">
+      </div>
 
-    /* SEARCH FUNCTION - MODIFIED TO REG_NO */
-    function searchTM(){
-        let id = document.getElementById("tm").value.trim();
-        if(id){
-            window.location.href = "?reg_no=" + id;
-        }
-    }
+    </div>
+    <!-- Full Footer Section End -->
 
-    /* CAPTURE REG_NO PROPERTY INSTEAD OF ID */
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("reg_no");
+    <!-- JavaScript for Dynamic Verification -->
+    <script>
+        async function verifyTrademark() {
+            const regNo = document.getElementById('regNumber').value.trim();
+            const resultDiv = document.getElementById('result');
+            
+            if (!regNo) {
+                alert('Please enter a number!');
+                return;
+            }
 
-    if(id){
-        document.getElementById("tm").value = id;
-        loadTrademarkData(id);
-    }
+            try {
+                // data.json file theke live data fetch kora
+                const response = await fetch('data.json');
+                const data = await response.json();
 
-    function loadTrademarkData(tmId) {
-        fetch('data.json')
-            .then(response => response.json())
-            .then(data => {
-                if (data[tmId]) {
-                    let tmDetails = data[tmId];
-                    let appDate = tmDetails.application_date || "08/12/2015";
-                    checkFilesAndShow(tmId, tmDetails.name, tmDetails.authority, appDate);
+                if (data[regNo]) {
+                    const info = data[regNo];
+                    resultDiv.classList.remove('hidden', 'bg-red-50', 'border-red-200', 'text-red-700');
+                    resultDiv.classList.add('bg-green-50', 'border-green-200', 'text-green-800');
+                    
+                    resultDiv.innerHTML = `
+                        <div class="text-center font-bold text-lg text-green-700 mb-2">✓ Verified Valid</div>
+                        <div class="space-y-1 text-sm text-gray-700">
+                            <p><strong>Name:</strong> ${info.name}</p>
+                            <p><strong>Authority:</strong> ${info.authority}</p>
+                            <p><strong>Date:</strong> ${info.application_date}</p>
+                        </div>
+                    `;
                 } else {
-                    showInvalid();
+                    resultDiv.classList.remove('hidden', 'bg-green-50', 'border-green-200', 'text-green-800');
+                    resultDiv.classList.add('bg-red-50', 'border-red-200', 'text-red-700');
+                    
+                    resultDiv.innerHTML = `
+                        <div class="text-center font-bold text-lg mb-1">✗ Record Not Found</div>
+                        <p class="text-center text-sm text-gray-600">This Trademark / Application number is not registered in our system.</p>
+                    `;
                 }
-            })
-            .catch(() => showInvalid());
-    }
-
-    function checkFilesAndShow(tmId, ownerName, authorityName, appDate) {
-        let imgUrl = tmId + ".jpg";
-        let img = new Image();
-        
-        img.onload = function() {
-            showVerifiedHTML(tmId, ownerName, authorityName, appDate, `<img class="cert-img" src="${imgUrl}">`);
-        };
-        
-        img.onerror = function() {
-            let pdfUrl = tmId + ".pdf";
-            fetch(pdfUrl)
-                .then(response => {
-                    if (response.ok) {
-                        showVerifiedHTML(tmId, ownerName, authorityName, appDate, `<iframe src="${pdfUrl}"></iframe>`);
-                    } else {
-                        showVerifiedHTML(tmId, ownerName, authorityName, appDate, '');
-                    }
-                })
-                .catch(() => showVerifiedHTML(tmId, ownerName, authorityName, appDate, ''));
-        };
-        img.src = imgUrl;
-    }
-
-    function showVerifiedHTML(tmId, ownerName, authorityName, appDate, displayContent) {
-        document.getElementById("result").innerHTML = `
-            <table>
-                <tr>
-                    <td>Trademark Number</td>
-                    <td style="font-weight: 600; color: #111;">${tmId}</td>
-                </tr>
-                <tr>
-                    <td>Owner / Brand Name</td>
-                    <td style="font-weight: 700; color: #000; font-size: 15.5px;">${ownerName}</td>
-                </tr>
-                <tr>
-                    <td>Filing/Application Date</td>
-                    <td style="color: #444;">${appDate}</td>
-                </tr>
-                <tr>
-                    <td>Status</td>
-                    <td><span class="status-badge">✔ VERIFIED</span></td>
-                </tr>
-                <tr>
-                    <td>Authority</td>
-                    <td style="color: #444;">${authorityName}</td>
-                </tr>
-            </table>
-            ${displayContent}
-            <div class="verified">
-                ✔ This trademark certificate has been verified successfully against the national intellectual property database index.
-            </div>
-        `;
-    }
-
-    function showInvalid() {
-        document.getElementById("result").innerHTML = `
-            <div class="invalid">
-                ❌ Invalid Trademark Number. No active records matching this identity were found in the national registry.
-            </div>
-        `;
-    }
-</script>
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                alert('Failed to load database. Please ensure data.json is configured correctly.');
+            }
+        }
+    </script>
 
 </body>
 </html>

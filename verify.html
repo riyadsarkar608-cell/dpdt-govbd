@@ -3,467 +3,555 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Department of Patents, Designs & Trademarks</title>
+    <title>Trademark Verification Portal</title>
     <style>
-        /* GLOBAL STYLES WITH GENUINE GOVT SIDE ARTWORK LINES */
+        /* GLOBAL STRUCTURE WITH ORIGINAL GOVT SIDE ARTWORK LINES */
         body {
             margin: 0;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #f4f6f9;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fcfcfc;
             background-image: 
                 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="800" viewBox="0 0 150 800"><path d="M-20,0 Q60,150 -10,300 T80,550 T-20,800" fill="none" stroke="%23e1e6eb" stroke-width="2"/><path d="M-40,0 Q90,200 10,400 T110,650 T-40,800" fill="none" stroke="%23e9edf2" stroke-width="1.5"/></svg>'),
                 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><g stroke="%23eceff3" stroke-width="0.5" fill="none"><circle cx="100" cy="0" r="80"/><circle cx="100" cy="0" r="60"/></g></svg>');
             background-position: left top, right top;
             background-repeat: repeat-y, no-repeat;
             background-attachment: fixed;
-            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-h: 100vh;
         }
-        
-        /* TOP GOVT LIGHT GREEN BAR */
+
+        /* TOP NATIONAL WEB PORTAL GREEN BAR */
         .top-national-bar {
-            background: #198754;
-            color: #ffffff;
-            padding: 8px 40px;
-            font-size: 13px;
+            background-color: #007a3d;
+            color: white;
+            font-size: 11px;
+            padding: 6px 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-weight: 500;
         }
         .top-national-bar .left-txt {
-            font-family: Arial, sans-serif;
             letter-spacing: 0.3px;
         }
         .top-national-bar .right-lang {
-            background: rgba(255,255,255,0.15);
-            padding: 2px 8px;
-            border-radius: 3px;
             cursor: pointer;
-            font-size: 12px;
         }
 
-        /* ACTUAL GOVT BANNER IN ENGLISH */
+        /* HEADER SECTION WITH LOGO AND DEPARTMENT NAME */
         .main-gov-banner {
-            background: linear-gradient(90deg, #005a36 0%, #006a4e 100%);
+            background-color: #055c2f;
             color: white;
-            padding: 20px 40px;
+            padding: 16px;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            align-items: center;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
         }
         .banner-left {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 12px;
         }
-        .banner-left .gov-seal {
-            width: 65px;
-            height: 65px;
+        .banner-left .gov-logo {
+            height: 48px;
+            width: 48px;
             object-fit: contain;
+            border-radius: 9999px;
         }
         .banner-text-block {
             display: flex;
             flex-direction: column;
         }
         .banner-title-en {
-            font-size: 24px;
+            font-size: 16px;
             font-weight: bold;
-            letter-spacing: -0.2px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-            margin-bottom: 2px;
+            line-height: 1.25;
+            margin: 0;
         }
         .banner-sub-en {
-            font-size: 13.5px;
-            color: #e0e0e0;
-            font-weight: 500;
-            letter-spacing: 0.5px;
+            font-size: 11px;
+            color: #e5e7eb;
+            margin: 0;
+            margin-top: 2px;
         }
-        
-        /* RIGHT SIDE BANNER COMPONENT FRAME */
-        .banner-right-box {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        .banner-right-logo {
-            width: 80px;
-            height: 80px;
+        .banner-right .gov-seal {
+            height: 48px;
+            width: 48px;
             object-fit: contain;
-        }
-        .national-corner-art {
-            width: 75px;
-            height: 80px;
-            border-radius: 4px;
-            object-fit: cover;
-            border: 1px solid rgba(255,255,255,0.2);
-            background: rgba(255,255,255,0.08);
-        }
-        
-        /* CENTRAL DYNAMIC CONTENT AREA */
-        .page-wrapper {
-            max-width: 1050px;
-            margin: 0 auto;
-            padding: 35px 20px;
+            border-radius: 9999px;
+            background-color: white;
+            padding: 2px;
         }
 
-        /* MAIN PORTAL ROW CONTAINER */
-        .container {
-            background: white;
-            border: 1px solid #dee2e6;
-            padding: 35px;
-            border-radius: 4px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-            position: relative;
+        /* MAIN DYNAMIC CONTENT CONTAINER */
+        .page-wrapper {
+            flex-grow: 1;
+            max-width: 56rem;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 24px 16px;
+            box-sizing: border-box;
         }
         
-        /* BOTTOM LANDSCAPE VECTOR SILHOUETTE */
-        .container::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 40px;
-            opacity: 0.05;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"><path d="M0,100 L0,80 Q50,60 100,80 T200,70 T300,90 T400,60 T500,80 T600,70 T700,85 T800,65 T900,80 T1000,70 L1000,100 Z" fill="%23000"/></svg>');
-            background-size: 100% 100%;
-            pointer-events: none;
+        .portal-heading-box {
+            border-left: 4px solid #f97316;
+            padding-left: 8px;
+            margin-bottom: 24px;
         }
-        
         .portal-subheading {
-            margin: 0 0 15px 0;
-            color: #006a4e;
-            font-size: 18px;
-            font-weight: 600;
-            border-left: 4px solid #f47920;
-            padding-left: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #374151;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin: 0;
         }
-        
-        /* SEARCH DESIGN */
-        .search {
-            margin: 25px 0;
+
+        /* VERIFICATION SEARCH BAR */
+        .search-container {
             display: flex;
-            max-width: 450px;
+            gap: 8px;
+            max-width: 28rem;
+            width: 100%;
+            margin-bottom: 24px;
         }
-        input {
-            flex: 1;
-            padding: 12px 15px;
-            font-size: 15px;
-            border: 1px solid #cccccc;
-            border-radius: 4px 0 0 4px;
+        .search-container input {
+            flex-grow: 1;
+            padding: 6px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #374151;
             outline: none;
         }
-        input:focus { border-color: #006a4e; }
-        button {
-            padding: 12px 24px;
-            background: #006a4e;
-            color: white;
-            border: 1px solid #006a4e;
-            border-radius: 0 4px 4px 0;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
+        .search-container input:focus {
+            border-color: #007a3d;
         }
-        
-        /* VERIFICATION DATA TABLE */
+        .search-container button {
+            background-color: #007a3d;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background-color 0.2s;
+        }
+        .search-container button:hover {
+            background-color: #166534;
+        }
+
+        /* DYNAMIC OUTPUT VIEWS */
+        .hidden {
+            display: none !important;
+        }
+        .space-y-6 > * + * {
+            margin-top: 24px;
+        }
+
+        /* RESULT DATA TABLE */
+        .table-responsive {
+            overflow-x: auto;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            background: white;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 25px;
-            background: #ffffff;
-            border: 1px solid #dee2e6;
+            text-align: left;
+            font-size: 12px;
+        }
+        table tr {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        table tr:last-child {
+            border-bottom: none;
         }
         table td {
-            border: 1px solid #dee2e6;
-            padding: 14px 18px;
-            font-size: 15px;
+            padding: 12px 16px;
         }
-        table tr td:first-child {
-            background: #f8f9fa;
-            color: #495057;
-            width: 30%;
+        table td.label-cell {
+            background-color: #f9fafb;
             font-weight: 600;
+            color: #4b5563;
+            width: 33.3333%;
+            border-right: 1px solid #e5e7eb;
         }
-        
-        /* OFFICIAL STATUS BADGE */
-        .status-badge {
-            background: #d1e7dd;
-            color: #0f5132;
-            padding: 5px 14px;
-            border-radius: 4px;
-            font-weight: 700;
-            font-size: 13px;
-            display: inline-block;
-            border: 1px solid #badbcc;
+        table td.value-cell {
+            font-weight: 500;
+            color: #1f2937;
         }
-        
-        /* CERTIFICATE DISPLAY */
-        .cert-img { width: 100%; max-width: 850px; margin-top: 30px; border: 1px solid #dee2e6; }
-        iframe { width: 100%; height: 850px; border: 1px solid #dee2e6; margin-top: 30px; }
-        
-        /* NOTICES */
-        .verified { margin-top: 25px; padding: 15px; background: #d1e7dd; border: 1px solid #badbcc; color: #0f5132; font-weight: 600; border-radius: 4px; }
-        .invalid { margin-top: 25px; padding: 15px; background: #f8d7da; border: 1px solid #f5c2c7; color: #842029; font-weight: 600; border-radius: 4px; }
+        table td.bold-value {
+            font-weight: bold;
+            color: #1f2937;
+        }
 
-        /* REAL NATIONAL FOOTER STRUCTURE IN ENGLISH */
-        .national-footer {
-            background: #e8ecef;
-            border-top: 1px solid #d6dbdf;
-            padding: 30px 40px;
-            color: #444;
-            font-size: 13.5px;
-            margin-top: 40px;
+        /* VERIFIED BADGE */
+        .status-badge {
+            background-color: #d1e7dd;
+            color: #0f5132;
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid #badbcc;
+            display: inline-block;
         }
-        .footer-content-inner {
-            max-width: 1050px;
-            margin: 0 auto;
+
+        /* CERTIFICATE ASSET FRAME */
+        .cert-card {
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 40px;
+            justify-content: center;
+            border: 1px solid #f3f4f6;
+            border-radius: 4px;
+            padding: 16px;
+            background-color: white;
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.05);
         }
-        .footer-left-meta {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .sitemap-link {
-            color: #555;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .last-update-text {
-            color: #666;
-            margin-top: 5px;
-        }
-        .footer-right-partners {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 12px;
-            text-align: right;
-        }
-        .partner-heading-txt {
-            font-size: 12.5px;
-            color: #555;
-            font-weight: 500;
-        }
-        .partner-logos-flex {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        .partner-logos-flex span {
-            font-size: 12.5px;
-            color: #666;
-        }
-        .agency-icon-mock {
-            height: 35px;
-            width: auto;
+        .cert-card img {
+            max-width: 100%;
+            height: auto;
             object-fit: contain;
         }
-        
-        /* MOBILE OPTIMIZATION */
-        @media(max-width:768px){
-            .top-national-bar { padding: 8px 15px; }
-            .main-gov-banner { padding: 15px; flex-direction: column; gap: 15px; text-align: center; }
-            .banner-left { flex-direction: column; gap: 10px; }
-            .banner-right-box { justify-content: center; width: 100%; }
-            .page-wrapper { padding: 15px; }
-            .container { padding: 20px; }
-            .search { flex-direction: column; max-width: 100%; gap: 10px; }
-            table tr td:first-child { width: 40%; }
-            .footer-content-inner { flex-direction: column; gap: 25px; }
-            .footer-right-partners { align-items: flex-start; text-align: left; }
+        .cert-card iframe {
+            width: 100%;
+            height: 750px;
+            border: 1px solid #e5e7eb;
+        }
+
+        /* FEEDBACK MESSAGES */
+        .error-box {
+            padding: 16px;
+            background-color: #fef2f2;
+            border: 1px solid #fca5a5;
+            color: #991b1b;
+            font-size: 14px;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: 500;
+        }
+        .success-notice {
+            padding: 16px;
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #166534;
+            font-size: 13px;
+            border-radius: 4px;
+            font-weight: 500;
+            margin-top: 15px;
+        }
+
+        /* ORIGINAL LAYOUT FOOTER WITH CUSTOM VALID BANNER */
+        footer {
+            background-color: #E9ECED;
+            padding: 20px;
+            border-top: 1px solid #dcdcdc;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: auto;
+        }
+        .footer-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .footer-table td {
+            padding: 0;
+            border: none;
+            background: none !important;
+        }
+        .footer-left {
+            text-align: left;
+            vertical-align: top;
+            width: 50%;
+        }
+        .footer-right {
+            text-align: right;
+            vertical-align: top;
+            width: 50%;
+        }
+        .footer-title {
+            margin: 0 0 5px 0;
+            font-weight: bold;
+            color: #555;
+            font-size: 13px;
+        }
+        .footer-update-txt {
+            margin: 0 0 5px 0;
+            color: #666;
+            font-size: 12px;
+        }
+        .footer-copyright {
+            margin: 0;
+            color: #777;
+            font-size: 11px;
+        }
+        .footer-partner-txt {
+            margin: 0 0 8px 0;
+            color: #444;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .support-wrapper {
+            display: inline-block;
+            text-align: right;
+        }
+        .support-title {
+            margin: 0 5px 3px 0;
+            color: #666;
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .support-banner-img {
+            height: 38px;
+            display: inline-block;
+            vertical-align: middle;
+            mix-blend-mode: multiply;
+        }
+
+        /* RESPONSIVE LAYOUT */
+        @media (max-width: 768px) {
+            .main-gov-banner {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+            .banner-left {
+                flex-direction: column;
+            }
+            table td.label-cell {
+                width: 40%;
+            }
+            .footer-table td {
+                display: block;
+                width: 100% !important;
+                text-align: center !important;
+            }
+            .footer-right {
+                margin-top: 20px;
+            }
+            .support-wrapper {
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- TOP NATIONAL ANNOUNCEMENT BAR -->
     <div class="top-national-bar">
-        <span class="left-txt">National Web Portal</span>
-        <span class="right-lang">বাংলা</span>
+        <div class="left-txt">National Web Portal</div>
+        <div class="right-lang">বাংলা</div>
     </div>
 
-    <!-- MAIN DPDT BANNER WITH DUAL CORNER ART CORES -->
     <div class="main-gov-banner">
         <div class="banner-left">
-            <img src="seal.png" alt="BD Government Seal" class="gov-seal">
+            <img src="logo.jpeg" alt="Gov Logo" class="gov-logo">
             <div class="banner-text-block">
-                <span class="banner-title-en">Department of Patents, Designs & Trademarks</span>
-                <span class="banner-sub-en">Government of the People's Republic of Bangladesh</span>
+                <h1 class="banner-title-en">Department of Patents, Designs & Trademarks</h1>
+                <p class="banner-sub-en">Government of the People's Republic of Bangladesh</p>
             </div>
         </div>
-        
-        <div class="banner-right-box">
-            <img src="logo.jpeg" alt="DPDT Logo" class="banner-right-logo" onerror="this.style.display='none'">
-            <img src="mujib_corner.png" alt="" class="national-corner-art" onerror="this.style.display='none'">
+        <div class="banner-right">
+            <img src="seal.png" alt="Right Seal" class="gov-seal">
         </div>
     </div>
 
-    <!-- CENTRAL LAYOUT WRAPPER GRID -->
     <div class="page-wrapper">
-        <!-- MAIN CORE CONTAINER -->
-        <div class="container">
-            <h3 class="portal-subheading">Trademark Verification Portal</h3>
-            <hr style="border: 0; border-top: 1px solid #eee; margin-bottom: 20px;">
-
-            <div class="search">
-                <input type="text" id="tm" placeholder="Enter Trademark Number">
-                <button onclick="searchTM()">Verify</button>
-            </div>
-
-            <div id="result"></div>
+        
+        <div class="portal-heading-box">
+            <h2 class="portal-subheading">Trademark Verification Portal</h2>
         </div>
-    </div>
 
-    <!-- INTELLECTUAL MULTI-AGENCY NATIONAL FOOTER -->
-    <div class="national-footer">
-        <div class="footer-content-inner">
-            
-            <div class="footer-left-meta">
-                <div>
-                    <a href="#" class="sitemap-link">Sitemap</a>
-                </div>
-                <div class="last-update-text">
-                    Site last updated: <span style="font-weight: 500;" id="last-update-placeholder"></span>
-                </div>
-                <div style="font-size:12px; color:#777; margin-top:5px;">
-                    © 2026 Department of Patents, Designs & Trademarks | All Rights Reserved.
-                </div>
-            </div>
-            
-            <div class="footer-right-partners">
-                <div class="partner-heading-txt">Planning and Implementation: Cabinet Division, a2i, BCC, DoICT & BASIS.</div>
-                <div class="partner-logos-flex">
-                    <span>Technical Support:</span>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/A2i_logo.svg" class="agency-icon-mock" alt="a2i">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Government_Seal_of_Bangladesh.svg" class="agency-icon-mock" alt="Cabinet Division">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/ICT_Division_Bangladesh_Logo.svg" class="agency-icon-mock" alt="ICT Division" onerror="this.style.display='none'">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/UNDP_logo.svg" class="agency-icon-mock" alt="UNDP">
-                </div>
-            </div>
-
+        <div class="search-container">
+            <input type="text" id="regNumber" placeholder="Enter Trademark Number">
+            <button onclick="searchTM()">Verify</button>
         </div>
-    </div>
 
-<script>
-    /* REALTIME DYNAMIC CLOCK LOGIC INTEGRATION */
-    function updateSiteTimestamp() {
-        const currentDateTime = new Date();
-        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        
-        const hours = String(currentDateTime.getHours()).padStart(2, '0');
-        const minutes = String(currentDateTime.getMinutes()).padStart(2, '0');
-        const seconds = String(currentDateTime.getSeconds()).padStart(2, '0');
-        
-        const formattedDate = currentDateTime.toLocaleDateString('en-US', dateOptions);
-        const formattedTime = `${hours}:${minutes}:${seconds}`;
-        
-        document.getElementById("last-update-placeholder").innerText = `${formattedDate} ${formattedTime}`;
-    }
+        <div id="verificationResult" class="hidden space-y-6">
+            
+            <div class="table-responsive">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="label-cell">Trademark Number</td>
+                            <td id="resNum" class="value-cell" style="font-weight: 600;"></td>
+                        </tr>
+                        <tr>
+                            <td class="label-cell">Owner / Brand Name</td>
+                            <td id="resName" class="bold-value" style="font-size: 14px;"></td>
+                        </tr>
+                        <tr>
+                            <td class="label-cell">Filing/Application Date</td>
+                            <td id="resDate" class="value-cell"></td>
+                        </tr>
+                        <tr>
+                            <td class="label-cell">Status</td>
+                            <td class="value-cell">
+                                <span class="status-badge">✓ Verified</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label-cell">Authority</td>
+                            <td id="resAuth" class="value-cell" style="color: #4b5563;"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-    // Initialize immediate execution
-    updateSiteTimestamp();
-    // Maintain rolling ticker interval sequence
-    setInterval(updateSiteTimestamp, 1000);
+            <div id="assetContainer" class="cert-card"></div>
 
-    /* SEARCH FUNCTION - MODIFIED TO REG_NO */
-    function searchTM(){
-        let id = document.getElementById("tm").value.trim();
-        if(id){
-            window.location.href = "?reg_no=" + id;
-        }
-    }
-
-    /* CAPTURE REG_NO PROPERTY INSTEAD OF ID */
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("reg_no");
-
-    if(id){
-        document.getElementById("tm").value = id;
-        loadTrademarkData(id);
-    }
-
-    function loadTrademarkData(tmId) {
-        fetch('data.json')
-            .then(response => response.json())
-            .then(data => {
-                if (data[tmId]) {
-                    let tmDetails = data[tmId];
-                    let appDate = tmDetails.application_date || "08/12/2015";
-                    checkFilesAndShow(tmId, tmDetails.name, tmDetails.authority, appDate);
-                } else {
-                    showInvalid();
-                }
-            })
-            .catch(() => showInvalid());
-    }
-
-    function checkFilesAndShow(tmId, ownerName, authorityName, appDate) {
-        let imgUrl = tmId + ".jpg";
-        let img = new Image();
-        
-        img.onload = function() {
-            showVerifiedHTML(tmId, ownerName, authorityName, appDate, `<img class="cert-img" src="${imgUrl}">`);
-        };
-        
-        img.onerror = function() {
-            let pdfUrl = tmId + ".pdf";
-            fetch(pdfUrl)
-                .then(response => {
-                    if (response.ok) {
-                        showVerifiedHTML(tmId, ownerName, authorityName, appDate, `<iframe src="${pdfUrl}"></iframe>`);
-                    } else {
-                        showVerifiedHTML(tmId, ownerName, authorityName, appDate, '');
-                    }
-                })
-                .catch(() => showVerifiedHTML(tmId, ownerName, authorityName, appDate, ''));
-        };
-        img.src = imgUrl;
-    }
-
-    function showVerifiedHTML(tmId, ownerName, authorityName, appDate, displayContent) {
-        document.getElementById("result").innerHTML = `
-            <table>
-                <tr>
-                    <td>Trademark Number</td>
-                    <td style="font-weight: 600; color: #111;">${tmId}</td>
-                </tr>
-                <tr>
-                    <td>Owner / Brand Name</td>
-                    <td style="font-weight: 700; color: #000; font-size: 15.5px;">${ownerName}</td>
-                </tr>
-                <tr>
-                    <td>Filing/Application Date</td>
-                    <td style="color: #444;">${appDate}</td>
-                </tr>
-                <tr>
-                    <td>Status</td>
-                    <td><span class="status-badge">✔ VERIFIED</span></td>
-                </tr>
-                <tr>
-                    <td>Authority</td>
-                    <td style="color: #444;">${authorityName}</td>
-                </tr>
-            </table>
-            ${displayContent}
-            <div class="verified">
+            <div class="success-notice">
                 ✔ This trademark certificate has been verified successfully against the national intellectual property database index.
             </div>
-        `;
-    }
 
-    function showInvalid() {
-        document.getElementById("result").innerHTML = `
-            <div class="invalid">
-                ❌ Invalid Trademark Number. No active records matching this identity were found in the national registry.
-            </div>
-        `;
-    }
-</script>
+        </div>
+
+        <div id="errorResult" class="hidden error-box">
+            ✗ This Trademark / Application number is not registered in our system.
+        </div>
+
+    </div>
+
+    <footer>
+        <table class="footer-table">
+            <tr>
+                <td class="footer-left">
+                    <p class="footer-title">Sitemap</p>
+                    <p class="footer-update-txt">Site last updated: <span id="last-update-placeholder"></span></p>
+                    <p class="footer-copyright">&copy; 2026 Department of Patents, Designs & Trademarks | All Rights Reserved.</p>
+                </td>
+                
+                <td class="footer-right">
+                    <p class="footer-partner-txt">
+                        Planning and Implementation: Cabinet Division, a2i, BCC, DoICT & BASIS.
+                    </p>
+                    <div class="support-wrapper">
+                        <p class="support-title">Technical Support:</p>
+                        <img src="footer-banner.png" alt="Technical Support" class="support-banner-img">
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </footer>
+
+    <script>
+        /* REALTIME DYNAMIC CLOCK REFRESH IN FOOTER */
+        function updateSiteTimestamp() {
+            const currentDateTime = new Date();
+            const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            
+            const hours = String(currentDateTime.getHours()).padStart(2, '0');
+            const minutes = String(currentDateTime.getMinutes()).padStart(2, '0');
+            const seconds = String(currentDateTime.getSeconds()).padStart(2, '0');
+            
+            const formattedDate = currentDateTime.toLocaleDateString('en-US', dateOptions);
+            const formattedTime = `${hours}:${minutes}:${seconds}`;
+            
+            const placeholder = document.getElementById("last-update-placeholder");
+            if(placeholder) {
+                placeholder.innerText = `${formattedDate} ${formattedTime}`;
+            }
+        }
+
+        // Initialize immediate execution and register step ticks
+        updateSiteTimestamp();
+        setInterval(updateSiteTimestamp, 1000);
+
+        /* FORM SUBMIT ACTION -> REDIRECT QUERY ROUTING */
+        function searchTM() {
+            const regNo = document.getElementById('regNumber').value.trim();
+            if (!regNo) {
+                alert('Please enter a number!');
+                return;
+            }
+            window.location.href = "?reg_no=" + regNo;
+        }
+
+        /* MAIN ROUTING CONTROLLER ON PAGE LOAD */
+        window.onload = function() {
+            updateSiteTimestamp();
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            const regParam = urlParams.get('reg_no') || urlParams.get('regNo');
+            
+            if (regParam) {
+                document.getElementById('regNumber').value = regParam;
+                verifyTrademark(regParam);
+            }
+        }
+
+        /* CORE ASYNC DATA FETCH & VISUAL RENDERING ROUTINE */
+        async function verifyTrademark(regNo) {
+            const tableResult = document.getElementById('verificationResult');
+            const errorResult = document.getElementById('errorResult');
+            const assetContainer = document.getElementById('assetContainer');
+            
+            try {
+                const response = await fetch('data.json');
+                const data = await response.json();
+
+                if (data[regNo]) {
+                    const info = data[regNo];
+                    errorResult.classList.add('hidden');
+                    tableResult.classList.remove('hidden');
+                    
+                    // Inject live text records into table data cells
+                    document.getElementById('resNum').innerText = regNo;
+                    document.getElementById('resName').innerText = info.name;
+                    document.getElementById('resDate').innerText = info.application_date || "08/12/2015";
+                    document.getElementById('resAuth').innerText = info.authority;
+                    
+                    // Route and resolve verification assets (Checks JPG first, falls back to PDF)
+                    resolveCertificateAsset(regNo, assetContainer);
+                } else {
+                    tableResult.classList.add('hidden');
+                    errorResult.classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error('Database Layer Error:', error);
+                alert('Database could not be loaded. Please ensure data.json structure is valid.');
+            }
+        }
+
+        /* FILE EXTENSION LAYER RESOLVER */
+        function resolveCertificateAsset(regNo, container) {
+            const imgUrl = regNo + ".jpg";
+            const imgChecker = new Image();
+            
+            // If image variant is matching inside directory
+            imgChecker.onload = function() {
+                container.innerHTML = `<img src="${imgUrl}" alt="Trademark Certificate">`;
+            };
+            
+            // Error fallback: check for matching PDF document availability
+            imgChecker.onerror = function() {
+                const pdfUrl = regNo + ".pdf";
+                fetch(pdfUrl)
+                    .then(response => {
+                        if (response.ok) {
+                            container.innerHTML = `<iframe src="${pdfUrl}"></iframe>`;
+                        } else {
+                            container.innerHTML = `<p style="font-size:13px; color:#666;">Certificate document preview is currently unavailable.</p>`;
+                        }
+                    })
+                    .catch(() => {
+                        container.innerHTML = `<p style="font-size:13px; color:#666;">Certificate document preview is currently unavailable.</p>`;
+                    });
+            };
+            
+            imgChecker.src = imgUrl;
+        }
+    </script>
 
 </body>
 </html>

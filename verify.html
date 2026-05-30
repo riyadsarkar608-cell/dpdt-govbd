@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trademark Verification Portal</title>
+    <title>Department of Patents, Designs & Trademarks</title>
     <style>
         /* GLOBAL STRUCTURE WITH ORIGINAL GOVT SIDE ARTWORK LINES */
         body {
@@ -19,7 +19,7 @@
             background-attachment: fixed;
             display: flex;
             flex-direction: column;
-            min-h: 100vh;
+            min-height: 100vh;
         }
 
         /* TOP NATIONAL WEB PORTAL GREEN BAR */
@@ -53,13 +53,13 @@
         .banner-left {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 16px;
         }
+        /* Fixed Logo dimension ratio aspect without squeezing */
         .banner-left .gov-logo {
-            height: 48px;
-            width: 48px;
+            height: 52px;
+            width: auto;
             object-fit: contain;
-            border-radius: 9999px;
         }
         .banner-text-block {
             display: flex;
@@ -348,11 +348,13 @@
 </head>
 <body>
 
+    <!-- Top National Web Portal Green Bar -->
     <div class="top-national-bar">
         <div class="left-txt">National Web Portal</div>
         <div class="right-lang">বাংলা</div>
     </div>
 
+    <!-- Header Section with Logo and Department Name -->
     <div class="main-gov-banner">
         <div class="banner-left">
             <img src="logo.jpeg" alt="Gov Logo" class="gov-logo">
@@ -366,19 +368,23 @@
         </div>
     </div>
 
+    <!-- Main Dynamic Content Container -->
     <div class="page-wrapper">
         
         <div class="portal-heading-box">
             <h2 class="portal-subheading">Trademark Verification Portal</h2>
         </div>
 
+        <!-- Verification Search Bar -->
         <div class="search-container">
-            <input type="text" id="regNumber" placeholder="Enter Trademark Number">
+            <input type="text" id="tm" placeholder="Enter Trademark Number">
             <button onclick="searchTM()">Verify</button>
         </div>
 
+        <!-- Dynamic Output Container (Table + Asset Render) -->
         <div id="verificationResult" class="hidden space-y-6">
             
+            <!-- Result Table Info -->
             <div class="table-responsive">
                 <table>
                     <tbody>
@@ -408,29 +414,35 @@
                 </table>
             </div>
 
+            <!-- Dynamic Registered Certificate/PDF Render Frame -->
             <div id="assetContainer" class="cert-card"></div>
 
+            <!-- Success Feed Text -->
             <div class="success-notice">
                 ✔ This trademark certificate has been verified successfully against the national intellectual property database index.
             </div>
 
         </div>
 
+        <!-- Error Message View -->
         <div id="errorResult" class="hidden error-box">
             ✗ This Trademark / Application number is not registered in our system.
         </div>
 
     </div>
 
+    <!-- Original Layout Footer with Custom Valid Banner -->
     <footer>
         <table class="footer-table">
             <tr>
+                <!-- Left Footers -->
                 <td class="footer-left">
                     <p class="footer-title">Sitemap</p>
                     <p class="footer-update-txt">Site last updated: <span id="last-update-placeholder"></span></p>
                     <p class="footer-copyright">&copy; 2026 Department of Patents, Designs & Trademarks | All Rights Reserved.</p>
                 </td>
                 
+                <!-- Right Footers -->
                 <td class="footer-right">
                     <p class="footer-partner-txt">
                         Planning and Implementation: Cabinet Division, a2i, BCC, DoICT & BASIS.
@@ -444,6 +456,7 @@
         </table>
     </footer>
 
+    <!-- JavaScript logic matching data.json to render matching UI elements -->
     <script>
         /* REALTIME DYNAMIC CLOCK REFRESH IN FOOTER */
         function updateSiteTimestamp() {
@@ -469,7 +482,7 @@
 
         /* FORM SUBMIT ACTION -> REDIRECT QUERY ROUTING */
         function searchTM() {
-            const regNo = document.getElementById('regNumber').value.trim();
+            const regNo = document.getElementById('tm').value.trim();
             if (!regNo) {
                 alert('Please enter a number!');
                 return;
@@ -485,7 +498,7 @@
             const regParam = urlParams.get('reg_no') || urlParams.get('regNo');
             
             if (regParam) {
-                document.getElementById('regNumber').value = regParam;
+                document.getElementById('tm').value = regParam;
                 verifyTrademark(regParam);
             }
         }

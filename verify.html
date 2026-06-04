@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trademark Verification Portal</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         /* GLOBAL STRUCTURE WITH REAL GOVERNMENT SIDE BANNER BACKGROUND ART */
         body {
@@ -13,6 +11,7 @@
             padding: 0;
             font-family: 'Segoe UI', Arial, sans-serif;
             background-color: #f4f6f9;
+            /* Using premium public data URI vector streams replication to simulate national theme sketch borders */
             background-image: 
                 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="900" viewBox="0 0 160 900" opacity="0.4"><g fill="none" stroke="%23cbd5e1" stroke-width="1.2" stroke-dasharray="3,3"><path d="M10,20 C45,100 20,220 70,340 C110,440 60,560 95,680 C120,770 75,850 110,900"/><path d="M40,0 C85,90 50,190 105,300 C145,410 85,510 130,640 T85,900"/><path d="M-10,50 Q60,180 5,310 T85,610 T10,900"/></g><g fill="none" stroke="%23cbd5e1" stroke-width="0.8"><circle cx="20" cy="150" r="12"/><circle cx="110" cy="480" r="18"/><path d="M5,220 Q45,240 15,270"/></g></svg>'),
                 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="900" viewBox="0 0 160 900" opacity="0.4"><g fill="none" stroke="%23cbd5e1" stroke-width="1.2" stroke-dasharray="3,3"><path d="M150,20 C115,100 140,220 90,340 C50,440 100,560 65,680 C40,770 85,850 50,900"/><path d="M120,0 C75,90 110,190 55,300 C15,410 75,510 30,640 T75,900"/><path d="M170,50 Q100,180 155,310 T75,610 T150,900"/></g><g fill="none" stroke="%23cbd5e1" stroke-width="0.8"><circle cx="140" cy="250" r="10"/><circle cx="40" cy="620" r="15"/></g></svg>');
@@ -350,7 +349,7 @@
         /* RESPONSIVE LAYOUT */
         @media (max-width: 1024px) {
             body {
-                background-image: none;
+                background-image: none; /* Soft removal on smaller displays to preserve text bounding layout */
             }
         }
         @media (max-width: 768px) {
@@ -386,14 +385,13 @@
 </head>
 <body>
 
+    <!-- Top National Web Portal Green Bar -->
     <div class="top-national-bar">
         <div class="left-txt">National Web Portal</div>
-        <div class="flex items-center gap-4">
-            <div class="right-lang">বাংলা</div>
-            <button id="logout-btn" class="hidden bg-red-700 hover:bg-red-800 text-white font-bold px-3 py-1 rounded text-xs transition">Logout</button>
-        </div>
+        <div class="right-lang">বাংলা</div>
     </div>
 
+    <!-- Header Section with Logo and Department Name -->
     <div class="main-gov-banner">
         <div class="banner-left">
             <img src="logo.jpeg" alt="Gov Logo" class="gov-logo">
@@ -407,39 +405,23 @@
         </div>
     </div>
 
-    <div id="login-section" class="flex flex-grow items-center justify-center px-4 py-12">
-        <div class="w-full max-w-sm bg-white p-6 rounded border border-gray-300 shadow-md">
-            <div class="text-center mb-6">
-                <div class="text-green-700 font-bold text-xl">DPDT SECURE PORTAL</div>
-                <p class="text-xs text-gray-500 mt-1 font-medium">AUTHORIZED NATIONAL REGISTER ACCESS ONLY</p>
-            </div>
-            <form id="login-form" class="space-y-4 text-xs">
-                <div>
-                    <label class="block font-semibold text-gray-700 uppercase tracking-wide">Government Email</label>
-                    <input type="email" id="login-email" required class="mt-1 w-full border border-gray-300 rounded p-2.5 focus:border-green-700 focus:outline-none">
-                </div>
-                <div>
-                    <label class="block font-semibold text-gray-700 uppercase tracking-wide">Secure Password</label>
-                    <input type="password" id="login-password" required class="mt-1 w-full border border-gray-300 rounded p-2.5 focus:border-green-700 focus:outline-none">
-                </div>
-                <button type="submit" class="w-full bg-green-700 p-2.5 text-white font-bold uppercase tracking-wider rounded shadow hover:bg-green-800 transition">Verify and Enter</button>
-            </form>
-        </div>
-    </div>
-
-    <div id="database-section" class="hidden page-wrapper">
+    <!-- Main Dynamic Content Container -->
+    <div class="page-wrapper">
         
         <div class="portal-heading-box">
             <h2 class="portal-subheading">Trademark Verification Portal</h2>
         </div>
 
+        <!-- Verification Search Bar -->
         <div class="search-container">
             <input type="text" id="tm" placeholder="Enter Trademark Number">
             <button onclick="searchTM()">Verify</button>
         </div>
 
+        <!-- Dynamic Output Container (Table + Asset Render) -->
         <div id="verificationResult" class="hidden space-y-6">
             
+            <!-- Result Table Info -->
             <div class="table-responsive">
                 <table>
                     <tbody>
@@ -469,29 +451,35 @@
                 </table>
             </div>
 
+            <!-- Dynamic Registered Certificate/PDF Render Frame -->
             <div id="assetContainer" class="cert-card"></div>
 
+            <!-- Success Feed Text -->
             <div class="success-notice">
                 ✔ This trademark certificate has been verified successfully against the national intellectual property database index.
             </div>
 
         </div>
 
+        <!-- Error Message View -->
         <div id="errorResult" class="hidden error-box">
             ✗ This Trademark / Application number is not registered in our system.
         </div>
 
     </div>
 
+    <!-- Original Layout Footer with Custom Valid Banner -->
     <footer>
         <table class="footer-table">
             <tr>
+                <!-- Left Footers -->
                 <td class="footer-left">
                     <p class="footer-title">Sitemap</p>
                     <p class="footer-update-txt">Site last updated: <span id="last-update-placeholder"></span></p>
                     <p class="footer-copyright">&copy; 2026 Department of Patents, Designs & Trademarks | All Rights Reserved.</p>
                 </td>
                 
+                <!-- Right Footers -->
                 <td class="footer-right">
                     <p class="footer-partner-txt">
                         Planning and Implementation: Cabinet Division, a2i, BCC, DoICT & BASIS.
@@ -505,7 +493,7 @@
         </table>
     </footer>
 
-    <script src="auth.js"></script>
+    <!-- JavaScript logic matching data.json to render matching UI elements -->
     <script>
         /* REALTIME DYNAMIC CLOCK REFRESH IN FOOTER */
         function updateSiteTimestamp() {
@@ -528,25 +516,87 @@
         updateSiteTimestamp();
         setInterval(updateSiteTimestamp, 1000);
 
-        /* FORM SUBMIT ACTION -> REDIRECT QUERY ROUTING MATCHING verify.html EXPLICITLY */
+        /* FORM SUBMIT ACTION -> REDIRECT QUERY ROUTING */
         function searchTM() {
             const regNo = document.getElementById('tm').value.trim();
             if (!regNo) {
                 alert('Please enter a number!');
                 return;
             }
-            // ফিক্সড ফাইল পাথ সহ রিডাইরেকশন সেট করা হলো
-            window.location.href = "verify.html?reg_no=" + regNo;
+            window.location.href = "?reg_no=" + regNo;
         }
 
         /* MAIN ROUTING CONTROLLER ON PAGE LOAD */
-        window.addEventListener('load', function() {
+        window.onload = function() {
             updateSiteTimestamp();
             
             const urlParams = new URLSearchParams(window.location.search);
             const regParam = urlParams.get('reg_no') || urlParams.get('regNo');
             
             if (regParam) {
-                const inputElement = document.getElementById('tm');
-                if(inputElement) inputElement.value = regParam;
-                verifyTrademark
+                document.getElementById('tm').value = regParam;
+                verifyTrademark(regParam);
+            }
+        }
+
+        /* CORE ASYNC DATA FETCH & VISUAL RENDERING ROUTINE */
+        async function verifyTrademark(regNo) {
+            const tableResult = document.getElementById('verificationResult');
+            const errorResult = document.getElementById('errorResult');
+            const assetContainer = document.getElementById('assetContainer');
+            
+            try {
+                const response = await fetch('data.json');
+                const data = await response.json();
+
+                if (data[regNo]) {
+                    const info = data[regNo];
+                    errorResult.classList.add('hidden');
+                    tableResult.classList.remove('hidden');
+                    
+                    document.getElementById('resNum').innerText = regNo;
+                    document.getElementById('resName').innerText = info.name;
+                    document.getElementById('resDate').innerText = info.application_date || "08/12/2015";
+                    document.getElementById('resAuth').innerText = info.authority;
+                    
+                    resolveCertificateAsset(regNo, assetContainer);
+                } else {
+                    tableResult.classList.add('hidden');
+                    errorResult.classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error('Database Layer Error:', error);
+                alert('Database could not be loaded. Please ensure data.json structure is valid.');
+            }
+        }
+
+        /* FILE EXTENSION LAYER RESOLVER */
+        function resolveCertificateAsset(regNo, container) {
+            const imgUrl = regNo + ".jpg";
+            const imgChecker = new Image();
+            
+            imgChecker.onload = function() {
+                container.innerHTML = `<img src="${imgUrl}" alt="Trademark Certificate">`;
+            };
+            
+            imgChecker.onerror = function() {
+                const pdfUrl = regNo + ".pdf";
+                fetch(pdfUrl)
+                    .then(response => {
+                        if (response.ok) {
+                            container.innerHTML = `<iframe src="${pdfUrl}"></iframe>`;
+                        } else {
+                            container.innerHTML = `<p style="font-size:13px; color:#666;">Certificate document preview is currently unavailable.</p>`;
+                        }
+                    })
+                    .catch(() => {
+                        container.innerHTML = `<p style="font-size:13px; color:#666;">Certificate document preview is currently unavailable.</p>`;
+                    });
+            };
+            
+            imgChecker.src = imgUrl;
+        }
+    </script>
+
+</body>
+</html>

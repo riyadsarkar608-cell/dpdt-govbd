@@ -235,9 +235,7 @@
         /* CERTIFICATE ASSET FRAME */
         .cert-card {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
+            justify-content: center;
             border: 1px solid #dee2e6;
             border-radius: 4px;
             padding: 16px;
@@ -392,7 +390,7 @@
         <div class="left-txt">National Web Portal</div>
         <div class="flex items-center gap-4">
             <div class="right-lang">বাংলা</div>
-            <button id="logout-btn" class="hidden bg-red-700 hover:bg-red-800 text-white font-bold px-2.5 py-0.5 rounded text-[11px] transition">Logout</button>
+            <button id="logout-btn" class="hidden bg-red-700 hover:bg-red-800 text-white font-bold px-3 py-1 rounded text-xs transition">Logout</button>
         </div>
     </div>
 
@@ -413,7 +411,7 @@
         <div class="w-full max-w-sm bg-white p-6 rounded border border-gray-300 shadow-md">
             <div class="text-center mb-6">
                 <div class="text-green-700 font-bold text-xl">DPDT SECURE PORTAL</div>
-                <p class="text-xs text-gray-500 mt-1 font-medium">AUTHORIZED NATIONAL REGISTER ACCESS Only</p>
+                <p class="text-xs text-gray-500 mt-1 font-medium">AUTHORIZED NATIONAL REGISTER ACCESS ONLY</p>
             </div>
             <form id="login-form" class="space-y-4 text-xs">
                 <div>
@@ -530,14 +528,15 @@
         updateSiteTimestamp();
         setInterval(updateSiteTimestamp, 1000);
 
-        /* FORM SUBMIT ACTION -> REDIRECT QUERY ROUTING */
+        /* FORM SUBMIT ACTION -> REDIRECT QUERY ROUTING MATCHING verify.html EXPLICITLY */
         function searchTM() {
             const regNo = document.getElementById('tm').value.trim();
             if (!regNo) {
                 alert('Please enter a number!');
                 return;
             }
-            window.location.href = "?reg_no=" + regNo;
+            // ফিক্সড ফাইল পাথ সহ রিডাইরেকশন সেট করা হলো
+            window.location.href = "verify.html?reg_no=" + regNo;
         }
 
         /* MAIN ROUTING CONTROLLER ON PAGE LOAD */
@@ -550,68 +549,4 @@
             if (regParam) {
                 const inputElement = document.getElementById('tm');
                 if(inputElement) inputElement.value = regParam;
-                verifyTrademark(regParam);
-            }
-        });
-
-        /* CORE ASYNC DATA FETCH & VISUAL RENDERING ROUTINE */
-        async function verifyTrademark(regNo) {
-            const tableResult = document.getElementById('verificationResult');
-            const errorResult = document.getElementById('errorResult');
-            const assetContainer = document.getElementById('assetContainer');
-            
-            try {
-                const response = await fetch('data.json');
-                const data = await response.json();
-
-                if (data[regNo]) {
-                    const info = data[regNo];
-                    errorResult.classList.add('hidden');
-                    tableResult.classList.remove('hidden');
-                    
-                    document.getElementById('resNum').innerText = regNo;
-                    document.getElementById('resName').innerText = info.name;
-                    document.getElementById('resDate').innerText = info.application_date || "08/12/2015";
-                    document.getElementById('resAuth').innerText = info.authority;
-                    
-                    resolveCertificateAsset(regNo, assetContainer);
-                } else {
-                    tableResult.classList.add('hidden');
-                    errorResult.classList.remove('hidden');
-                }
-            } catch (error) {
-                console.error('Database Layer Error:', error);
-                alert('Database could not be loaded. Please ensure data.json structure is valid.');
-            }
-        }
-
-        /* FILE EXTENSION LAYER RESOLVER */
-        function resolveCertificateAsset(regNo, container) {
-            const imgUrl = regNo + ".jpg";
-            const imgChecker = new Image();
-            
-            imgChecker.onload = function() {
-                container.innerHTML = `<img src="${imgUrl}" alt="Trademark Certificate">`;
-            };
-            
-            imgChecker.onerror = function() {
-                const pdfUrl = regNo + ".pdf";
-                fetch(pdfUrl)
-                    .then(response => {
-                        if (response.ok) {
-                            container.innerHTML = `<iframe src="${pdfUrl}"></iframe>`;
-                        } else {
-                            container.innerHTML = `<p style="font-size:13px; color:#666;">Certificate document preview is currently unavailable.</p>`;
-                        }
-                    })
-                    .catch(() => {
-                        container.innerHTML = `<p style="font-size:13px; color:#666;">Certificate document preview is currently unavailable.</p>`;
-                    });
-            };
-            
-            imgChecker.src = imgUrl;
-        }
-    </script>
-
-</body>
-</html>
+                verifyTrademark

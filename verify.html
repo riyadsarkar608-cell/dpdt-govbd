@@ -263,7 +263,7 @@
         }
 
         /* ═══════════════════════════════════════════════════
-           PRIMARY NAVIGATION BAR (NEW - HORIZONTAL TABS)
+           PRIMARY NAVIGATION BAR
         ═══════════════════════════════════════════════════ */
         .primary-nav-bar {
             background: var(--gov-green);
@@ -330,7 +330,6 @@
         .nav-item svg { opacity: 0.75; }
         .nav-item.active svg { opacity: 1; }
 
-        /* Separator dot between nav items */
         .nav-sep {
             width: 1px;
             background: rgba(255,255,255,0.12);
@@ -450,7 +449,7 @@
         .info-notice svg { flex-shrink: 0; margin-top: 1px; }
 
         /* ═══════════════════════════════════════════════════
-           SEARCH SECTION — STYLED AS AN OFFICIAL FORM
+           SEARCH SECTION
         ═══════════════════════════════════════════════════ */
         .search-panel {
             background: var(--bg-white);
@@ -567,7 +566,7 @@
         }
 
         /* ═══════════════════════════════════════════════════
-           VERIFICATION RESULT — OFFICIAL DOC STYLE
+           VERIFICATION RESULT
         ═══════════════════════════════════════════════════ */
         .hidden { display: none !important; }
 
@@ -940,7 +939,7 @@
         .fee-note-box strong { display: block; margin-bottom: 4px; color: #92400e; }
 
         /* ═══════════════════════════════════════════════════
-           CONTACT / EMERGENCY HOTLINES VIEW  (জরুরি যোগাযোগ)
+           CONTACT VIEW
         ═══════════════════════════════════════════════════ */
         .contact-grid {
             display: grid;
@@ -1119,6 +1118,362 @@
         .contact-dpdt-value a:hover { text-decoration: underline; }
 
         /* ═══════════════════════════════════════════════════
+           BD NID SERVER — BADGE/PROFILE ENGINE STYLES
+        ═══════════════════════════════════════════════════ */
+
+        /* ── NID Engine Wrapper ── */
+        .nid-engine-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* ── NID Upload Zone ── */
+        .nid-upload-zone {
+            background: var(--bg-white);
+            border: 2px dashed var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 32px 24px;
+            text-align: center;
+            transition: border-color 0.2s, background 0.2s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .nid-upload-zone:hover,
+        .nid-upload-zone.drag-over {
+            border-color: var(--gov-green);
+            background: var(--gov-green-light);
+        }
+
+        .nid-upload-zone input[type="file"] {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+        }
+
+        .nid-upload-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 12px;
+            background: var(--gov-green-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nid-upload-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .nid-upload-hint {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* ── NID Two-column layout: canvas + controls ── */
+        .nid-editor-layout {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        /* ── NID Canvas Area ── */
+        .nid-canvas-panel {
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+
+        .nid-canvas-panel-header {
+            background: linear-gradient(90deg, var(--gov-green-dark), var(--gov-green));
+            color: white;
+            padding: 11px 18px;
+            font-size: 12.5px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .nid-canvas-body {
+            padding: 16px;
+            background: #2a2a2a;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 300px;
+            position: relative;
+        }
+
+        .nid-canvas-body canvas {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .nid-canvas-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: rgba(255,255,255,0.35);
+            padding: 48px 24px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .nid-canvas-placeholder svg {
+            opacity: 0.25;
+        }
+
+        /* ── NID Controls Panel ── */
+        .nid-controls-panel {
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            position: sticky;
+            top: 72px;
+            max-height: calc(100vh - 90px);
+            overflow-y: auto;
+        }
+
+        .nid-controls-header {
+            background: linear-gradient(90deg, var(--gov-green-dark), var(--gov-green));
+            color: white;
+            padding: 11px 16px;
+            font-size: 12.5px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: sticky;
+            top: 0;
+            z-index: 2;
+        }
+
+        /* ── NID Control Group ── */
+        .nid-ctrl-group {
+            border-bottom: 1px solid var(--border-color);
+            padding: 14px 16px;
+        }
+
+        .nid-ctrl-group:last-child { border-bottom: none; }
+
+        .nid-ctrl-group-label {
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gov-orange);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nid-ctrl-group-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+        }
+
+        /* ── NID Slider Row ── */
+        .nid-ctrl-row {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-bottom: 10px;
+        }
+
+        .nid-ctrl-row:last-child { margin-bottom: 0; }
+
+        .nid-ctrl-row-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 6px;
+        }
+
+        .nid-ctrl-key {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        /* NID pixel input box */
+        .nid-px-input {
+            width: 62px;
+            padding: 3px 6px;
+            border: 1.5px solid var(--border-color);
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 700;
+            font-family: 'Courier New', monospace;
+            color: var(--gov-green-dark);
+            text-align: right;
+            outline: none;
+            flex-shrink: 0;
+            transition: border-color 0.15s, box-shadow 0.15s;
+        }
+
+        .nid-px-input:focus {
+            border-color: var(--gov-green);
+            box-shadow: 0 0 0 2px rgba(0,106,78,0.12);
+        }
+
+        /* NID Range Slider */
+        .nid-range {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 4px;
+            border-radius: 2px;
+            background: var(--border-color);
+            outline: none;
+            cursor: pointer;
+        }
+
+        .nid-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--gov-green);
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 1px 4px rgba(0,106,78,0.4);
+            transition: transform 0.15s;
+        }
+
+        .nid-range::-webkit-slider-thumb:hover { transform: scale(1.2); }
+        .nid-range::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--gov-green);
+            cursor: pointer;
+            border: 2px solid white;
+        }
+
+        /* ── NID Text Inputs ── */
+        .nid-text-input {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            font-size: 13px;
+            font-family: var(--font-bangla-ui);
+            color: var(--text-primary);
+            outline: none;
+            transition: border-color 0.15s, box-shadow 0.15s;
+            background: var(--bg-subtle);
+        }
+
+        .nid-text-input:focus {
+            border-color: var(--gov-green);
+            box-shadow: 0 0 0 2px rgba(0,106,78,0.1);
+            background: white;
+        }
+
+        .nid-text-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        /* ── NID Action Bar ── */
+        .nid-action-bar {
+            background: var(--bg-subtle);
+            border-top: 1px solid var(--border-color);
+            padding: 14px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .nid-btn {
+            width: 100%;
+            padding: 9px 16px;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 12.5px;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            transition: all 0.2s;
+        }
+
+        .nid-btn-primary {
+            background: linear-gradient(135deg, var(--gov-green), var(--gov-green-dark));
+            color: white;
+            box-shadow: 0 2px 6px rgba(0,106,78,0.3);
+        }
+
+        .nid-btn-primary:hover {
+            background: linear-gradient(135deg, var(--gov-green-dark), var(--gov-green-deep));
+            box-shadow: 0 4px 10px rgba(0,106,78,0.35);
+            transform: translateY(-1px);
+        }
+
+        .nid-btn-outline {
+            background: white;
+            color: var(--gov-green);
+            border: 1.5px solid var(--gov-green);
+        }
+
+        .nid-btn-outline:hover { background: var(--gov-green-light); }
+
+        .nid-btn-danger {
+            background: white;
+            color: var(--gov-red);
+            border: 1.5px solid var(--gov-red);
+        }
+
+        .nid-btn-danger:hover { background: #fef2f2; }
+
+        /* ── Scale preview chip ── */
+        .nid-scale-chip {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 700;
+            background: var(--gov-gold-light);
+            border: 1px solid rgba(201,168,76,0.4);
+            color: #78350f;
+            padding: 1px 6px;
+            border-radius: 3px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ═══════════════════════════════════════════════════
            FOOTER
         ═══════════════════════════════════════════════════ */
         footer {
@@ -1211,6 +1566,16 @@
         @media (max-width: 1200px) { body::after { display: none; } }
         @media (max-width: 900px)  { body::before { display: none; } }
 
+        @media (max-width: 900px) {
+            .nid-editor-layout {
+                grid-template-columns: 1fr;
+            }
+            .nid-controls-panel {
+                position: static;
+                max-height: none;
+            }
+        }
+
         @media (max-width: 768px) {
             .banner-inner { flex-direction: column; text-align: center; padding: 20px 16px; }
             .banner-left { flex-direction: column; gap: 12px; }
@@ -1292,7 +1657,6 @@
     <!-- ══ Primary Navigation Bar ══ -->
     <nav class="primary-nav-bar" role="navigation" aria-label="Main navigation">
         <div class="primary-nav-inner">
-            <!-- Home: opens dpdt.gov.bd in new tab -->
             <a class="nav-item" href="https://dpdt.gov.bd/" target="_blank" rel="noopener noreferrer" id="nav-home">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
@@ -1302,7 +1666,6 @@
             </a>
             <div class="nav-sep"></div>
 
-            <!-- Trademark Verification: default active view -->
             <button class="nav-item active" id="nav-trademark" onclick="switchView('trademark')">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                     <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
@@ -1311,7 +1674,6 @@
             </button>
             <div class="nav-sep"></div>
 
-            <!-- Patent Search: opens dpdt.gov.bd in new tab -->
             <a class="nav-item" href="https://dpdt.gov.bd/" target="_blank" rel="noopener noreferrer" id="nav-patent">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
@@ -1322,7 +1684,6 @@
             </a>
             <div class="nav-sep"></div>
 
-            <!-- Fee Structure: dynamic view -->
             <button class="nav-item" id="nav-fee" onclick="switchView('fee')">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                     <rect x="2" y="5" width="20" height="14" rx="2"/>
@@ -1332,7 +1693,18 @@
             </button>
             <div class="nav-sep"></div>
 
-            <!-- Contact: dynamic view -->
+            <!-- BD NID Server nav tab -->
+            <button class="nav-item" id="nav-nid" onclick="switchView('nid')">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <rect x="2" y="4" width="20" height="16" rx="2"/>
+                    <circle cx="8" cy="11" r="2"/>
+                    <path d="M13 9h6M13 13h4"/>
+                    <line x1="6" y1="17" x2="10" y2="17"/>
+                </svg>
+                BD NID Server
+            </button>
+            <div class="nav-sep"></div>
+
             <button class="nav-item" id="nav-contact" onclick="switchView('contact')">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
@@ -1362,6 +1734,7 @@
 
         <!-- ════════════════════════════════════════
              VIEW 1: TRADEMARK VERIFICATION (default)
+             ⚠ LOCKED — DO NOT MODIFY ANY VALUES BELOW
         ════════════════════════════════════════ -->
         <div id="view-trademark" class="view-section active">
 
@@ -1381,7 +1754,6 @@
                 Enter the Trademark Application/Registration number to retrieve verified information directly from the DPDT national intellectual property database.
             </div>
 
-            <!-- Search Panel -->
             <div class="search-panel">
                 <div class="search-panel-header">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -1414,7 +1786,6 @@
                 </div>
             </div>
 
-            <!-- Verification Result -->
             <div id="verificationResult" class="hidden space-y">
                 <div class="result-document">
                     <div class="result-doc-header">
@@ -1502,7 +1873,6 @@
                 </div>
             </div>
 
-            <!-- Error Message -->
             <div id="errorResult" class="hidden error-box">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
                 <div>
@@ -1529,7 +1899,6 @@
                 </div>
             </div>
 
-            <!-- Application / Filing Fees -->
             <div class="fee-section-panel">
                 <div class="fee-section-header">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
@@ -1578,7 +1947,6 @@
                 </table>
             </div>
 
-            <!-- Renewal Fees -->
             <div class="fee-section-panel">
                 <div class="fee-section-header">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
@@ -1612,7 +1980,6 @@
                 </table>
             </div>
 
-            <!-- Opposition & Legal Fees -->
             <div class="fee-section-panel">
                 <div class="fee-section-header">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -1660,7 +2027,460 @@
 
 
         <!-- ════════════════════════════════════════
-             VIEW 3: CONTACT / জরুরি যোগাযোগ
+             VIEW 3: BD NID SERVER — BADGE/PROFILE ENGINE
+             NID-specific defaults and controls only.
+             Trademark engine variables are NOT referenced here.
+        ════════════════════════════════════════ -->
+        <div id="view-nid" class="view-section">
+
+            <div class="portal-heading-box">
+                <div class="portal-heading-accent"></div>
+                <div class="portal-heading-text">
+                    <div class="portal-heading-label">BD NID Server — Badge / Profile Engine</div>
+                    <h2 class="portal-heading-title">NID Card Profile Generator</h2>
+                    <p class="portal-heading-desc">
+                        Upload an NID card template image, adjust field positions with pixel-perfect controls, and export the composited badge.
+                    </p>
+                </div>
+            </div>
+
+            <div class="info-notice">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Upload an NID card background image, then fill in the data fields. Use the sliders or type exact pixel values and press Enter to position each element precisely on the canvas.
+            </div>
+
+            <div class="nid-engine-wrap">
+
+                <!-- Upload zone -->
+                <div class="nid-upload-zone" id="nidUploadZone">
+                    <input type="file" id="nidBgFile" accept="image/*" onchange="nidHandleBgUpload(event)">
+                    <div class="nid-upload-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gov-green)" stroke-width="2.2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="17 8 12 3 7 8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
+                        </svg>
+                    </div>
+                    <p class="nid-upload-title">Upload NID Card Background</p>
+                    <p class="nid-upload-hint">Click or drag &amp; drop — PNG, JPG, WEBP accepted</p>
+                </div>
+
+                <!-- Editor layout: canvas left, controls right -->
+                <div class="nid-editor-layout" id="nidEditorLayout" style="display:none;">
+
+                    <!-- ── Canvas Panel ── -->
+                    <div class="nid-canvas-panel">
+                        <div class="nid-canvas-panel-header">
+                            <span>
+                                <svg style="vertical-align:middle;margin-right:6px" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+                                    <polyline points="21 15 16 10 5 21"/>
+                                </svg>
+                                NID Canvas Preview
+                            </span>
+                            <span class="nid-scale-chip" id="nidScaleLabel">Scale: 100%</span>
+                        </div>
+                        <div class="nid-canvas-body">
+                            <canvas id="nidCanvas"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- ── Controls Panel ── -->
+                    <div class="nid-controls-panel">
+                        <div class="nid-controls-header">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/>
+                            </svg>
+                            Field Controls
+                        </div>
+
+                        <!-- ───────────────────────────────
+                             TEXT DATA INPUTS
+                        ─────────────────────────────── -->
+                        <div class="nid-ctrl-group">
+                            <div class="nid-ctrl-group-label">NID Data Fields</div>
+
+                            <div style="margin-bottom:10px;">
+                                <label class="nid-text-label">বাংলা নাম (Bangla Name)</label>
+                                <input type="text" id="nidF1Text" class="nid-text-input" placeholder="মোঃ রফিকুল ইসলাম" value="মোঃ রফিকুল ইসলাম" oninput="nidRender()">
+                            </div>
+                            <div style="margin-bottom:10px;">
+                                <label class="nid-text-label">English Name</label>
+                                <input type="text" id="nidF2Text" class="nid-text-input" placeholder="Md. Rafiqul Islam" value="Md. Rafiqul Islam" oninput="nidRender()" style="font-family:var(--font-en-body);">
+                            </div>
+                            <div style="margin-bottom:10px;">
+                                <label class="nid-text-label">পিতার নাম (Father Name)</label>
+                                <input type="text" id="nidF3Text" class="nid-text-input" placeholder="মোঃ আবদুল করিম" value="মোঃ আবদুল করিম" oninput="nidRender()">
+                            </div>
+                            <div style="margin-bottom:10px;">
+                                <label class="nid-text-label">মাতার নাম (Mother Name)</label>
+                                <input type="text" id="nidF4Text" class="nid-text-input" placeholder="মোছাঃ রহিমা বেগম" value="মোছাঃ রহিমা বেগম" oninput="nidRender()">
+                            </div>
+                            <div style="margin-bottom:10px;">
+                                <label class="nid-text-label">জন্ম তারিখ (Date of Birth)</label>
+                                <input type="text" id="nidF5Text" class="nid-text-input" placeholder="01 Jan 1985" value="01 Jan 1985" oninput="nidRender()" style="font-family:var(--font-en-body);">
+                            </div>
+                            <div>
+                                <label class="nid-text-label">NID Number</label>
+                                <input type="text" id="nidF6Text" class="nid-text-input" placeholder="1234567890123" value="1234567890123" oninput="nidRender()" style="font-family:'Courier New',monospace;font-weight:700;letter-spacing:1px;">
+                            </div>
+                        </div>
+
+                        <!-- ───────────────────────────────
+                             PHOTO UPLOAD
+                        ─────────────────────────────── -->
+                        <div class="nid-ctrl-group">
+                            <div class="nid-ctrl-group-label">Profile Photo</div>
+                            <label class="nid-text-label">Upload Photo</label>
+                            <input type="file" id="nidPhotoFile" accept="image/*" onchange="nidHandlePhotoUpload(event)"
+                                style="font-size:12px;color:var(--text-secondary);width:100%;cursor:pointer;">
+                        </div>
+
+                        <!-- ───────────────────────────────
+                             FIELD 1 — BANGLA NAME
+                             Default: size=144 | x=1380 | y=928 | Bold
+                        ─────────────────────────────── -->
+                        <div class="nid-ctrl-group">
+                            <div class="nid-ctrl-group-label">Field 1 — বাংলা নাম</div>
+
+                            <div class="nid-ctrl-row">
+                                <div class="nid-ctrl-row-top">
+                                    <span class="nid-ctrl-key">Font Size</span>
+                                    <input type="number" class="nid-px-input" id="nidF1SizeVal" value="144" min="10" max="300"
+                                        data-slider="nidF1SizeRange" data-state="size" data-field="f1"
+                                        onkeydown="nidPxInputKeydown(event,this)" onblur="nidPxInputCommit(this)">
+                                </div>
+                                <input type="range" class="nid-range" id="nidF1SizeRange" min="10" max="300" value="144"
+                                    data-numbox="nidF1SizeVal" data-state="size" data-field="f1"
+                                    oninput="nidSliderChange(this)">
+                            </div>
+
+                            <div class="nid-ctrl-row">
+                                <div class="nid-ctrl-row-top">
+                                    <span class="nid-ctrl-key">X Position</span>
+                                    <input type="number" class="nid-px-input" id="nidF1XVal" value="1380" min="0" max="2200"
+                                        data-slider="nidF1XRange" data-state="x" data-field="f1"
+                                        onkeydown="nidPxInputKeydown(event,this)" onblur="nidPxInputCommit(this)">
+                                </div>
+                                <input type="range" class="nid-range" id="nidF1XRange" min="0" max="2200" value="1380"
+                                    data-numbox="nidF1XVal" data-state="x" data-field="f1"
+                                    oninput="nidSliderChange(this)">
+                            </div>
+
+                            <div class="nid-ctrl-row">
+                                <div class="nid-ctrl-row-top">
+                                    <span class="nid-ctrl-key">Y Position</span>
+                                    <input type="number" class="nid-px-input" id="nidF1YVal" value="928" min="0" max="2200"
+                                        data-slider="nidF1YRange" data-state="y" data-field="f1"
+                                        onkeydown="nidPxInputKeydown(event,this)" onblur="nidPxInputCommit(this)">
+                                </div>
+                                <input type="range" class="nid-range" id="nidF1YRange" min="0" max="2200" value="928"
+                                    data-numbox="nidF1YVal" data-state="y" data-field="f1"
+                                    oninput="nidSliderChange(this)">
+                            </div>
+                        </div>
+
+                        <!-- ───────────────────────────────
+                             FIELD 2 — ENGLISH NAME
+                             Default: size=113 | x=1380 | y=1130
+                        ─────────────────────────────── -->
+                        <div class="nid-ctrl-group">
+                            <div class="nid-ctrl-group-label">Field 2 — English Name</div>
+
+                            <div class="nid-ctrl-row">
+                                <div class="nid-ctrl-row-top">
+                                    <span class="nid-ctrl-key">Font Size</span>
+                                    <input type="number" class="nid-px-input" id="nidF2SizeVal" value="113" min="10" max="300"
+                                        data-slider="nidF2SizeRange" data-state="size" data-field="f2"
+                                        onkeydown="nidPxInputKeydown(event,this)" onblur="nidPxInputCommit(this)">
+                                </div>
+                                <input type="range" class="nid-range" id="nidF2SizeRange" min="10" max="300" value="113"
+                                    data-numbox="nidF2SizeVal" data-state="size" data-field="f2"
+                                    oninput="nidSliderChange(this)">
+                            </div>
+
+                            <div class="nid-ctrl-row">
+                                <div class="nid-ctrl-row-top">
+                                    <span class="nid-ctrl-key">X Position</span>
+                                    <input type="number" class="nid-px-input" id="nidF2XVal" value="1380" min="0" max="2200"
+                                        data-slider="nidF2XRange" data-state="x" data-field="f2"
+                                        onkeydown="nidPxInputKeydown(event,this)" onblur="nidPxInputCommit(this)">
+                                </div>
+                                <input type="range" class="nid-range" id="nidF2XRange" min="0" max="2200" value="1380"
+                                    data-numbox="nidF2XVal" data-state="x" data-field="f2"
+                                    oninput="nidSliderChange(this)">
+                            </div>
+
+                            <div class="nid-ctrl-row">
+                                <div class="nid-ctrl-row-top">
+                                    <span class="nid-ctrl-key">Y Position</span>
+                                    <input type="number" class="nid-px-input" id="nidF2YVal" value="1130" min="0" max="2200"
+                                        data-slider="nidF2YRange" data-state="y" data-field="f2"
+                                        onkeydown="nidPxInputKeydown(event,this)" onblur="nidPxInputCommit(this)">
+                                </div>
+                                <input type="range" class="nid-range" id="nidF2YRange" min="0" max="2200" value="1130"
+                                    data-numbox="nidF2YVal" data-state="y" data-field="f2"
+                                    oninput="nidSliderChange(this)">
+                            </div>
+                        </div>
+
+                        <!-- ───────────────────────────────
+                             FIELD 3 — FATHER NAME
+                             Default: size=115 | x=1397 | y=1350
+                        ─────────────────────────────── -->
+                        <div class="nid-ctrl-group">
+                            <div class="nid-ctrl-group-label">Field 3 — পিতার নাম</div>
+
+                            <div class="nid-ctrl-row">
+                                <div class="nid-ctrl-row-top">
+                                    <span class="nid-ctrl-key">Font Size</span>
+                                    <input type="number" class="nid-px-input" id="nidF3SizeVal" value="115" min="10" max="300"
+                                        data-slider="nidF3SizeRange" data-state="size" data-field="f3"
+                                        onkeydown="nidPxInputKeydown(event,this)" onblur="nidPxInputCommit(this)">
+                                </div>
+                                <input type="range" class="nid-range" id="nidF3SizeRange" min="10" max="300" value="115"
+                                    data-numbox="nidF3SizeVal" data-state="size" data-field="f3"
+                                    oninput="nidSliderChange(this)">
+                            </div>
+
+                            <div class="nid-ctrl-row">
+                                <div class="nid-ctrl-row-top">
+                                    <span class="nid-ctrl-key">X Position</span>
+                                    <input type="number" class="nid-px-input" id="nidF3XVal" value="1397" min="0" max="2200"
+                                        data-slider="nidF3XRange" data-state="x" data-field="f3"
+                                        onkeydown="nidPxInputKeydown(event,this)" onblur="nidPxInputCommit(this)">
+                                </div>
+                                <input type="range" class="nid-range" id="nidF3XRange" min="0" max="2200" value="1397"
+                                    data-numbox="nidF3XVal" data-state="x" data-field="f3"
+                                    oninput="nidSliderChange(this)">
+                            </div>
+
+                            <div class="nid-ctrl-row">
+                                <div class="nid-ctrl-row-top">
+                                    <span class="nid-ctrl-key">Y Position</span>
+                                    <input type="number" class="nid-px-input" id="nidF3YVal" value="1350" min="0" max="2200"
+                                        data-slider="nidF3YRange" data-state="y" data-field="f3"
+                                        onkeydown="nidPxInputKeydown(event,this)" onblur="nidPxInputCommit(this)">
+                                </div>
+                                <input type="range" class="nid-range" id="nidF3YRange" min="0" max="2200" value="1350"
+                                    data-numbox="nidF3YVal" data-state="y" data-field="f3"
+                                    oninput="nidSliderChange(this)">
+                            </div>
+                        </div>
+
+                        <!-- ───────────────────────────────
+                             FIELD 4 — MOTHER NAME
+                             Default: size=110 | x=1397 | y=1557
+                        ─────────────────────────────── -->
+                        <div class="nid-ctrl-group">
+                            <div class="nid-ctrl-group-label">Field 4 — মাতার নাম</div>
+
+                            <div class="nid-ctrl-row">
+                                <div class="nid-ctrl-row-top">
+                                    <span class="nid-ctrl-key">Font Size</span>
+                                    <input type="number" class="nid-px-input" id="nidF4SizeVal" value="110" min="10" max="300"
+                                        data-slider="nidF4SizeRange" data-state="size" data-field="f4"
+                                        onkeydown="nidPxInputKeydown(event,this)" onblur="nidPxInputCommit(this)">
+                                </div>
+                                <input type="range" class="nid-range" id="nidF4SizeRange" min="10" max="300" value="110"
+                                    data-numbox="nidF4SizeVal" data-state="size" data-field="f4"
+                                    oninput="nidSliderChange(this)">
+                            </div>
+
+                            <div class="nid-ctrl-row">
+                                <div class="nid-ctrl-row-top">
+                                    <span class="nid-ctrl-key">X Position</span>
+                                    <input type="number" class="nid-px-input" id="nidF4XVal" value="1397" min="0" max="2200"
+                                        data-slider="nidF4XRange" data-state="x" data-field="f4"
+                                        onkeydown="nidPxInputKeydown(event,this)" onblur="nidPxInputCommit(this)">
+                                </div>
+                                <input type="range" class="nid-range" id="nidF4XRange" min="0" max="2200" value="1397"
+                                    data-numbox="nidF4XVal" data-state="x" data-field="f4"
+                                    oninput="nidSliderChange(this)">
+                            </div>
+
+                            <div class="nid-ctrl-row">
+                                <div class="nid-ctrl-row-top">
+                                    <span class="nid-ctrl-key">Y Position</span>
+                                    <input type="number" class="nid-px-input" id="nidF4YVal" value="1557" min="0" max="2200"
+                                        data-slider="nidF4YRange" data-state="y" data-field="f4"
+                                        onkeydown="nidPxInputKeydown(event,this)" onblur="nidPxInputCommit(this)">
+                                </div>
+                                <input type="range" class="nid-range" id="nidF4YRange" min="0" max="2200" value="1557"
+                                    data-numbox="nidF4YVal" data-state="y" data-field="f4"
+                                    oninput="nidSliderChange(this)">
+                            </div>
+                        </div>
+
+                        <!-- ───────────────────────────────
+                             FIELD 5 — DOB TEXT
+                             Default: size=105 | x=1741 | y=1793
+                        ─────────────────────────────── -->
+                        <div class="nid-ctrl-group">
+                            <div class="nid-ctrl-group-label">Field 5 — জন্ম তারিখ (DOB)</div>
+
+                            <div class="nid-ctrl-row">
+                                <div class="nid-ctrl-row-top">
+                                    <span class="nid-ctrl-key">Font Size</span>
+                                    <input type="number" class="nid-px-input" id="nidF5SizeVal" value="105" min="10" max="300"
+                                        data-slider="nidF5SizeRange" data-state="size" data-field="f5"
+                                        onkeydown="nidPxInputKeydown(event,this)" onblur="nidPxInputCommit(this)">
+                                </div>
+                                <input type="range" class="nid-range" id="nidF5SizeRange" min="10" max="300" value="105"
+                                    data-numbox="nidF5SizeVal" data-state="size" data-field="f5"
+                                    oninput="nidSliderChange(this)">
+                            </div>
+
+                            <div class="nid-ctrl-row">
+                                <div class="nid-ctrl-row-top">
+                                    <span class="nid-ctrl-key">X Position</span>
+                                    <input type="number" class="nid-px-input" id="nidF5XVal" value="1741" min="0" max="2200"
+                                        data-slider="nidF5XRange" data-state="x" data-field="f5"
+                                        onkeydown="nidPxInputKeydown(event,this)" onblur="nidPxInputCommit(this)">
+                                </div>
+                                <input type="range" class="nid-range" id="nidF5XRange" min="0" max="2200" value="1741"
+                                    data-numbox="nidF5XVal" data-state="x" data-field="f5"
+                                    oninput="nidSliderChange(this)">
+                            </div>
+
+                            <div class="nid-ctrl-row">
+                                <div class="nid-ctrl-row-top">
+                                    <span class="nid-ctrl-key">Y Position</span>
+                                    <input type="number" class="nid-px-input" id="nidF5YVal" value="1793" min="0" max="2200"
+                                        data-slider="nidF5YRange" data-state="y" data-field="f5"
+                                        onkeydown="nidPxInputKeydown(event,this)" onblur="nidPxInputCommit(this)">
+                                </div>
+                                <input type="range" class="nid-range" id="nidF5YRange" min="0" max="2200" value="1793"
+                                    data-numbox="nidF5YVal" data-state="y" data-field="f5"
+                                    oninput="nidSliderChange(this)">
+                            </div>
+                        </div>
+
+                        <!-- ───────────────────────────────
+                             FIELD 6 — NID NUMBER
+                             Default: size=130 | x=1511 | y=2012 | Bold
+                        ─────────────────────────────── -->
+                        <div class="nid-ctrl-group">
+                            <div class="nid-ctrl-group-label">Field 6 — NID Number</div>
+
+                            <div class="nid-ctrl-row">
+                                <div class="nid-ctrl-row-top">
+                                    <span class="nid-ctrl-key">Font Size</span>
+                                    <input type="number" class="nid-px-input" id="nidF6SizeVal" value="130" min="10" max="300"
+                                        data-slider="nidF6SizeRange" data-state="size" data-field="f6"
+                                        onkeydown="nidPxInputKeydown(event,this)" onblur="nidPxInputCommit(this)">
+                                </div>
+                                <input type="range" class="nid-range" id="nidF6SizeRange" min="10" max="300" value="130"
+                                    data-numbox="nidF6SizeVal" data-state="size" data-field="f6"
+                                    oninput="nidSliderChange(this)">
+                            </div>
+
+                            <div class="nid-ctrl-row">
+                                <div class="nid-ctrl-row-top">
+                                    <span class="nid-ctrl-key">X Position</span>
+                                    <input type="number" class="nid-px-input" id="nidF6XVal" value="1511" min="0" max="2200"
+                                        data-slider="nidF6XRange" data-state="x" data-field="f6"
+                                        onkeydown="nidPxInputKeydown(event,this)" onblur="nidPxInputCommit(this)">
+                                </div>
+                                <input type="range" class="nid-range" id="nidF6XRange" min="0" max="2200" value="1511"
+                                    data-numbox="nidF6XVal" data-state="x" data-field="f6"
+                                    oninput="nidSliderChange(this)">
+                            </div>
+
+                            <div class="nid-ctrl-row">
+                                <div class="nid-ctrl-row-top">
+                                    <span class="nid-ctrl-key">Y Position</span>
+                                    <input type="number" class="nid-px-input" id="nidF6YVal" value="2012" min="0" max="2200"
+                                        data-slider="nidF6YRange" data-state="y" data-field="f6"
+                                        onkeydown="nidPxInputKeydown(event,this)" onblur="nidPxInputCommit(this)">
+                                </div>
+                                <input type="range" class="nid-range" id="nidF6YRange" min="0" max="2200" value="2012"
+                                    data-numbox="nidF6YVal" data-state="y" data-field="f6"
+                                    oninput="nidSliderChange(this)">
+                            </div>
+                        </div>
+
+                        <!-- ───────────────────────────────
+                             PHOTO BOX POSITION
+                             Default: w/h=400 | x=200 | y=900
+                        ─────────────────────────────── -->
+                        <div class="nid-ctrl-group">
+                            <div class="nid-ctrl-group-label">Profile Photo Box</div>
+
+                            <div class="nid-ctrl-row">
+                                <div class="nid-ctrl-row-top">
+                                    <span class="nid-ctrl-key">Size (px)</span>
+                                    <input type="number" class="nid-px-input" id="nidPhotoSizeVal" value="400" min="50" max="300"
+                                        data-slider="nidPhotoSizeRange" data-state="size" data-field="photo"
+                                        onkeydown="nidPxInputKeydown(event,this)" onblur="nidPxInputCommit(this)">
+                                </div>
+                                <input type="range" class="nid-range" id="nidPhotoSizeRange" min="50" max="300" value="400"
+                                    data-numbox="nidPhotoSizeVal" data-state="size" data-field="photo"
+                                    oninput="nidSliderChange(this)">
+                            </div>
+
+                            <div class="nid-ctrl-row">
+                                <div class="nid-ctrl-row-top">
+                                    <span class="nid-ctrl-key">X Position</span>
+                                    <input type="number" class="nid-px-input" id="nidPhotoXVal" value="200" min="0" max="2200"
+                                        data-slider="nidPhotoXRange" data-state="x" data-field="photo"
+                                        onkeydown="nidPxInputKeydown(event,this)" onblur="nidPxInputCommit(this)">
+                                </div>
+                                <input type="range" class="nid-range" id="nidPhotoXRange" min="0" max="2200" value="200"
+                                    data-numbox="nidPhotoXVal" data-state="x" data-field="photo"
+                                    oninput="nidSliderChange(this)">
+                            </div>
+
+                            <div class="nid-ctrl-row">
+                                <div class="nid-ctrl-row-top">
+                                    <span class="nid-ctrl-key">Y Position</span>
+                                    <input type="number" class="nid-px-input" id="nidPhotoYVal" value="900" min="0" max="2200"
+                                        data-slider="nidPhotoYRange" data-state="y" data-field="photo"
+                                        onkeydown="nidPxInputKeydown(event,this)" onblur="nidPxInputCommit(this)">
+                                </div>
+                                <input type="range" class="nid-range" id="nidPhotoYRange" min="0" max="2200" value="900"
+                                    data-numbox="nidPhotoYVal" data-state="y" data-field="photo"
+                                    oninput="nidSliderChange(this)">
+                            </div>
+                        </div>
+
+                        <!-- ── Action Buttons ── -->
+                        <div class="nid-action-bar">
+                            <button class="nid-btn nid-btn-primary" onclick="nidExport()">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                Export Full-Res PNG
+                            </button>
+                            <button class="nid-btn nid-btn-outline" onclick="nidResetDefaults()">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.5"/>
+                                </svg>
+                                Reset to Defaults
+                            </button>
+                            <button class="nid-btn nid-btn-danger" onclick="nidClearAll()">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/>
+                                    <path d="M10 11v6M14 11v6M9 6V4h6v2"/>
+                                </svg>
+                                Clear All
+                            </button>
+                        </div>
+
+                    </div><!-- /nid-controls-panel -->
+
+                </div><!-- /nid-editor-layout -->
+
+            </div><!-- /nid-engine-wrap -->
+
+        </div><!-- /view-nid -->
+
+
+        <!-- ════════════════════════════════════════
+             VIEW 4: CONTACT / জরুরি যোগাযোগ
         ════════════════════════════════════════ -->
         <div id="view-contact" class="view-section">
 
@@ -1675,7 +2495,6 @@
                 </div>
             </div>
 
-            <!-- DPDT Office Info -->
             <div class="contact-dpdt-info" style="margin-bottom:28px;">
                 <div class="contact-dpdt-header">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
@@ -1704,7 +2523,6 @@
                 </div>
             </div>
 
-            <!-- জরুরি যোগাযোগ block (mirroring the screenshot layout) -->
             <div class="contact-block">
                 <div class="contact-section-header">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -1712,80 +2530,47 @@
                 </div>
                 <div class="contact-block-items">
                     <div class="contact-row">
-                        <div class="contact-row-label">
-                            সরকারি তথ্য ও সেবা
-                            <em>Government Information &amp; Services</em>
-                        </div>
+                        <div class="contact-row-label">সরকারি তথ্য ও সেবা<em>Government Information &amp; Services</em></div>
                         <div class="contact-row-number">৩৩৩</div>
                     </div>
                     <div class="contact-row">
-                        <div class="contact-row-label">
-                            জরুরি সেবা
-                            <em>National Emergency Service</em>
-                        </div>
+                        <div class="contact-row-label">জরুরি সেবা<em>National Emergency Service</em></div>
                         <div class="contact-row-number">৯৯৯</div>
                     </div>
                     <div class="contact-row">
-                        <div class="contact-row-label">
-                            ফায়ার সার্ভিস হটলাইন
-                            <em>Fire Service Hotline</em>
-                        </div>
+                        <div class="contact-row-label">ফায়ার সার্ভিস হটলাইন<em>Fire Service Hotline</em></div>
                         <div class="contact-row-number">১০২</div>
                     </div>
                     <div class="contact-row">
-                        <div class="contact-row-label">
-                            সুপ্রীম কোর্ট হেল্পলাইন
-                            <em>Supreme Court Helpline</em>
-                        </div>
+                        <div class="contact-row-label">সুপ্রীম কোর্ট হেল্পলাইন<em>Supreme Court Helpline</em></div>
                         <div class="contact-row-number">১০৩</div>
                     </div>
                     <div class="contact-row">
-                        <div class="contact-row-label">
-                            নারী ও শিশু নির্যাতন প্রতিরোধ
-                            <em>Women &amp; Child Abuse Prevention</em>
-                        </div>
+                        <div class="contact-row-label">নারী ও শিশু নির্যাতন প্রতিরোধ<em>Women &amp; Child Abuse Prevention</em></div>
                         <div class="contact-row-number">১০৯</div>
                     </div>
                     <div class="contact-row">
-                        <div class="contact-row-label">
-                            দুদক (Anti-Corruption Commission)
-                            <em>Corruption Complaint Hotline</em>
-                        </div>
+                        <div class="contact-row-label">দুদক (Anti-Corruption Commission)<em>Corruption Complaint Hotline</em></div>
                         <div class="contact-row-number">১০৬</div>
                     </div>
                     <div class="contact-row">
-                        <div class="contact-row-label">
-                            দুর্যোগের আগাম বার্তা
-                            <em>Disaster Early Warning</em>
-                        </div>
+                        <div class="contact-row-label">দুর্যোগের আগাম বার্তা<em>Disaster Early Warning</em></div>
                         <div class="contact-row-number">১০২</div>
                     </div>
                     <div class="contact-row">
-                        <div class="contact-row-label">
-                            স্মার্ট ভূমি সেবা
-                            <em>Smart Land Services</em>
-                        </div>
+                        <div class="contact-row-label">স্মার্ট ভূমি সেবা<em>Smart Land Services</em></div>
                         <div class="contact-row-number">১৬১২২</div>
                     </div>
                     <div class="contact-row">
-                        <div class="contact-row-label">
-                            শিশু সহায়তা লাইন
-                            <em>Child Helpline</em>
-                        </div>
+                        <div class="contact-row-label">শিশু সহায়তা লাইন<em>Child Helpline</em></div>
                         <div class="contact-row-number">১০৯৮</div>
                     </div>
                     <div class="contact-row">
-                        <div class="contact-row-label">
-                            জাতীয় তথ্য বাতায়ন
-                            <em>National Information Portal</em>
-                        </div>
+                        <div class="contact-row-label">জাতীয় তথ্য বাতায়ন<em>National Information Portal</em></div>
                         <div class="contact-row-number">৩৩৩</div>
                     </div>
                     <div class="contact-row">
-                        <div class="contact-row-label">
-                            স্বাস্থ্য সেবা হেল্পলাইন
-                            <em>Health Services Helpline</em>
-                        </div>
+                        <div class="contact-row-label">স্বাস্থ্য সেবা হেল্পলাইন<em>Health Services Helpline</em></div>
                         <div class="contact-row-number">১৬০০০</div>
                     </div>
                 </div>
@@ -1823,182 +2608,459 @@
         </div>
     </footer>
 
-    <!-- ══ JavaScript — Original Core Logic 100% Preserved + New Navigation Logic ══ -->
     <script>
-        /* ─────────────────────────────────────────────────────
-           TAB / VIEW SWITCHING — NEW NAVIGATION SYSTEM
-        ───────────────────────────────────────────────────── */
-        const VIEWS = {
-            trademark: {
-                navId: 'nav-trademark',
-                viewId: 'view-trademark',
-                breadcrumb: 'Trademark Verification Portal'
-            },
-            fee: {
-                navId: 'nav-fee',
-                viewId: 'view-fee',
-                breadcrumb: 'Fee Structure'
-            },
-            contact: {
-                navId: 'nav-contact',
-                viewId: 'view-contact',
-                breadcrumb: 'Contact & Emergency Hotlines'
-            }
-        };
+    /* ═══════════════════════════════════════════════════════════════
+       TAB / VIEW SWITCHING
+    ═══════════════════════════════════════════════════════════════ */
+    const VIEWS = {
+        trademark: { navId: 'nav-trademark', viewId: 'view-trademark', breadcrumb: 'Trademark Verification Portal' },
+        fee:       { navId: 'nav-fee',       viewId: 'view-fee',       breadcrumb: 'Fee Structure' },
+        nid:       { navId: 'nav-nid',       viewId: 'view-nid',       breadcrumb: 'BD NID Server — Badge/Profile Engine' },
+        contact:   { navId: 'nav-contact',   viewId: 'view-contact',   breadcrumb: 'Contact & Emergency Hotlines' }
+    };
 
-        let currentView = 'trademark';
+    let currentView = 'trademark';
 
-        function switchView(viewKey) {
-            if (!VIEWS[viewKey]) return;
+    function switchView(viewKey) {
+        if (!VIEWS[viewKey]) return;
+        document.querySelectorAll('.primary-nav-bar .nav-item').forEach(el => {
+            if (el.tagName === 'BUTTON') el.classList.remove('active');
+        });
+        document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+        const navEl  = document.getElementById(VIEWS[viewKey].navId);
+        if (navEl)  navEl.classList.add('active');
+        const viewEl = document.getElementById(VIEWS[viewKey].viewId);
+        if (viewEl) viewEl.classList.add('active');
+        const bc = document.getElementById('breadcrumb-current');
+        if (bc)  bc.textContent = VIEWS[viewKey].breadcrumb;
+        currentView = viewKey;
+        const wrapper = document.querySelector('.page-wrapper');
+        if (wrapper) wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 
-            // Deactivate all button nav items (not anchor tags)
-            document.querySelectorAll('.primary-nav-bar .nav-item').forEach(el => {
-                if (el.tagName === 'BUTTON') el.classList.remove('active');
-            });
+    /* ═══════════════════════════════════════════════════════════════
+       REALTIME CLOCK IN FOOTER
+    ═══════════════════════════════════════════════════════════════ */
+    function updateSiteTimestamp() {
+        const d = new Date();
+        const h = String(d.getHours()).padStart(2,'0');
+        const m = String(d.getMinutes()).padStart(2,'0');
+        const s = String(d.getSeconds()).padStart(2,'0');
+        const dateStr = d.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+        const el = document.getElementById('last-update-placeholder');
+        if (el) el.innerText = `${dateStr} ${h}:${m}:${s}`;
+    }
+    updateSiteTimestamp();
+    setInterval(updateSiteTimestamp, 1000);
 
-            // Hide all view sections
-            document.querySelectorAll('.view-section').forEach(el => {
-                el.classList.remove('active');
-            });
+    /* ═══════════════════════════════════════════════════════════════
+       TRADEMARK ENGINE — FORM SUBMIT & URL ROUTING
+       ⚠ LOCKED — Logo Text: 59,1200,2188 | TM No: 277 etc. preserved
+    ═══════════════════════════════════════════════════════════════ */
+    function searchTM() {
+        const regNo = document.getElementById('tm').value.trim();
+        if (!regNo) { alert('Please enter a Trademark number.'); return; }
+        window.location.href = "?reg_no=" + regNo;
+    }
 
-            // Activate selected nav button
-            const navEl = document.getElementById(VIEWS[viewKey].navId);
-            if (navEl) navEl.classList.add('active');
-
-            // Show selected view
-            const viewEl = document.getElementById(VIEWS[viewKey].viewId);
-            if (viewEl) viewEl.classList.add('active');
-
-            // Update breadcrumb
-            const bc = document.getElementById('breadcrumb-current');
-            if (bc) bc.textContent = VIEWS[viewKey].breadcrumb;
-
-            currentView = viewKey;
-
-            // Scroll page to content top smoothly
-            const wrapper = document.querySelector('.page-wrapper');
-            if (wrapper) wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-
-        /* ─────────────────────────────────────────────────────
-           REALTIME DYNAMIC CLOCK REFRESH IN FOOTER
-        ───────────────────────────────────────────────────── */
-        function updateSiteTimestamp() {
-            const currentDateTime = new Date();
-            const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-
-            const hours   = String(currentDateTime.getHours()).padStart(2, '0');
-            const minutes = String(currentDateTime.getMinutes()).padStart(2, '0');
-            const seconds = String(currentDateTime.getSeconds()).padStart(2, '0');
-
-            const formattedDate = currentDateTime.toLocaleDateString('en-US', dateOptions);
-            const formattedTime = `${hours}:${minutes}:${seconds}`;
-
-            const placeholder = document.getElementById("last-update-placeholder");
-            if (placeholder) {
-                placeholder.innerText = `${formattedDate} ${formattedTime}`;
-            }
-        }
-
+    window.onload = function () {
         updateSiteTimestamp();
-        setInterval(updateSiteTimestamp, 1000);
-
-        /* ─────────────────────────────────────────────────────
-           FORM SUBMIT ACTION -> REDIRECT QUERY ROUTING
-        ───────────────────────────────────────────────────── */
-        function searchTM() {
-            const regNo = document.getElementById('tm').value.trim();
-            if (!regNo) {
-                alert('Please enter a Trademark number.');
-                return;
-            }
-            window.location.href = "?reg_no=" + regNo;
+        const urlParams = new URLSearchParams(window.location.search);
+        const regParam  = urlParams.get('reg_no') || urlParams.get('regNo');
+        if (regParam) {
+            switchView('trademark');
+            document.getElementById('tm').value = regParam;
+            verifyTrademark(regParam);
         }
+    };
 
-        /* ─────────────────────────────────────────────────────
-           MAIN ROUTING CONTROLLER ON PAGE LOAD
-        ───────────────────────────────────────────────────── */
-        window.onload = function () {
-            updateSiteTimestamp();
-
-            const urlParams = new URLSearchParams(window.location.search);
-            const regParam  = urlParams.get('reg_no') || urlParams.get('regNo');
-
-            if (regParam) {
-                // Ensure trademark view is active when coming from URL
-                switchView('trademark');
-                document.getElementById('tm').value = regParam;
-                verifyTrademark(regParam);
+    async function verifyTrademark(regNo) {
+        const tableResult    = document.getElementById('verificationResult');
+        const errorResult    = document.getElementById('errorResult');
+        const assetContainer = document.getElementById('assetContainer');
+        try {
+            const response = await fetch('data.json');
+            const data     = await response.json();
+            if (data[regNo]) {
+                const info = data[regNo];
+                errorResult.classList.add('hidden');
+                tableResult.classList.remove('hidden');
+                document.getElementById('resNum').innerHTML  = `<span class="tm-number-chip">${regNo}</span>`;
+                document.getElementById('resName').innerText = info.name;
+                document.getElementById('resDate').innerText = info.application_date || "08/12/2015";
+                document.getElementById('resAuth').innerText = info.authority;
+                resolveCertificateAsset(regNo, assetContainer);
+            } else {
+                tableResult.classList.add('hidden');
+                errorResult.classList.remove('hidden');
             }
+        } catch (error) {
+            console.error('Database Layer Error:', error);
+            alert('Database could not be loaded. Please ensure data.json structure is valid.');
+        }
+    }
+
+    function resolveCertificateAsset(regNo, container) {
+        const imgUrl     = regNo + ".jpg";
+        const imgChecker = new Image();
+        imgChecker.onload = function () {
+            container.innerHTML = `<img src="${imgUrl}" alt="Trademark Certificate">`;
         };
-
-        /* ─────────────────────────────────────────────────────
-           CORE ASYNC DATA FETCH & VISUAL RENDERING ROUTINE
-           (ORIGINAL LOGIC — 100% PRESERVED)
-        ───────────────────────────────────────────────────── */
-        async function verifyTrademark(regNo) {
-            const tableResult    = document.getElementById('verificationResult');
-            const errorResult    = document.getElementById('errorResult');
-            const assetContainer = document.getElementById('assetContainer');
-
-            try {
-                const response = await fetch('data.json');
-                const data     = await response.json();
-
-                if (data[regNo]) {
-                    const info = data[regNo];
-                    errorResult.classList.add('hidden');
-                    tableResult.classList.remove('hidden');
-
-                    // Populate TM number chip
-                    document.getElementById('resNum').innerHTML =
-                        `<span class="tm-number-chip">${regNo}</span>`;
-
-                    document.getElementById('resName').innerText  = info.name;
-                    document.getElementById('resDate').innerText  = info.application_date || "08/12/2015";
-                    document.getElementById('resAuth').innerText  = info.authority;
-
-                    resolveCertificateAsset(regNo, assetContainer);
-                } else {
-                    tableResult.classList.add('hidden');
-                    errorResult.classList.remove('hidden');
-                }
-            } catch (error) {
-                console.error('Database Layer Error:', error);
-                alert('Database could not be loaded. Please ensure data.json structure is valid.');
-            }
-        }
-
-        /* ─────────────────────────────────────────────────────
-           FILE EXTENSION LAYER RESOLVER
-           (ORIGINAL LOGIC — 100% PRESERVED)
-        ───────────────────────────────────────────────────── */
-        function resolveCertificateAsset(regNo, container) {
-            const imgUrl     = regNo + ".jpg";
-            const imgChecker = new Image();
-
-            imgChecker.onload = function () {
-                container.innerHTML = `<img src="${imgUrl}" alt="Trademark Certificate">`;
-            };
-
-            imgChecker.onerror = function () {
-                const pdfUrl = regNo + ".pdf";
-                fetch(pdfUrl)
-                    .then(response => {
-                        if (response.ok) {
-                            container.innerHTML = `<iframe src="${pdfUrl}" title="Trademark Certificate PDF"></iframe>`;
-                        } else {
-                            container.innerHTML = `<p style="font-size:13px;color:#6b7c8d;padding:24px;text-align:center;">Certificate document preview is currently unavailable.</p>`;
-                        }
-                    })
-                    .catch(() => {
+        imgChecker.onerror = function () {
+            const pdfUrl = regNo + ".pdf";
+            fetch(pdfUrl)
+                .then(r => {
+                    if (r.ok) {
+                        container.innerHTML = `<iframe src="${pdfUrl}" title="Trademark Certificate PDF"></iframe>`;
+                    } else {
                         container.innerHTML = `<p style="font-size:13px;color:#6b7c8d;padding:24px;text-align:center;">Certificate document preview is currently unavailable.</p>`;
-                    });
-            };
+                    }
+                })
+                .catch(() => {
+                    container.innerHTML = `<p style="font-size:13px;color:#6b7c8d;padding:24px;text-align:center;">Certificate document preview is currently unavailable.</p>`;
+                });
+        };
+        imgChecker.src = imgUrl;
+    }
 
-            imgChecker.src = imgUrl;
+    /* ═══════════════════════════════════════════════════════════════
+       BD NID SERVER — BADGE/PROFILE ENGINE
+       All NID state is fully independent of the Trademark engine.
+
+       DEFAULT PIXEL-PERFECT POSITIONS (locked on init):
+         F1 Bangla Name : size=144  x=1380  y=928   bold=true
+         F2 English Name: size=113  x=1380  y=1130  bold=false
+         F3 Father Name : size=115  x=1397  y=1350  bold=false
+         F4 Mother Name : size=110  x=1397  y=1557  bold=false
+         F5 DOB Text    : size=105  x=1741  y=1793  bold=false
+         F6 NID Number  : size=130  x=1511  y=2012  bold=true
+         Photo Box      : size=400  x=200   y=900
+    ═══════════════════════════════════════════════════════════════ */
+
+    /* ── NID State Object (single source of truth for NID engine) ── */
+    const NID = {
+        bgImage:    null,   // HTMLImageElement for background
+        photoImage: null,   // HTMLImageElement for profile photo
+
+        /* Field defaults — these values are the ONLY source;
+           never read from or write to TM-engine variables.        */
+        f1: { size: 144, x: 1380, y:  928, bold: true  },
+        f2: { size: 113, x: 1380, y: 1130, bold: false },
+        f3: { size: 115, x: 1397, y: 1350, bold: false },
+        f4: { size: 110, x: 1397, y: 1557, bold: false },
+        f5: { size: 105, x: 1741, y: 1793, bold: false },
+        f6: { size: 130, x: 1511, y: 2012, bold: true  },
+        photo: { size: 400, x: 200, y: 900 }
+    };
+
+    /* ── Mapping: field key → HTML input IDs ── */
+    const NID_FIELD_MAP = {
+        f1:    { size: 'nidF1SizeVal',    x: 'nidF1XVal',    y: 'nidF1YVal',
+                 sizeR:'nidF1SizeRange',  xR:'nidF1XRange',  yR:'nidF1YRange',  text: 'nidF1Text' },
+        f2:    { size: 'nidF2SizeVal',    x: 'nidF2XVal',    y: 'nidF2YVal',
+                 sizeR:'nidF2SizeRange',  xR:'nidF2XRange',  yR:'nidF2YRange',  text: 'nidF2Text' },
+        f3:    { size: 'nidF3SizeVal',    x: 'nidF3XVal',    y: 'nidF3YVal',
+                 sizeR:'nidF3SizeRange',  xR:'nidF3XRange',  yR:'nidF3YRange',  text: 'nidF3Text' },
+        f4:    { size: 'nidF4SizeVal',    x: 'nidF4XVal',    y: 'nidF4YVal',
+                 sizeR:'nidF4SizeRange',  xR:'nidF4XRange',  yR:'nidF4YRange',  text: 'nidF4Text' },
+        f5:    { size: 'nidF5SizeVal',    x: 'nidF5XVal',    y: 'nidF5YVal',
+                 sizeR:'nidF5SizeRange',  xR:'nidF5XRange',  yR:'nidF5YRange',  text: 'nidF5Text' },
+        f6:    { size: 'nidF6SizeVal',    x: 'nidF6XVal',    y: 'nidF6YVal',
+                 sizeR:'nidF6SizeRange',  xR:'nidF6XRange',  yR:'nidF6YRange',  text: 'nidF6Text' },
+        photo: { size: 'nidPhotoSizeVal', x: 'nidPhotoXVal', y: 'nidPhotoYVal',
+                 sizeR:'nidPhotoSizeRange',xR:'nidPhotoXRange',yR:'nidPhotoYRange', text: null }
+    };
+
+    /* ── Helper: read a numeric input value safely ── */
+    function nidReadNum(id, fallback) {
+        const el = document.getElementById(id);
+        if (!el) return fallback;
+        const v = parseInt(el.value, 10);
+        return isNaN(v) ? fallback : v;
+    }
+
+    /* ── Helper: set both number-box and its paired range slider ── */
+    function nidSync(numId, rangeId, val) {
+        const numEl   = document.getElementById(numId);
+        const rangeEl = document.getElementById(rangeId);
+        if (numEl)   numEl.value   = val;
+        if (rangeEl) rangeEl.value = val;
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+       SLIDER oninput handler
+       Called by: oninput="nidSliderChange(this)"
+    ───────────────────────────────────────────────────────────── */
+    function nidSliderChange(rangeEl) {
+        const val      = parseInt(rangeEl.value, 10);
+        const numBoxId = rangeEl.getAttribute('data-numbox');
+        const stateKey = rangeEl.getAttribute('data-state');  // 'size' | 'x' | 'y'
+        const fieldKey = rangeEl.getAttribute('data-field');  // 'f1'…'f6' | 'photo'
+
+        /* Sync paired number input */
+        const numEl = document.getElementById(numBoxId);
+        if (numEl) numEl.value = val;
+
+        /* Update NID state */
+        if (NID[fieldKey] !== undefined && stateKey) {
+            NID[fieldKey][stateKey] = val;
         }
-    </script>
 
+        nidRender();
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+       PIXEL INPUT — Enter key handler
+       Called by: onkeydown="nidPxInputKeydown(event,this)"
+    ───────────────────────────────────────────────────────────── */
+    function nidPxInputKeydown(evt, numEl) {
+        if (evt.key === 'Enter') {
+            evt.preventDefault();
+            nidPxInputCommit(numEl);
+            numEl.blur();
+        }
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+       PIXEL INPUT — Blur / commit handler
+       Called by: onblur="nidPxInputCommit(this)"
+       Parses value, clamps to min/max, syncs slider, updates state, re-renders.
+    ───────────────────────────────────────────────────────────── */
+    function nidPxInputCommit(numEl) {
+        const sliderId = numEl.getAttribute('data-slider');
+        const stateKey = numEl.getAttribute('data-state');
+        const fieldKey = numEl.getAttribute('data-field');
+
+        const rangeEl = document.getElementById(sliderId);
+
+        let val = parseInt(numEl.value, 10);
+        if (isNaN(val)) val = NID[fieldKey] ? NID[fieldKey][stateKey] : 0;
+
+        /* Clamp to slider limits */
+        if (rangeEl) {
+            const min = parseInt(rangeEl.min, 10);
+            const max = parseInt(rangeEl.max, 10);
+            val = Math.min(Math.max(val, min), max);
+        }
+
+        /* Write clamped value back to number input */
+        numEl.value = val;
+
+        /* Sync to range slider */
+        if (rangeEl) rangeEl.value = val;
+
+        /* Update NID state */
+        if (NID[fieldKey] !== undefined && stateKey) {
+            NID[fieldKey][stateKey] = val;
+        }
+
+        nidRender();
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+       BACKGROUND IMAGE UPLOAD
+    ───────────────────────────────────────────────────────────── */
+    function nidHandleBgUpload(evt) {
+        const file = evt.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const img = new Image();
+            img.onload = function () {
+                NID.bgImage = img;
+                document.getElementById('nidEditorLayout').style.display = 'grid';
+                nidRender();
+            };
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+       PROFILE PHOTO UPLOAD
+    ───────────────────────────────────────────────────────────── */
+    function nidHandlePhotoUpload(evt) {
+        const file = evt.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const img = new Image();
+            img.onload = function () {
+                NID.photoImage = img;
+                nidRender();
+            };
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+       CORE CANVAS RENDER — NID Engine
+       Reads live state from NID object only.
+       Fonts that are bold=true render with "bold" prefix.
+    ───────────────────────────────────────────────────────────── */
+    function nidRender() {
+        if (!NID.bgImage) return;
+
+        const canvas = document.getElementById('nidCanvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+
+        /* Set canvas to full image resolution */
+        const imgW = NID.bgImage.naturalWidth;
+        const imgH = NID.bgImage.naturalHeight;
+        canvas.width  = imgW;
+        canvas.height = imgH;
+
+        /* Draw background */
+        ctx.drawImage(NID.bgImage, 0, 0, imgW, imgH);
+
+        /* ── Profile Photo ── */
+        if (NID.photoImage) {
+            const ps = NID.photo.size;
+            ctx.save();
+            ctx.drawImage(NID.photoImage, NID.photo.x, NID.photo.y, ps, ps);
+            ctx.restore();
+        }
+
+        /* ── Text rendering helper ── */
+        function drawField(fieldKey, text, fontFamily) {
+            const fd = NID[fieldKey];
+            if (!text || !fd) return;
+            const weight = fd.bold ? 'bold ' : '';
+            ctx.font         = `${weight}${fd.size}px ${fontFamily}`;
+            ctx.fillStyle    = '#1a1a1a';
+            ctx.textBaseline = 'top';
+            ctx.fillText(text, fd.x, fd.y);
+        }
+
+        /* F1 — বাংলা নাম — Bold */
+        const banglaNoto = "'Noto Serif Bengali', 'Hind Siliguri', serif";
+        drawField('f1', document.getElementById('nidF1Text').value, banglaNoto);
+
+        /* F2 — English Name */
+        drawField('f2', document.getElementById('nidF2Text').value, "'Segoe UI', Arial, sans-serif");
+
+        /* F3 — পিতার নাম */
+        drawField('f3', document.getElementById('nidF3Text').value, banglaNoto);
+
+        /* F4 — মাতার নাম */
+        drawField('f4', document.getElementById('nidF4Text').value, banglaNoto);
+
+        /* F5 — DOB */
+        drawField('f5', document.getElementById('nidF5Text').value, "'Segoe UI', Arial, sans-serif");
+
+        /* F6 — NID Number — Bold */
+        drawField('f6', document.getElementById('nidF6Text').value, "'Courier New', monospace");
+
+        /* Update scale chip */
+        const bodyWidth   = canvas.offsetWidth || canvas.width;
+        const scaleChip   = document.getElementById('nidScaleLabel');
+        if (scaleChip) {
+            const pct = Math.round((bodyWidth / imgW) * 100);
+            scaleChip.textContent = `Scale: ${pct}%`;
+        }
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+       EXPORT — Full resolution PNG download
+    ───────────────────────────────────────────────────────────── */
+    function nidExport() {
+        const canvas = document.getElementById('nidCanvas');
+        if (!canvas || !NID.bgImage) {
+            alert('Please upload an NID background image first.');
+            return;
+        }
+        const link    = document.createElement('a');
+        link.download = 'nid-card-export.png';
+        link.href     = canvas.toDataURL('image/png');
+        link.click();
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+       RESET — Restore all NID defaults and sync all controls
+    ───────────────────────────────────────────────────────────── */
+    function nidResetDefaults() {
+        /* Re-apply pixel-perfect default positions to NID state */
+        NID.f1    = { size: 144, x: 1380, y:  928, bold: true  };
+        NID.f2    = { size: 113, x: 1380, y: 1130, bold: false };
+        NID.f3    = { size: 115, x: 1397, y: 1350, bold: false };
+        NID.f4    = { size: 110, x: 1397, y: 1557, bold: false };
+        NID.f5    = { size: 105, x: 1741, y: 1793, bold: false };
+        NID.f6    = { size: 130, x: 1511, y: 2012, bold: true  };
+        NID.photo = { size: 400, x:  200, y:  900 };
+
+        /* Sync all sliders and number inputs to the reset values */
+        const pairs = [
+            ['nidF1SizeVal','nidF1SizeRange',  144],
+            ['nidF1XVal',   'nidF1XRange',    1380],
+            ['nidF1YVal',   'nidF1YRange',     928],
+            ['nidF2SizeVal','nidF2SizeRange',  113],
+            ['nidF2XVal',   'nidF2XRange',    1380],
+            ['nidF2YVal',   'nidF2YRange',    1130],
+            ['nidF3SizeVal','nidF3SizeRange',  115],
+            ['nidF3XVal',   'nidF3XRange',    1397],
+            ['nidF3YVal',   'nidF3YRange',    1350],
+            ['nidF4SizeVal','nidF4SizeRange',  110],
+            ['nidF4XVal',   'nidF4XRange',    1397],
+            ['nidF4YVal',   'nidF4YRange',    1557],
+            ['nidF5SizeVal','nidF5SizeRange',  105],
+            ['nidF5XVal',   'nidF5XRange',    1741],
+            ['nidF5YVal',   'nidF5YRange',    1793],
+            ['nidF6SizeVal','nidF6SizeRange',  130],
+            ['nidF6XVal',   'nidF6XRange',    1511],
+            ['nidF6YVal',   'nidF6YRange',    2012],
+            ['nidPhotoSizeVal','nidPhotoSizeRange', 400],
+            ['nidPhotoXVal','nidPhotoXRange',   200],
+            ['nidPhotoYVal','nidPhotoYRange',   900],
+        ];
+
+        pairs.forEach(([numId, rangeId, val]) => nidSync(numId, rangeId, val));
+
+        nidRender();
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+       CLEAR ALL — wipe images, reset controls
+    ───────────────────────────────────────────────────────────── */
+    function nidClearAll() {
+        NID.bgImage    = null;
+        NID.photoImage = null;
+
+        document.getElementById('nidBgFile').value    = '';
+        document.getElementById('nidPhotoFile').value = '';
+        document.getElementById('nidEditorLayout').style.display = 'none';
+
+        const canvas = document.getElementById('nidCanvas');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        nidResetDefaults();
+    }
+
+    /* ── Drag-over visual feedback for upload zone ── */
+    (function () {
+        const zone = document.getElementById('nidUploadZone');
+        if (!zone) return;
+        zone.addEventListener('dragover',  e => { e.preventDefault(); zone.classList.add('drag-over'); });
+        zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+        zone.addEventListener('drop', e => {
+            e.preventDefault();
+            zone.classList.remove('drag-over');
+            const file = e.dataTransfer.files[0];
+            if (file && file.type.startsWith('image/')) {
+                const dt = new DataTransfer();
+                dt.items.add(file);
+                document.getElementById('nidBgFile').files = dt.files;
+                nidHandleBgUpload({ target: { files: [file] } });
+            }
+        });
+    })();
+
+    </script>
 </body>
 </html>
+
+
